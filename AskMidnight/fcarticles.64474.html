@@ -1,0 +1,822 @@
+<html>
+<head><title>flipcode - Octree Neighbor Nodes</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Octree Neighbor Nodes</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++ 'Avatar.dx' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '@' + 'libertysurf' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'fr\">' + 'Maxime Delorme' + '</a>')</script> (17 June 2002)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I'm currently making an Octree system for my video game . I've been
+confronted to the Neighbouring problem : How could I define easily the
+Neighbors of a Node ...<br><br>I searched for 1 week and I'm so tired of this problem so I wondered
+if you could help me a little :)<br><br>Each Node has a Parent(except the Root) and 8 children(except the last
+Node). Each node has too an ID : 0 is the Bottom Front Left Node, 1
+the Bottom Front Right, 2 the Bottom Back Right Node, 3 the Bottom
+Back Left node. The 4 next are just alike the previous one ... But at
+the Top of the Parent Node ...<br><br>The Bounding Boxes of the Node is Defined by 2 vectors : Min and Max<br><br>I've read in Game Programming Gems that there are some algorithms to
+find out which Node is next to an other Node ...<br><br>But I can't find such Algorithm ... so if you can help me ... That
+would be great !!!<br><br><font size=1><i>Editor's Note: This question wasn't originally
+submitted as an 'Ask MidNight' question, but is being posted here with
+the author's permission.</i>
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+I've never seen one of these algorithms myself, but I have solved the
+problem for myself...<br><br>You can either do this on the fly, or you can pre-calculate the
+information (very quickly) and store it in your octree nodes. It depends
+on your needs.<br><br>If you place two boxes side by side, so that the left side of one box is
+touching the right side of another box, then those boxes are neighbors.
+Octrees may have multiple neighbors on each side (or none, for nodes that
+define the exterior of the bounding volume.) So, let's consider a simple
+example, which can be easily extended to an octree.<br><br>Take two boxes, and place one in front of the other. Place them so they
+are neighbors. Offset them a little bit to simulate a real-world
+situation.<br><br>Looking at these boxes from the front, they should overlap in your view.
+Draw this on paper. When you draw it on paper, you turn it into a 2D
+problem (removing Z) -- that's fine for now.<br><br>You can easily detect if these two boxes overlap in 2D. If they do, then
+you've solved half of the problem. Next, we'll extend the problem back
+into 3D and check the minimum Z of one box with the maximum Z of the other
+box. If they are equal (or within a tolerance), you're guaranteed that
+these two boxes are neighbors.<br><br>So, you create code that performs a 2D box overlap (using only two
+coordintes from the 3D coordinates). You'll do this six times: twice for
+the XY coordinates (comparing for tolerance on min/max Z), twice for the
+YZ coordinates (comparing min/max X) and twice for the XZ coordinates
+(comparing min/max Y).<br><br>You do this twice for each set of coordinates, because you'll use the XY
+coordinates to test for neighbors with both, the front and back faces of
+the current node. Also, when testing with the front node (i.e. the node
+that faces negative Z in the left-handed coordinate system), you'll
+compare the node's minimum Z with the potential-neighbor's maximum Z.
+Reverse this to test the back face. Repeat for top/bottom and left/right
+node tests.<br><br>This isn't as bad as it sounds, because you can use the hierarchy to
+help you. A simple way to do this, would be to take the existing node (the
+one you're trying to find neighbors for) and enlarge it slightly. Traverse
+the tree and find all nodes that intersect this bounding box. Then you can
+limit your tests to only those intersecting nodes.<br><br>This "enlarged node" may sound a bit like a hack, but it's really not, and
+here's why: When you build your octree, it's a good idea to limit your
+node sizes to a minimum size (otherwise, you might find yourself building
+an infinite tree, based on your criteria.) This means that you'll never
+have a node smaller than this size. Simply enlarge your node by half this
+size, and you're guaranteed to only intersect those nodes that are
+potential neighbors. The execption to this, is the neighbors that might
+share a single vertex with the test node.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23921">Octree Neighbor Nodes</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193785">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Well, I just wrote an octree with leafes containing only one sample point. The datastructure therefore represents a sparse, uniform sampled volume.<br><br>Are your points scattered nonuniformly? Otherwise there are defently much faster ways to find a neighbour. I have two possibilities programmed:<br><br>1) Given a leaf in your octree, you can calculate the (lexcographic) index of your neighbour easily. Then travel up the octree some levels (the extremes: up to the root if you happen to step over the center in your octree, just one level up if you are lucky) and travel down again to find your neighbour. This is O(log(N)) but pretty slow.<br><br>2) To speed things up, at every leafe I calculate links to the next sample in all directions. When I have to sweep my octree (not something you normally wanna do in a octree, but I need it), I always have links to my next element in the pricipal direction. In all other directions, I sill have to use method 1.<br>These links will also help you quickly find a neighbour stencil.<br>You can use method 1 to build the links.<br><br>Tell me if you are interested in the source.<br>Chrisi
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=4364">Chrisi</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>18 Jun 2002, 5:49AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg=193785#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg_quote=193785#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193785">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193786">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    I'm very intersted in that source ...<br><br>could you send it to me at Avatar.dx@libertysurf.fr <br><br>Thanks a lot :)<br>Bye<br>Avatar
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=3930">DxAvatar</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>18 Jun 2002, 6:22AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg=193786#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg_quote=193786#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193786">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193787">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Here is one I made earlier:<br><br><br>void OTree::CalcNeighbours ( void )<br>{<br>	darray&lt;int> dSame;<br>	int I,J,K,L;<br>	int CheckDepth, SubA, SubB;<br>	int ax,ay,az,bx,by,bz, a, b;<br><br>	// Debug<br>	for (I=1;I&lt;dNodes.Count();I++)<br>		for ( J=0;J&lt;6;J++ )<br>			dNodes[I].Neighbours[J] = NO_NODE-1;<br><br>	// First node<br>	dNodes[0].Neighbours[0] = NO_NODE;<br>	dNodes[0].Neighbours[1] = NO_NODE;<br>	dNodes[0].Neighbours[2] = NO_NODE;<br>	dNodes[0].Neighbours[3] = NO_NODE;<br>	dNodes[0].Neighbours[4] = NO_NODE;<br>	dNodes[0].Neighbours[5] = NO_NODE;<br><br>	// Mark all interior nodes<br>	for ( I=0; I &lt; dNodes.Count(); I++ )<br>	{<br>		if ( dNodes[I].SubNodes[0] != NO_NODE )<br>		{<br>			for ( J=0; J&lt;8; J++ )<br>			{<br>				ax = (J&1) ? 0 : 1;<br>				ay = (J&4) ? 3 : 2;<br>				az = (J&2) ? 5 : 4;<br>				<br>				bx = J^1;<br>				by = J^4;<br>				bz = J^2;<br><br>				dNodes[dNodes[I].SubNodes[J]].Neighbours[ax] = dNodes[I].SubNodes[bx];<br>				dNodes[dNodes[I].SubNodes[J]].Neighbours[ay] = dNodes[I].SubNodes[by];<br>				dNodes[dNodes[I].SubNodes[J]].Neighbours[az] = dNodes[I].SubNodes[bz];<br>			}<br>		}<br>	}<br><br>	// Find nodes of same depth<br>	for ( CheckDepth=1;;CheckDepth++)<br>	{<br>		dSame.Empty();<br>		for ( I=0; I &lt; dNodes.Count(); I++ )<br>		{<br>			if ( dDepths[I] == CheckDepth )<br>				dSame.Add ( I );<br>		}<br><br>		if ( dSame.Count() &lt;= 0 ) break;<br><br>		// Check each node of same depth..<br>		for ( J=0; J &lt; dSame.Count(); J++ )<br>		{<br>			SubA = dSame[J];<br><br>			// ..against each other of the same depth..<br>			for ( K=0; K &lt; dSame.Count(); K++ )<br>			{<br>				SubB = dSame[K];<br><br>				if ( SubA != SubB )<br>				{<br>					OTNode *pA = &dNodes[SubA];<br>					OTNode *pB = &dNodes[SubB];<br>					int Code = dNodes[SubA].LocalCode;<br><br>					// .. and in each direction<br>					for ( L = 0; L &lt; 3; L++ )<br>					{<br>						ax = (Code&1) ?  1 : 0;<br>						bx = (L==0) ? (ax^1) : ax;<br>						ay = (Code&4) ?  2 : 3;<br>						by = (L==1) ? (ay^1) : ay;<br>						az = (Code&2) ? 4 : 5;<br>						bz = (L==3) ? (az^1) : az;<br>						<br>						if ( L==0 ) { a=ax; b=bx; };<br>						if ( L==1 ) { a=ay; b=by; };<br>						if ( L==2 ) { a=az; b=bz; };<br>						ASSERT(a>=0 && a&lt;8);<br>						ASSERT(b>=0 && b&lt;8);<br><br>						if ( dNodes[SubA].Parent != dNodes[SubB].Parent &&	// Dont check same children<br>							 pA->Box.GetI(ax) == pB->Box.GetI(bx) &&<br>							 pA->Box.GetI(ay) == pB->Box.GetI(by) &&<br>							 pA->Box.GetI(az) == pB->Box.GetI(bz) )<br>						{<br>							pA->Neighbours[a] = SubB;<br>							pB->Neighbours[b] = SubA;<br>						}<br>						else<br>						{<br>							ASSERT(pA->Parent!=NO_NODE);<br>							ASSERT(dNodes[pA->Parent].Neighbours[a] != NO_NODE-1);<br>							pA->Neighbours[a] = dNodes[pA->Parent].Neighbours[a];<br>						}<br>					}<br>				}<br>			}<br>		}<br>	}<br><br>	// Debug<br>	for (I=0;I&lt;dNodes.Count();I++)<br>		for ( J=0;J&lt;6;J++ )<br>			ASSERT(dNodes[I].Neighbours[J] != NO_NODE-1);<br>};<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2844">Dan Leyden</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>18 Jun 2002, 8:38AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg=193787#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg_quote=193787#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193787">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193788">
+<a name="p193789">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    If you store your nodes in a single array:<br>root, 8 children of root, 8 children of first root child, 8 children of second root child, etc.<br><br>Then you don't need to store parent or child pointers in the node.  Just bitshit and add/sub to get either the parent or 8 children.  This saves tons of memory for one.<br><br>To find the neighbors of any node at a given level, think of that level as a NxNxN set of nodes (N only depends on the level number).<br><br>You can now convert any given 3d point into a nodeX, nodeY, nodeZ value for a given level with an add and divide and conversion to an int.  To find the neighbors, it's just a matter of:<br>nodeX-1, nodeY, nodeZ<br>nodeX+1, nodeY, nodeZ<br>nodeX, nodeY-1, nodeZ<br>...etc...<br><br>And with any given level, nodeX, nodeY, and nodeZ, you can use the morton conversion to get the index into your array of nodes. The morton conversion involves some simple bitshifting, so it's quite fast.<br><br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=62">Douglas Cox</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>18 Jun 2002, 9:28PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg=193788#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg_quote=193788#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193788">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Octree Neighbor Nodes</i></b> <font size=1>by Douglas Cox</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>06-18-2002 - 09:28PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23921&msg=193789">Re: Octree Neighbor Nodes</a> <font size=1>by Chrisi</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>06-19-2002 - 02:11AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193790">
+<a name="p193791">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Calculating a point using your bit shifting thing.<br><br>Will that only work if your otree is completely full. ie: each node has the same number of sub nodes?<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2844">Dan Leyden</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>19 Jun 2002, 3:21AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg=193790#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg_quote=193790#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193790">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Octree Neighbor Nodes</i></b> <font size=1>by Dan Leyden</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>06-19-2002 - 03:21AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23921&msg=193791">Re: Octree Neighbor Nodes</a> <font size=1>by Chrisi</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>06-20-2002 - 01:28PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193792">
+<a name="p193793">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>algorithm for neighbours</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Yes<br>A algorithm for this really exits.<br>The mainidea is, search for the first common parent of your cell and the neighbour cell, and save the way from your Cell to this parent.<br>Then you need only walk the mirrored way to the neighbour.<br><br>Finding the common parent.<br>I had used a bitmask,for example and a stack of waypoints.<br>The stack are filled with the way from the rootnode to your node.<br>For example: up 1, down 2, left 4, right 8, front 16, back 32.<br>If you search for the upper left neighbour, you set the up and the left bit.<br>Then you go walk up from your node to the parent using this stack (or something else), and with a big switch you can disable some flags from the bitmask, depents on the position of the current node.<br>If the bitmask are 0 you have found the parent, and then you need only to go the mirrored way.<br><br>The big Switch:<br>For example your node are the top left child, then you can clear the bottom and the right bit (because if your are top left of the parent cell, then your right , right bottom and bottom cell are your neighbours.<br>Front and back are the same.<br><br>So you can clear all flags (if not, then this cell have not a neighour) on the way to the root node.<br><br><br>Then break if your bitmask are zero and walk down the mirrored way and then you have your neighbour.<br><br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=5269">quaak</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>25 Jul 2002, 1:39PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg=193792#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg_quote=193792#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193792">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>algorithm for neighbours</i></b> <font size=1>by quaak</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>07-25-2002 - 01:39PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23921&msg=193793">Re: algorithm for neighbours</a> <font size=1>by Chrisi</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>08-07-2002 - 10:53AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193794">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    First off, I know this thread has long been dead. However, I have been bored out of my skull today and decided to try to come up with solutions to a bunch of problems for fun and, err, fun. The subject matter happened to be one of these problems. I eventually worked out a totally robust algorithm that relied only on the combinatorial structure of octrees. However, in the course of this I also thought of a non-combinatorial algorithm which is fast for on-the-fly queries and surprisingly robust. First and foremost, however, it leverages code that people who have implemented support for octrees are likely to possess already, thus making the implementation time and complexity near-zero.<br><br>Anyway, on to the description of the algorithm. First, allow me to make a somewhat trivial observation: The neighbor of a node will always have equal or lower depth. (Equivalently, of equal or greater size.) For each of the six faces of the box, do the following: Construct a unit normal vector to the face and scale it by the side length of the box. Now, add this vector to the midpoint of the box. This produces the midpoint of an adjacent box of equal size. This point will be the test point for this face. Now find the leaf of the octree which contains this test point. (This is where we leverage existing code.)<br><br>So far, so good. However, this leaf might not have the right depth and if this is the case, we follow parent pointers until we get to a node with the right depth. (The right depth, in this case, is a depth equal to the depth of the node we are collecting neighbors for.) That is all! Pretty simple, huh? Happy holidays!
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1863">Per Vognsen</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>25 Dec 2002, 9:41PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg=193794#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23921&msg_quote=193794#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193794">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

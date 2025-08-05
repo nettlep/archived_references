@@ -1,0 +1,316 @@
+<html>
+<head><title>flipcode - Optimizing For Different Systems</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Optimizing For Different Systems</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'softcore' +  '@' + 'web' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++ 'de\">' + 'Alex Herz' + '</a>')</script> (24 June 2000)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+there's something bothering me since quite a time...
+I'm coding 3d stuff since many years now...and in the recent time it was quite
+possible to guess where the new 3d tech will go (not to far in the future..but
+all card's specs were quite similar and the planned abilitys of newer 3d card
+were heading in similar directions)<br><br>that way you could rather easily choose common path for optimizations and
+features to support..but nowedays where new ogl extentions áre created every now
+and then...<br><br>and if it's not the features than it's the drivers...when dealing with the
+latest voodoo board you have to use sorted compiled vertex arrays (sorted as if
+you did strips..but DON'T use em!!)..to get an reasonable output...(if you do it
+differen't you'l get 1/6 of the performance possible)...<br><br>there are so many different configs out there that you can hardly optimze your
+stuff..either you write an own rendering pipe for almost every card outthere..to
+realy support the features to their best or you only use what is supported most
+broadly...<br><br>how do you manage this when you're producing a professional(=produced to be
+sold)
+game??
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+This is another one of those questions that you're not going to like the answer
+to, but when has that ever stopped me?  :)<br><br>Game companies often keep stacks of video cards on hand for development &
+testing. This testing includes stability testing, performance testing, and to
+see if it rendered the right thing. If something ends up looking wrong, is slow
+or crashes on a certain video card, the problem is investigated. If the problem
+ends up being a bug in the game code, the code is fixed. If the problem ends up
+being a bug in the driver, then a newer driver is used or the manufacturer is
+notified. In come cases, some bugs just can't be fixed (for example, a card
+doesn't support a required feature of the game, hence, it renders the wrong
+thing.)<br><br>If a performance issue arises on one card, a solution is investigated that
+solves the performance issues of that card, without dramatically affecting the
+performance of another card. If you find that your performance on one card
+suffers dramatically, and the only way to fix it will affect the performance of
+other cards in a negative way, then the solution might be to add an option, and
+document which options work best with which cards.<br><br>If you can't afford to have a lot of cards on hand, then put your demo up for
+download or pass it to a few people that have different versions of different
+cards, and ask them to check it out for you. You won't always find all the bugs
+until the public gets their hands on it, but you'll at least be made aware of
+the obvious flaws. In the end, it all boils down to a lot of work, whether
+you're on your own or working for a game company.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23887">Optimizing For Different Systems</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193383">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Having coded PCs and now being a coder for console systems, I can say that this is one reason I switched to consoles.  There are lots of other headaches, but at least they are less vague than "Why does it go slow on this configuration but not on this one?"<br><br>If you get the chance, then try coding for a console (as a job. As a hobbyist, it's nigh upon impossible to code for a console, though not entirely :).  You'll appreciate the difference immediately.  I know I did.<br><br>As a hobbyist, don't worry so much about the different configurations.  Worry about yours, and perhaps the most popular cards (NVidia currently, but who knows in a couple of years).<br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=157">f(x)</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>25 Jun 2000, 2:50AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23887&msg=193383#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23887&msg_quote=193383#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193383">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

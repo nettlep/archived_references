@@ -1,0 +1,210 @@
+<html>
+<head><title>flipcode - Rendering An Oddball 3D Model Type</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Rendering An Oddball 3D Model Type</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' +  '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'agoth' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '@' + 'virtools' +  '.' +  'com\">' + 'Benedict' + '</a>')</script> (16 June 1999)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+My artist submits his models to me using a program called Nendo. Nendo
+uses per face mapping rather than using planar or cylindrical mapping
+techniques.<br><br>The problem comes when we try to draw the model - as each vertex
+within Nendo has any number of U & V coordinates and Direct3d only
+allows one UV coordinate per vertex - Nendos .X format exporter
+exports one vertex PER UV pair.<br><br>So a model with 100 vertexes can in practise wind up with 300-400
+'vertexes'. If all of these are transformed, clipped and rendered then
+things tend to get terribly slow.<br><br>My current solution involves analysing the model at load-time,
+transforming the unique vertexes ONCE then propogating the transformed
+vertexes into the vertex list so they pick up the appropriate UV
+coordinates.<br><br>This seems like a terrible fudge, there must be some method of dealing
+with this that is elegant.
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+The most common way to accomplish this goal is to store the UV
+coordinates in the polygon rather than in each vertex. When doing this,
+a polygon will have an array of world-space vertices (either by pointer,
+index, hash lookup, whatever) as well as an array of texture-space
+vertices (UVs).<br><br>On output from your Nendo tool, you'll need to visit each polygon and
+grab the UVs from each vertex and move them into the polygon's
+texture-vertex list.<br><br>At some point, you'll need to optimize your vertices.  A common way of
+doing this is to find all vertices that are within a threshold distance
+(say 1.0e-4) of each other and combine them into one vertex. Each time
+you combine a group of vertices into one, you'll need to update the
+affected polygons. In rare cases, this optimization pass can cause two
+vertices of the same polygon to become one (very thin polygons get
+collapsed into a line or a single point.) So you'll need to detect this
+case.<br><br>If you're lucky, your tool will create groups of vertices that are
+identical in location, so you can simply compare locations and not have
+to worry about collapsing groups of vertices via a threshold (and hence,
+not have to worry about "collapsed polygons."
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

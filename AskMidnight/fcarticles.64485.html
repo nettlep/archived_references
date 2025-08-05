@@ -1,0 +1,266 @@
+<html>
+<head><title>flipcode - U-V Overflow in Perspective Texture Mapping</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>U-V Overflow in Perspective Texture Mapping</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'jnelson' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '@' + 'hgo' + ''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++ 'net\">' + 'James E. Nelson' + '</a>')</script> (30 June 1999)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I am using a common method of perspective texture mapping of defining a
+point and 2 direction vectors in world space (P, M, N) that define the
+texture's position and orientation. These are then translated into view
+space. I compute the orthogonal vectors A, B, C, and from these I use
+the projected 2D polygon screen coordinates to compute a, b, c  (really
+1/u, 1/v, and 1/z). To compute individual coordinates in texture space I
+take the reciprocal of c and multiply it by a and b to get u and v.<br><br>This works great except at the edges of polygons where I often get u, v
+values that fall outside the texture boundaries. Apparently this is a
+common problem, since every example of this approach I have seen has
+been accompanied by some sort of hack to get around this. I have tried
+all of the common "fixes" but none have really been satisfactory. I have
+tried:
+<blockquote>
+<li>Letting my textures wrap around (not an option for my particular
+implementation.)
+<li>Clamping the u,v values at the ends of each scanline (time consuming
+plus makes the texture swim when the polygon is rotated.)
+<li>Stretching the P, M, N vectors to cover an area in 3-space larger
+than the polygon (don't like this because of the storage and processing
+costs for extra vertexes. I also tried stretching P, M, N at runtime but
+have found no sure formula for how much to stretch.)
+<li>Storing u, v coordinates at each polygon vertex (don't like the extra
+storage and processing during clipping and projection)
+<li>Using sub-pixel precision in edge stepping when rasterizing polygons
+(I've read that taking care to rasterize polygon edges to always step on
+the center of pixels will fix the problem. I've found that this helps
+somewhat, but polygons at certain angles still exhibit the problem.)
+</blockquote>
+My question, then, what is the _RIGHT_ way to fix this?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+EXCELLENT question... I always love it when people ask for the
+<b>RIGHT</b> way to fix something. In this case, there are a few aspects
+to consider...<br><br>The first is to make sure you're properly rasterizing your polygon (i.e.
+sub-pixel and sub-texel rasterization.)  If you're not already doing both,
+you really should consider it.  I promise that once you start you won't
+want to go back.  The overhead is negligable for sub-pixel and minor for
+sub-texel.<br><br>I've written a couple docs on the subject:
+<blockquote>
+<li><a href="deadend.html">sub-pixel accuracy</a>
+<li><a href="deadend.html">sub-texel accuracy</a>
+</blockquote>
+But this won't solve your problem completely... The primary problem I find
+when I get overflows has to do with an n-pixel sub-affine perspective
+correct texture mapper (say that 10 times as fast as you can, and I'll
+email you a lolipop.)  Say we're using 16-pixel spans...<br><br><center>
+<img src="fig01.gif">
+</center><br><br>Notice the three spans... the first two are full 16-pixel sub-spans, the
+last sub-span is a partial sub-span (sub-sub-span?.) It's usually more
+straight forward to compute the delta across the final span as if it was a
+full 16-pixel sub-span. But unfortunately, the perspective curve through
+texture space doesn't intersect the final pixel at the right place. This
+means that you can underflow or overflow your texture coordinates in the
+last sub-span very easily. To solve this, you must make sure that you
+calculate the delta across that span using the proper end-points of the
+sub-span.<br><br>Though, you never said that you were actually using sub-affine texture
+mapping. So if you're not, don't lose hope yet there's even more to
+come...<br><br>Of course, you should be using floating point, at least, until you get it
+working the way you want. But even if you ARE using floating point values
+(single or double precision) you can still end up with overflow.  This is
+because the deltas you calculate to step across your span will have an
+inherent error in them (other than some very rare cases.)<br><br>In this case, each time you step your values to the next pixel (or
+sub-span) you end up accumulating error. This means that it's actually
+harder to maintain accuracy when you're doing a divide-per-pixel as
+opposed to a sub-affine method.<br><br>You can reduce this by performing a multiply rather than an add per pixel
+(simply multiply your delta by the number of pixels you've already
+processed.) On the common PCs, the overhead of the multiply is much less
+than most people would think. And if your texture mapper is fast enough
+(read: "memory bound") it is completely free.<br><br>There are other issues to consider, but these are some pretty low-level
+issues. Some time ago, I wrote some tutorial source that uses each
+technique for texture mapping (affine, sub-affine and a fully accurate
+divide-per-pixel.) Throuthout this source, I explain (in comments) the
+precision problems I encountered in each. It also comes with explanations
+of the solutions I chose. I wrote this some time ago, so it compiles for
+DOS but is still perfectly valid (and should be reasonably easy to port.)
+I would have included a compiled version of each, but I no longer keep a DOS
+compiler on my machine.<br><br>I will enter this into the public domain for the first time <a href="ftp://ftp.flipcode.com/resources/tmapping/tmap.zip">here (tmap.zip)</a>.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

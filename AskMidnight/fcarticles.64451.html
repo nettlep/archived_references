@@ -1,0 +1,216 @@
+<html>
+<head><title>flipcode - Floats And Doubles</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Floats And Doubles</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' +  '' + '' + ''    
++''    
++''    
++''    
++ 'xycsoscyx' + ''    
++''    
++ '@' + 'hotmail' +  '.' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'com\">' + 'MoJo' + '</a>')</script> (15 January 2000)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+What is the difference between floats and doubles, and what difference do they
+make in a 3D engine?  Currently (because there is a lot of resources)  I am
+working on a Quake II style game engine.  When I render the levels, I get pixel
+gaps around the scene.  I know this is from floating point precision errors,
+when two polygons, right next to each other, are rendered, occasionally a single
+pixel gets rendered up and the next gets rendered down, so a pixel gap gets
+rendered.  Is thisfrom using floats rather fhan doubles, or does this not even
+make any difference?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+For the most part, this is not a precision issue. Precision does play a part,
+but not as much as you might think. Let's examine what happens when we
+scan-convert a polygon...<br><br>When we scan-convert a polygon we calculate the deltas along each edge. There is
+some error calculated here (except in rare cases, like perfectly vertical
+edges.) And what's worse, is that the error in the deltas is accumulated as we
+step from scanline to scanline along that edge. For example, if our precise
+delta should be 0.1, and our calculated delta was 0.101 then our error is 0.001.
+As we step from scanline to scanline (adding that delta – and its error – to a
+value), we accumulate that error over and over, until, on the 10th scanline, our
+total error is now 0.01. Believe it or not, this usually doesn't cause edge
+gaps.<br><br>Why? Because when we render the neighboring polygon (which shares this
+error-prone edge), it will also accumulate the same amount of error at the same
+rate, assuming that the vertices are exact (or shared.) So, although the error
+is present, the result is that both edges are scanned exactly the same, so there
+should be no gaps.<br><br>So, where do these "edge sparkles" come from? Well.... Depending on how the scan
+conversion is setup, you can get rare cases of edge sparkle, but unless there's
+a bug there someplace, it should be rare. I've seen some old buggy Matrox G400
+drivers that caused a ton of pixel gaps, but those drivers have long since been
+fixed. I've also seen the Voodoo 1 & 2 produce some edge sparkles. But most of
+your newer cards should be pretty good about reducing them to "almost never".<br><br>The most common cause of edge sparkles is t-junctions. The reason why
+t-junctions are prone to error is the same reason why shared edges are not
+prone. T-junctions don't share the vertices of the entire edge, so the deltas
+are calculated slightly differently for the edge (one delta for one edge, two
+deltas for the adjoining edges.) This means that the error is different, but
+more importantly, it accumulates at a different rate. This is true for both,
+software and hardware rendering.<br><br>In the end, my suggestion is to make sure your geometry shares all of its edges
+perfectly with no t-junctions. If you're using a software renderer, start
+looking for a bug, or inconsistencies in the way edges are scan-converted.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

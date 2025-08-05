@@ -1,0 +1,1107 @@
+<html>
+<head><title>flipcode - Third-Person Game Cameras</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Third-Person Game Cameras</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++ 'hmint' +  '@' + 'frisurf' +  '.' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'no\">' + 'Håkon Anders Myhra' + '</a>')</script> (18 May 2001)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I'm trying to write a 3rd person game and i'm using a Quake 2 style engine.
+My problem is to have the camera follow my actor properly. I want the camera
+to move like in Zelda (N64) or Tomb raider (PC) etc. I've tried different
+thing, but i can't get the coding right. I'm using Delphi 5.<br><br>I need the camera x,y,z to correspond the actor x,y,z + height and distance
+from the actor of course.<br><br>Do you have a good math code to show me ?<br><br>I'm really stuck here, because i'm no math wizard.<br><br>Greetings.<br><br></font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+There are a few ways to go about doing this. I'll cover the simplest way
+first, and then explain a few options.<br><br>First things first: we need a location for our 3rd person camera. Let's say
+you want your camera behind the hero and above him/her. In order to
+accomplish this, you'll need the hero's direction vector (preferably a unit
+vector.) This is important because the camera's position is relative to the
+direction the hero is facing.<br><br>The nice thing about vectors is that they're easy to manipulate. You simply
+change the signs of the z/y/z components, and the vector points in the exact
+opposite direction. If you negate the hero's direction, the vector will
+point in the exact opposite direction, a.k.a. directly behind the hero. When
+that vector is added to the hero's location, it will result in a point
+behind the hero. However, since we're dealing with a unit vector, the point
+may be too close or too far from the hero (depending on how large your hero
+is, relative to a single unit of space in your world.)  If your units are in
+feet, and you want your camera six feet behind the hero, then simply
+multiply the x/y/z components of the vector by 6.0 before adding it to the
+hero's position. And if you want the camera above the hero, simply add some
+value to the Y component of the resulting point (vector + hero_location).<br><br>At this point, the math guys reading this are probably screaming at me for
+such a naive explanation. Don't worry folks, I'm not going to let him off
+that easily. =)<br><br>There are a lot of problems with this approach. First of all, it's a
+hard-coded approach, and you don't have much control over the placement of
+the camera. Also, this approach doesn't handle collision detection (i.e. the
+camera might pass through a wall, which is always ugly.) And, if you look at
+your typical 3rd person games, they usually have at least two other
+features. (1) they allow the player to control where the camera is and (2)
+the cameras have a filtered motion (i.e. turn the hero around fast enough,
+and the camera tends to lag behind a little bit before catching up.)<br><br>So let's consider a different approach using matrices.<br><br>If we build a matrix that has a 180-degree rotation about the Y axis
+followed by a rotation on the X axis (of say, 45 degrees) and multiply that
+by our hero's direction vector, we'll end up with a vector that points
+behind and above the hero. By scaling the x/y/z components of that vector
+(by say... 6.0) and adding it to the hero's location, we'll end up with a
+point in space directly behind and above the hero that is exactly 6.0 units
+away from the hero's origin.<br><br>The advantage of this approach is that the two rotational values (the Y axis
+and X axis rotations) allow you to control the amount of rotation, and hence
+the placement, of your 3rd person camera. If you tie these values to a
+couple keys on the keyboard, you can allow the user to change the placement
+of the camera (say, over the shoulder, rather than directly behind the
+hero.)<br><br>Let's take a moment to discuss this 3rd person camera rotation interface...
+It's the small things that give the finished product a "polished" feel. As
+you write the code to handle this 3rd person camera, you'll notice that if
+you simply apply positive and negative rotation to a few keys, the movement
+of your 3rd person camera will be jerky and either too slow, or too fast. It
+will not have the same feel that most games have, because their camera
+interface is always smooth.<br><br>If you want to smooth out your interface, you'll need to ramp your camera
+movements. More specifically, let's talk about the desired effect. If you
+hold down the key (or controller button) for the 3rd person camera movement,
+the camera begins to turn, but slowly. The longer you hold down that key,
+the faster the camera begins to turn until it saturates to a max speed. When
+you release the button, the camera rotation slows down until it stops. The
+same thing happens when you turn the camera the other way. And if you are
+turning the camera one direction and immediately change directions, the
+camera slows down faster until the direction changes. This is ramping. The
+concept is simple. Here's a simple piece of code:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+	<font color="#007f00">// How much to rotate the camera
+</font>	<font color="#0000ff">static</font>	<font color="#0000ff">float</font>	rotationY;<br><br>	<font color="#007f00">// Used to keep the rotation smooth (ramped)
+</font>	<font color="#0000ff">static</font>	<font color="#0000ff">float</font>	rotationDeltaY;<br><br>	<font color="#007f00">// Determine the rotation delta
+</font>	<font color="#0000ff">if</font> (key_CameraRotatePosY)
+	{
+		<font color="#007f00">// Rotating positive Y
+</font>		rotationDeltaY += 0.1f;<br><br>		<font color="#007f00">// Saturate to max speed
+</font>		<font color="#0000ff">if</font> (rotationDeltaY > 1.0f) rotationDeltaY = 1.0f;
+	}
+	<font color="#0000ff">else</font> <font color="#0000ff">if</font> (key_CameraRotateNegY)
+	{
+		<font color="#007f00">// Rotating negative Y
+</font>		rotationDeltaY -= 0.1f;<br><br>		<font color="#007f00">// Saturate to max speed
+</font>		<font color="#0000ff">if</font> (rotationDeltaY &lt; -1.0f) rotationDeltaY = -1.0f;
+	}
+	<font color="#0000ff">else</font>
+	{
+		<font color="#007f00">// No rotation, slow down (and eventually stop)
+</font>
+		rotationDeltaY *= 0.9f;
+	}<br><br>	<font color="#007f00">// Apply the delta to the camera's rotation
+</font>	rotationY += rotationDeltaY;
+ </font></pre></td></tr></table></div></center><br><br>Studying this code, it should become quite clear as to exactly what's going
+on. We ramp up/down the value stored in rotationDeltaY and eventually add
+that to the camera's rotational value. Simply play with the constants to
+change the speed of the camera's movement. If you really want to be picky
+about this code, you should also consider clamping the rotationY value, so
+the camera can't swing all the way in front of the hero (unless, of course,
+you want this ability.) And also, you'll want to multiply the rotationDeltaY
+variable by your time vector so that the speed of rotation isn't tied to the
+frame rate.<br><br>While I'm on the topic of specifics, I should also mention that rotationY
+(the 3rd person camera's rotation) should be tied to the hero's rotation on
+the same axis. This way, as you turn the hero, the 3rd person camera stays
+behind (or relative to the current user's settings) our hero. You can
+accomplish this by simply adding rotationY to your hero's Y rotation. This
+is the value used to create your 3rd person camera's rotation matrix.<br><br>We're not done polishing yet; this only smoothes out the keyboard interface.
+If we swing our hero around, we also want this same kind of filtered feel to
+the camera rotation as the hero turns. Though the effect may be the same,
+the code is much different. Though I won't show the code here, there's a
+rather simple technique. After each frame, record the final result of the
+camera's rotation (specifically, the rotationY variable.) Keep this
+information in an array for, say, the last 15 frames. Each frame, after
+calculating the rotationY variable, put it in the array, removing the oldest
+value (you can treat the array like a circular queue for efficiency.)
+Instead of adding the rotationY to the hero's rotation (for the final
+rotational value), average the values in the array and use that value. The
+larger your array is, the smoother your movement will be and the farther
+behind it will lag. As you might imagine, turning the hero and then stopping
+will require up to 15 frames for the camera to catch up.<br><br>We've still got two important topics to cover: collision detection and which
+direction the camera is looking.<br><br>I won't cover collision detection here, because it can be rather involved.
+Instead, I'll assume you already have collision detection in your code. If
+you don't you can look <a
+href=<a target="_blank" href="http://www.FluidStudios.com/publications.html">http://www.FluidStudios.com/publications.html</a>>here</a> (click the link
+titled "A demonstration of the enhanced Fluid Studios collision detection
+algorithm".) In order to use your collision detection, you probably need a
+location and a velocity vector. So once you've generated your 3rd person
+camera origin (i.e. after applying the matrix to the hero's scaled direction
+vector), simply subtract that point from your hero's origin. This will give
+you a collision-safe velocity vector (i.e. a vector that points from the
+hero to the camera, with the length of that vector being the distance
+between them.) Run this through your collision detection. The collision
+response (i.e. collide and slide, collide and stop, etc.) is up to you.
+You'll find that if you do it properly, the filtering will still come
+through, giving you that nicely polished feel.<br><br>The only topic left (that I can think of) is to handle the camera direction.
+Up until now, we've only concentrated on where the camera is located, not
+the direction it's pointing (a 3rd person camera with a lazy eye isn't of
+much use. =) If you don't have code to generate a "look-at" matrix, you can
+look <a href=<a target="_blank" href="http://www.FluidStudios.com/publications.html">http://www.FluidStudios.com/publications.html</a>>here</a> (click
+on the link titled "A powerful NxM matrix template class which includes full
+support for matrices, vectors, points homogenous transforms and more" - find
+the "lookat()" member in the downloaded source file.)<br><br>In order to generate a look-at matrix, you'll need a vector (the direction
+you want to look.) This vector is the inverse of the vector used for
+collision detection (rather than pointing from the hero to the camera, it
+points from the camera to the hero.) Feed this vector into your lookat()
+routine, and out pops a bouncy baby matrix that will get your camera looking
+right at your hero, no matter where the camera is placed. You may decide
+that you want the camera to point someplace in front of the hero. This is
+handy for those times where the camera is directly beside the hero. Not
+doing so could hide too much of the environment from the player (hiding a
+nearby threat, for example.)<br><br>Don't be afraid to experiment. For example, you could tie the vector-scale
+to a key as well, so the player can control how close or how far the camera
+is from the hero. Don't forget to polish your interface - it makes a huge
+difference.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23903">Third-Person Game Cameras</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193643">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>A quick note....</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    In the text, I wrote:<ul><i>While I'm on the topic of specifics, I should also mention that rotationY (the 3rd person camera's rotation) should be tied to the hero's rotation on the same axis. This way, as you turn the hero, the 3rd person camera stays behind (or relative to the current user's settings) our hero. You can accomplish this by simply adding rotationY to your hero's Y rotation. This is the value used to create your 3rd person camera's rotation matrix.</i></ul>However, I think I had a brain fart, because earlier, I suggested applying the 3rd person camera's rotation to the Hero's direction vector, which accomplishes the same effect as the quoted text, but without the need of keeping track of the Hero's rotational values.<br><br><b><i>- MidNight</i></b><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=81">MidNight</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>18 May 2001, 4:30PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193643#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193643#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193643">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193644">
+<a name="p193645">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    On a realated note that I have not heard discussed much...<br><br>One part of making good camera movement is not making the view sickening. I've found that close to 50% of the people I know who play computer games have found at least some that make them feel a bit queazy. This "Q" factor is subtle and can keep people from playing or fully enjoying your game.<br><br>I had never really though about it before but I recently started writing a game with a floating craft as the hero. Being part physicist I threw in the following equation to keep my guy afloat:<br><br>Vy = (A/(Y-O)) - G - B*Vy + MOD<br><br>(A/Y-O) keeps the guy off the ground, G keeps it from flying away, B*Vy damps it out and MOD is varied to react to getting hit etc. What I found is that certain values of B and A made my wife extreamly ill and even I didn't like the effect much. (Note: Criticaly damped seemed fairly save but not for all values of A.) <br><br>This got me thinking about the subject and I'm interested to know if anyone else has noticed this problem and if game developers actually take this into account? I'm tempted to write a demo that bounces things around at different rates and take a survey of what makes people sick. I think the things are subtle and probably based on bounce rate, motion damping, angle to movement vector, and distance to the ground.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=982">IOHazard</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>19 May 2001, 3:03AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193644#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193644#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193644">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Third-Person Game Cameras</i></b> <font size=1>by IOHazard</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>05-19-2001 - 03:03AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23903&msg=193645">Re: Third-Person Game Cameras</a> <font size=1>by George Ziniewicz</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>05-23-2001 - 09:27PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193646">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Third Person cameras aren't very easy if you want to do them well. You have to be able to decide on a good vantage point and the path to it. A simple way would be to have the camera in the hero's previous position. A mroe advanced technique involves calculating view pyramid collision while following the hero.<br><br>-Greg
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=208">EGreg</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>19 May 2001, 10:59PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193646#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193646#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193646">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193647">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    I spent some time tweaking 3rd person cameras in my last job. What we learned was that one camera controller is generally not enough, and while you're doing some other camera controllers you might as well add some for artistic effect.<br><br>Some camera controllers (I'll just type cc from now on) that can be handy:<br>- 3rd person 'intelligent' camera<br>- Completely static camera (sits in one place, looks at one point)<br>- Security camera-like (sits in one place, looks at player character)<br>- Anchored cameras (always face away from a point, or always face a certain point, still keeping player in view; think about spiral staircase where you always look at the player from a side)<br>- special event cameras such as top-down labyrinth traversal camera (needs specifically planned geometry to work)<br><br>..just to mention a few.<br><br>Using several cc's brings about several new problems; how to know when to change? How to avoid change as much as possible? How to do transitions from one to another? (smooth blend? clear cut?)<br><br>With these you could, for instance, do the following sequence:<br>- Player operates a door.<br>- Camera controller changes to show the opening-of-a-door animation from a certain angle<br>- Player enters<br>- Camera clearly cuts to a camera inside, watches player closing the door behind him.<br>- Camera smoothly blends back to the 'ai' camera.<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=587">Jari Komppa</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>20 May 2001, 10:26AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193647#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193647#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193647">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193648">
+<a name="p193649">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    "If we build a matrix that has a 180-degree rotation about the Y axis followed by a rotation on the X axis (of say, 45 degrees) and multiply that by our hero's direction<br>           vector, we'll end up with a vector that points behind and above the hero. By scaling the x/y/z components of that vector (by say... 6.0) and adding it to the hero's<br>           location, we'll end up with a point in space directly behind and above the hero that is exactly 6.0 units away from the hero's origin. "<br><br>I dont think this is correct. You cant yyust rotate around X. What if the<br>direction vector is (1,0,1). Then rotating around X would give the wrong<br>rexult. You have to rotate around that axis and not around X.<br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=883">Subzero</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>22 May 2001, 3:01AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193648#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193648#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193648">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Third-Person Game Cameras</i></b> <font size=1>by Subzero</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>05-22-2001 - 03:01AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23903&msg=193649">About those rotations...</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>05-22-2001 - 06:19PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193650">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    What 3rd person games other than Zelda/Mario etc. have implemented a discrete, non-sickening camera solution? Even Tomb Raider can make people dizzy after just a few minutes. This seems to be a problem that few games companies have solved, or even taken much time to think about. Maybe because a game's camera movement isn't as important to it's success as the graphics or franchise.<br><br>Hovering a camera behind your character's head just doesn't make any sense in most situations. If your character changes direction the camera doesn't have to automatically swing around to follow it. One approach might be to move the camera only when absolutely necessary, and as slowly as possible. Also, portals could provide a camera system with important cues such as 'leaving a room' or 'walking around a corner'. This should work nicely with a Quake 2 style engine.<br><br>It's easy to get caught-up with the technicalities of rotating and positioning a game's camera. It would be nice to see more developers taking a 'cinematic' or directorial approach. If this was the movie industry the camera's position would be regarded as an artistic decision.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1806">cHuNkY</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>22 May 2001, 6:06AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193650#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193650#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193650">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193651">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    chunky,<br>the point is usually to minimize camera movement. If the camera is too close to the player, but the player is moving forward, why move camera? And if you come to a situation where you MUST move the camera a lot, it may be a better idea to just teleport the camera to the desired location instead..
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=587">Jari Komppa</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>22 May 2001, 6:11AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193651#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193651#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193651">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193652">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Actually, oyu guys shouldthink in cinematic terms for the camera, but the technicalities of implementing your vision aren't always an easy thing to overcome.<br><br>Here are some examples of what you can think about:<br><br>to feel as if you're about to come upon something or do something, the camera would sit still<br>to feel "action", as the character is running, the camera is moving with the character<br>to feel that a character is large, the camera is lower,<br>to overview a scene the camera can be perched frmo a nice vantaage point and have only a little stuff obstructing the view<br>covering large distances is probably better to cut or crossfade than to "whoop" from one to another, although the latter coudl achieve some nice effects as well.<br><br>the camera has to work with the scenery. If oyu're planning to have a 3rd person camera I would advise you to put in data to guide the camera. There could also be well established paths for the camera (but not the character) if you want to go that route, where along the curves in the elvel the camera could have a variety of "optimal" angles it would follow, and average them with looking at the player angles.<br>Sometimes the camera doesn't just have to look at the model, but at some specific ponits in the scene also. It takes some AI to do this well ;)<br><br>If you're doing a simple FPS, you don't have to care as much. Quake provides a number of camera modes, and so could you, but they don't have to be very cinematic or advanced.<br><br>-Greg
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=208">EGreg</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>22 May 2001, 3:11PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193652#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193652#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193652">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193653">
+<a name="p193654">
+<a name="p193655">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    im not to sure about this<br>>> After each frame, record the final result of the<br>camera's rotation (specifically, the rotationY variable.) Keep this<br>information in an array for, say, the last 15 frames. Each frame, after<br>calculating the rotationY variable, put it in the array, removing the oldest<br>value<<<br><br>why do u need for example 15 positions, i use just the desired + previous positions and lerp between them. how fast the camera reacts depends on how much you lerp.<br>whats the advantage of storing the previous 15 positions ? im confused.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=123">zed zeek</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>24 May 2001, 5:53AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193653#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193653#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193653">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Third-Person Game Cameras</i></b> <font size=1>by zed zeek</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>05-24-2001 - 05:53AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23903&msg=193654">Re: Third-Person Game Cameras</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>05-24-2001 - 11:05AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23903&msg=193655">Re: Third-Person Game Cameras</a> <font size=1>by zed zeek</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>05-25-2001 - 04:18AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193656">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    well.. if we wanna get fancy, you don't necessarily need to hard-code <br>the camera traversal paths, <br>you can just write an algo that finds the 'optimal' solution..<br>i saw an java app that showed how find 'optimal' and 'best-fit' <br>motions of a robot in 2-space with blocking objects.. <br>and they mentioned the 3-space version, but didn't have a java <br>app of it available.. so if you extend that with the logic of always keeping the player 'in camera' and maybe some kind of epsilon for <br>the angle of the normal vectors between the hero and the camera, i<br>think you can create a very nice smooth-moving camera effect, <br>but the only concern may be the run-time overhead.. well then, you could make a sub-program that creates the motions @ build-time.. <br>could save some time for the level designers, and such .. <br>(and course you'd give them the ability to tweak the camera path) <br><br>dunno.. i'm just saying that the camera path motions don't need to <br>be all set manually.. <br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=472">Machin Shin</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>24 May 2001, 10:41AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg=193656#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23903&msg_quote=193656#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193656">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

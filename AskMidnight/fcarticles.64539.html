@@ -1,0 +1,248 @@
+<html>
+<head><title>flipcode - Creating A Quake-Like Console</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Creating A Quake-Like Console</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++ 'cjt' + ''    
++''    
++''    
++''    
++''    
++''    
++ '@' + 'cictelnet' + ''    
++''    
++''    
++ '.' +  'ro\">' + 'Consiliul Judetean Teleorman' + '</a>')</script> (29 November 1999)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I'm a medium experienced programmer and I would like to implement
+a Quake-like Console in my games. A console, just like Quake I, II and III,
+linux, etc have, is a very powerful an cool thing, it provides a lot of
+user-input, it's great for debugging and gives your application a
+professional look. Until now I've tried some things but none of them seem
+to work ( except a huge "switch" or "case" statement, witch I don't want to
+implement ). I'm not interested in the graphical implementation ( the font
+engine, animation, stuff like that ), I want to know how the console works,
+how it interacts with the game functions and variables, the procedure's
+calling, and passing their arguments, the command history and the automatic
+recognition of commands when the user types only the first letters and presses a key, like TAB ( all
+the people who played Quake know what I'm talking about ).
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+I agree, a switch/case would be a nasty way to go (even though case
+statements don't allow strcmps :)<br><br>Common ways of doing this are by simply creating a list of structures that
+might look like this:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+<font color="#0000ff">struct</font>	console
+{
+	<font color="#0000ff">char</font>	*command;
+	<font color="#0000ff">bool</font>	(*handler)(<font color="#0000ff">char</font> *string);
+};
+ </font></pre></td></tr></table></div></center><br><br>In the above structure, we've got a string which represents the string
+command, and a function pointer to the routine that is responsible for
+handling the command.<br><br>We create a list that might look like this:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+stuct	console	commandList[] =
+{
+	{"showFrameRate",           showFrameRate},
+	{"showStats",               showStats},
+	{"enableFog",               enableFog},
+	{"killerLeemursOnTheLoose", killerLeemursOnTheLoose},
+	{NULL, NULL} <font color="#007f00">// list termination
+</font>};
+ </font></pre></td></tr></table></div></center><br><br>Once a command comes in, simply scan the list and find a matching command:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+<font color="#0000ff">struct</font>	console	*ptr = commandList;
+<font color="#0000ff">while</font>(ptr->command && ptr->handler) <font color="#007f00">// searches until the end is found
+</font>{
+	<font color="#0000ff">if</font> (!strcmp(ptr->command, userInputCommand))
+	{
+		ptr->handler(userInputCommand);
+	}<br><br>        ptr++;
+}
+ </font></pre></td></tr></table></div></center><br><br>Here, we loop through the list, find the command, and call the handler
+with the command line that the user entered as the parameter. Doing it
+this way means that ALL of the handlers have the same function prototype.<br><br>Once we're in the handler, we are responsible for interrogating the
+options. This way, the options can be in any format (and the format can
+change from command to command.) But to keep things simple, we'll
+implement a handy routine that will parse our command string for us.
+Here's an example handler:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+<font color="#0000ff">void</font>	showFrameRate(<font color="#0000ff">char</font> *command)
+{
+	<font color="#0000ff">char</font>	*option = getOption(command, 1);
+	frameRateDisplayFlag = *option == '1';
+}
+ </font></pre></td></tr></table></div></center><br><br>Given this handler, if the user types 'showFrameRate 1' then they will
+enable the frame rate display.<br><br>The getOption routine would simply parse the command string for
+space-delimeted pieces of the string and return the one requested.<br><br>If you want to have handy command recollection, simply store the previous
+commands in a buffer and scroll through them with the proper keypress. If
+they hit TAB, you might find out how many characters they typed in so far,
+and scan the list of commands for a match on that many characters, then
+you can type the rest in for them. You might want to get tricky with this,
+and keep track of the last index into the command list that was found for
+the last TAB keypress. This way, the next time they press TAB, you can
+continue searching where you left off. This would allow them to scan all
+of the commands that begin with a series of letters (like all the
+commands that begin with 'show').<br><br>The rest of the code involved in making the text entry system work cleanly
+is always a hassle to write. But the logic is never anything too difficult
+for a moderate level programmer.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

@@ -1,0 +1,643 @@
+<html>
+<head><title>flipcode - Performance Questions</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Performance Questions</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'pwmh58' +  '@' + 'linux' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++ 'wincoll.ac.uk\">' + 'Patrick Harty' + '</a>')</script> (04 August 2000)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I have read in many tutorials that aligning memory correctly can give a
+large performance boost, how should your vertices be aligned for the best
+performance, and how do you do this? Also I program Opengl and was
+wondering whether sorting all the data so that unnesecary texture changes
+are avoided will give a large performance increase?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Most of your C/C++ compilers default to 8-byte memory alignment, which is
+fine. Don't sweat this detail.<br><br>Sorting textures, on the other hand, is something you'll want to spend some
+time on. The reason this is an issue, is because the 3D cards don't actually
+render from their texture memory. They copy the current texture into a
+temporary buffer that has faster access during rendering. This is why a
+texture change is so expensive - they have to copy the texture to this
+temporary buffer. The buffer can only hold so much, which is why so many
+cards were bound to 256x256 textures for a long time.<br><br>This is less of an issue with newer cards, but it's still something to be
+concerned about.<br><br>Other state changes can also cause a performance hit, but again, this is
+less of an issue with newer cards.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23870">Performance Questions</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193309">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Texture state changes are expensive because they create bubbles in the hardware rendering pipeline.  These bubbles are created because their is a dependency between commands, sent from the driver to the hardware, and the information stored about a texture in certain hardware registers.<br><br>When a texture state change occurs the hardware needs to finish rendering geometry that relies on the previous texture before the new texture information can be programmed into the registers.<br><br>Copying texel data into a temporary buffer does not seem practical.  How big should this temporary buffer be?  It would be a waste that we copy an entire texture if only 1/8 of it was ever used.  Hardware today can process several textures units per pipe so that multitexturing can be done in a single pass.  Does that  mean the hardware needs several temporary buffers?<br><br>What seems more practical is the hardware logic to fetch data quickly from local and nonlocal video memory into a local FIFO as needed.  System memory texel fetches would be much slower.<br><br><br><br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=483">Zinger</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>05 Aug 2000, 11:04AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg=193309#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg_quote=193309#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193309">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193310">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Zinger: Older hardware (most notably the N64 rendering chip) is notorious for having a mere 4k temporary buffer.  Modern GPUs don't typically use intermediate buffers, however (it'd suck to need one for the current standard of 2Kx2K textures...)  That doesn't invalidate your point, of course, but Midnight's original answer isn't *totally* incorrect, either.<br><br>However, most of the time (IMO) most, if not all, of the texture is used.  Wall and ground textures are usually repeated, skins are on a per-object basis, and so forth.  I'd like to see the Permedia3's texture-virtualizing stuff come to fruition, but knowing how popular Permedia chips have gotten in the past, this seems unlikely to show up in any 3D chips which are actually used (in the non-workstation world, anyway). :/<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=139">fluffy</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>05 Aug 2000, 5:36PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg=193310#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg_quote=193310#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193310">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193311">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    I am not saying his point is totally incorrect, but it was not made clear why the texture copy to a local buffer is expensive.  The actual copy should not be very expensive.<br><br>I could imagine yesterday's graphics cards used temporary caches to store texture information, since the textures often times sat in system memory.  It would be an optimization to prefetch the texture to some local storage.  The rules were different back then.  Consoles are a different story.  They have their own rules. :) <br><br>Today, we have AGP memory and alot more local video memory that graphics hardware has access to.  So, there isn't much need for a temporary buffer that contains a copy of a texture.  Don't get me wrong, I am not saying that today's hardware doesn't use buffering techniques.<br><br>However, the reason hasn't changed for why texture state changes are expensive.  It is also the same reason that locking vertex buffers for writing can be very expensive if done in the wrong place, like in the middle of a render loop.  It is the bubbles created in the pipeline due to the state changes or the locks that make these actions expensive.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=483">Zinger</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>05 Aug 2000, 9:34PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg=193311#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg_quote=193311#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193311">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193312">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Midnight is right in some ways. All modern cards have a texture cache (often both l1 and l2 caches), and they must be copied to. Often l2 storage can store most of a texture. Often with re-accessing the same texture can however save bandwidth because of this. Video chips don't have the video memory bandwidth to read 4 (8 in the case of trilinear) 32bit texture samples every cycle. Often more in the case of multi-pipeline multi-texture (look at the geforce2, without a texture cache, it would croak). 
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=90">DirtyPunk</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>05 Aug 2000, 11:33PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg=193312#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg_quote=193312#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193312">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193313">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    That's why virtualized video card memory is the way to go.  Set up your textures as lots of small blocks, and let the video card load only what it needs (both from the RAM into video mem, and into the cache)...<br><br>Good for bandwith and reducing the overhead of texture bindings.<br><br>Read Carmacks plan about it.<br><br>Alex
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=71">Alex J. Champandard</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>07 Aug 2000, 4:27AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg=193313#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg_quote=193313#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193313">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193314">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+      This is a pretty obvious point, but it might trip up the novice.  Whatever you do, don't use qsort to sort your textures.  Far too slow.<br><br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=516">Cryptimus</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>08 Aug 2000, 10:56PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg=193314#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23870&msg_quote=193314#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193314">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

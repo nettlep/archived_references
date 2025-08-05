@@ -1,0 +1,432 @@
+<html>
+<head><title>flipcode - Memory Management</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Memory Management</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' +  'mjarosch' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '@' + 'QUANTUMSITE' + ''    
++''    
++ '.' +  'COM\">' + 'Mike Jarosch' + '</a>')</script> (22 August 2000)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I read your Q&A on flipcode.com and would like to thank you for all the
+advice you give.  I have a question about memory management.  How important
+is memory management for computer games on modern operating systems?  Do you
+have any tips or advice on how to design a memory manager and what it should
+cover?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Nope. I have nothing at all to say on the topic.<br><br>Well, maybe a little...<br><br>Before I begin, I want to point out that there is a tool available (for a
+price) that you just can't beat. It's called BoundsChecker, and it's
+available from <link>CompuWare/NuMega</link>. If you're in the position to
+purchase this software (it's quite pricey for the hobbyist), then I
+definitely recommend you do so. Do not pass go. Do not collect $200. There
+are less than a handful of products I'll stand up and shout for, and this is
+one of them.<br><br>But this isn't an advertisement. And even if you can afford this tool, I
+recommend you still implement your own memory manager because there are many
+things you may need that just aren't available in any generic tool.<br><br>Let me tell you a story about a little product called <a
+href=www.iflytri.com>Fly!</a>.<br><br>When I started the Fly! project, the first thing they asked me to do was
+speed it up. There were over a million lines of code there (code that I
+didn't write and was not familiar with) so I looked for the easy path and
+just re-wrote Microsoft's __chop() function and got a 25% performance boost
+(being a flight simulator, Fly! is very floating-point intensive.) Actually,
+I had to do a lot more, but that was the biggest improvement by far.<br><br>My next task was to reduce the memory usage. We were using 80MB of memory
+and needed to be down to 32MB. With allocations spread throughout a million+
+lines of code, I needed a tool to help me track down our memory consumption.
+A tool that worked at the level we needed didn't exist, so I wrote a memory
+manager. I had written a few in the past, and knew it was a good idea
+anyway. I can honestly say that after the final rush to release Fly!, the
+only crash bug was related to a USB issue (a USB device was reporting itself
+erroneously as a joystick.) There weren't any memory corruption issues. How
+many other projects of this magnitude can say this? I'm not boasting, I'm
+trying to relate how important the use of an error-handling memory manager
+is.<br><br>The basic idea was to override global new and delete. More specifically, we
+needed to takeover new, new[], delete, delete[], malloc, calloc, realloc and
+free. This is pretty tricky when the application uses the MFC (because of
+their DEBUG_NEW macros) but it can still be done. Whenever a new allocation
+is performed (new, new[], malloc, realloc, calloc) the memory manager keeps
+track of the __FILE__ and __LINE__ variables so we always know who owns the
+allocated memory. This, of course, requires the use of macros.<br><br>With each allocation, extra memory is also allocated at the head and tail of
+the allocated block. This allows you to check for memory overruns and
+underruns. By default, we used a size of 8 bytes. So if 100 bytes were
+requested, we would actually allocate 116 bytes (8 before and 8 after).
+These 8 bytes would be filled with a specific value so that we could later
+check that these values remained untouched. For example, if the user
+requested 100 bytes, we would arrange the 116 bytes like so:<br><br>[xxxxxxxx][user-requested memory of 100 bytes][xxxxxxxx]<br><br>You'll want the sizes of the head & tail to be variable so you can test your
+application pretty heavily. Periodically, increase the size of the head/tail
+to something like 1024 bytes. This increases your memory usage quite a bit,
+but also tests your application much more thoroughly.<br><br>Before we would return the newly allocated pointer to the user, we would
+fill it with repeating copies of some very large 4-byte value. This is
+important, because if they try to use this memory without initializing it,
+it will have a higher probability of causing a crash. I chose 0xDEADBEEF
+because it's something you're likely to notice in a debugger. Very often the
+debugger would show us a pointer with the contents 0xDEADBEEF and we would
+immediately know what the problem was (we were using uninitialized memory.)<br><br>On the contrary, when releasing memory back to the system, we would also
+fill that memory with a different value just before we released it. I chose
+0xBAADF00D because, again, it's a large number and something you're likely
+to notice. Make sure to use a different value than the initialization
+values, because you'll want to know the difference.<br><br>During allocation, we would also keep track of the type of allocation (was
+it from new or new[]? Or a variant of malloc?). This is important, because
+if a block of memory was allocated with new, but released using delete[] (or
+vice versa) then problems can arise from this mismatch. So during every
+deallocation, we would validate that the memory was being released with the
+proper call. I can't tell you how many bugs we found with this one. Fly! is
+a very complex product, and with all that complexity comes ambiguity. A
+single memory block might be conditionally allocated from one of many
+classes. Each of those classes may have another purpose, so they might each
+act differently. At some point, one of those classes would require a
+modification. For example, the allocation might be done with new[], but
+later modifications require that the memory be reallocated, so the scheme is
+switched to use realloc and free. Yet at the same time, this class is still
+used for allocating memory for another object, which might still expect to
+delete[] it.<br><br>Tracking down all the allocation/deallocation mismatches proved to be a bit
+troublesome at times, but much less troublesome than a crash on a consumer's
+computer. Every once in a while, somebody would knock on my door and tell me
+there was a bug in my memory manager. I would grin, get up, and follow them
+to their office where they would proceed to show me an instance of our
+application in the debugger. In every case, they were wrong and the memory
+manager was right. Again, I'm not boasting, I'm trying to drive home the
+point as to exactly how obscure some of these bugs really are. These
+programmers are very talented, and even when they were told WHERE the bug is
+and WHAT the bug was, they were still fooled. So be wary. Can you imagine
+how hard it would have been to try to track that bug down when it actually
+caused a crash? I'd rather listen to fingernails on a chalkboard than think
+about that one.<br><br>Deallocations would always check to make sure the memory address given
+matches an existing memory address that was actually allocated. This means
+that allocations need to keep track of all this data (owner, memory address,
+size, allocation type, etc.) in a table. Once the memory was properly
+destroyed (0xBAADF00D) and released to the system, the table entry would be
+removed.<br><br>And of course, we can't forget about memory leaks. When the application
+shuts down the memory manager would report all the blocks of memory that
+were never released to the system.<br><br>Let's talk about hiding bugs for a moment. The purpose of the 0xDEADBEEF and
+0xBAADF00D values was to make as many bugs as possible appear during the
+development process so they could be dealt with and fixed. But when a
+product gets released, your priority shifts from "fixing" to "prevention".
+Because of this, we now want to <I>hide</I> bugs as best as we can. So, when
+new memory is allocated during a release build, we fill it with zeros and
+when memory is released, we leave it alone. These are the safest things we
+can do to help hide any bugs we might not have caught during development.
+Granted, this may make a crash bug in the field a little harder to track
+down, but I would much rather have a hard time tracking down one really rare
+crash bug, then have an easy time tracking down ten common crash bugs that
+are causing the consumer to return the product.<br><br>Until now, I've talked about a memory manager for the purpose of stability.
+But my task was to reduce memory usage. This is where the real power of
+having your own memory manager comes in handy. Since I wrote it, I can use
+it to do some very interesting things within our application. Having control
+over every allocated byte is a very powerful tool and I'm about to describe
+how our little memory manager was able to help us tremendously in reducing
+the memory used by Fly!.<br><br>To start with, I modified the memory manager to keep track of memory usage.
+Just a couple numbers that kept track of how much memory was in use at the
+moment, and the peak memory usage during execution. This just gave us the
+bad news, but we now knew we were dealing with accurate data. The next step
+was to figure out where all the memory was going, so I added a logger to the
+memory manager to list out each and every allocation in use at any point in
+time.<br><br>Sorting the log by allocation size gave us a lot of very useful information.
+80% of all memory was allocated in about 12 allocation calls. But there were
+50,000+ individual allocations. Which meant that the majority of our memory
+was in little pieces. So I sorted the data by owner, and started to find out
+who was allocating all the little pieces. Usually, there would be a few
+thousand allocations by the same owner. Interrogating the owner revealed a
+loop of allocations. I simply preallocated the memory before the loop. This
+saved us a little bit of memory because your normal heap manager uses 8
+extra bytes per allocation for heap management. Although 50,000 allocations
+only ends up costing 400,000 bytes of heap management (give or take,
+depending on the heap manager), we were able to reduce memory fragmentation
+quite a lot and also clean up our memory usage logs so we could better
+understand what was going on. We also saw a slight speed improvement in
+places because we weren't constantly allocating and reallocating all those
+little blocks of RAM.<br><br>With a more manageable memory log, we were able to find a few places where
+old legacy code was still allocating memory that it no longer needed. Now
+we're saving memory. Break out the champagne!<br><br>By simply looking at the log and comparing the owner to the memory
+allocated, you can learn a lot. For example, if you see that your texture
+manager is allocating 16MB, you might not think twice. But if you see your
+file manager allocating 10MB, you're going to wonder. Actually, you're going
+to rush to your editor to figure out why the allocation for a file manager
+is so large. As it turns out, the file manager needed that memory, because
+it was storing all of the filenames it needed. The filenames were in
+static-length strings, so there might be SOME savings here, but not much.<br><br>We repeated this process over and over, and ended up around 52MB. We still
+had 20MB to go if we were to hit our 32MB marker.<br><br>It was time for some more memory-manager magic.<br><br>Remember 0xDEADBEEF (our initialization value for all allocated RAM)? Well,
+I added a small function to the memory manager that would interrogate all
+memory blocks and look for 0xDEADBEEF. Other than a few small exceptions,
+any block containing 0xDEADBEEF meant that the block wasn't being entirely
+used. So I generated yet another report that showed the percentage of unused
+RAM within each block, and sorted it by that percent. Holy cow! We were
+allocating TONS of memory that we weren't even using! Remember that file
+manager? It was the biggest culprit. Our new report showed us just how much
+memory it was wasting, and proved to us that we needed to rewrite that code
+to use the memory more wisely.<br><br>We repeated this process a few more times and finally made our way down to
+32MB.<br><br>An impossible task made possible by roughly 600 lines of memory management
+code.<br><br>Other memory management tools (such as BoundsChecker) can do a lot of extra
+stuff; stuff our memory manager could never hope to do (like validate each
+and every read/write from/to memory) but having your own memory manager is
+never a bad thing. In our case, our memory manager was the only tool that
+could have given us the information we needed. And it only took half of a
+day to write.<br><br>MSVC has its own memory manager (referring back to the DEBUG_NEW issue)
+which is quite good. There's a 1997 periodical about it, titled "Introducing
+the Bugslayer: Annihilating Bugs in an Application Near You". You can find
+it on your MSDN CDs, or you can read it online, right <a
+href="http://msdn.microsoft.com/library/periodic/period97/dembugs.htm">here</a>.
+But as you may have already guessed, I still recommend adding a layer
+of protection on top of this. It certainly can't hurt to have your own
+memory manager and you'll have a lot more freedom in dealing with memory
+allocation and tracking.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23891">Memory Management</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193391">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Just Testing...</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Assuming this worked ;), the comments are back for <a href="deadend.html">MidNight's Q&A column</a>.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1">Kurt Miller</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>11 Sep 2000, 6:58PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23891&msg=193391#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23891&msg_quote=193391#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193391">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

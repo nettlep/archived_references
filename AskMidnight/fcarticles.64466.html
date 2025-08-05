@@ -1,0 +1,718 @@
+<html>
+<head><title>flipcode - Octrees For Visibility</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Octrees For Visibility</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++ 'CLeonard' + ''    
++''    
++''    
++''    
++''    
++ '@' + 'go' + ''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++''    
++ 'ro\">' + 'Crestez Leonard' + '</a>')</script> (14 August 2001)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+Now, I've seen lot's and lot's of articles about octrees and about
+quadtrees, but I haven't found in any of them the actual code for
+determining if a quad/octree cell/a box in general is visible.
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+ The use of Octrees (including KD Trees and other variants) are simply a
+technique for hierarchically organizing your 3D geometry, they are not
+directly intended for use in visibility schemes. However, just like any data
+structure, they can serve many purposes, including visibility calculations.<br><br>There are a number of techniques that use Octrees for visibility
+determination. The most common is the user of hierarchical frustum culling.
+This works very well because even on today's fast 3D hardware, the overhead
+of performing hierarchical frustum culling is still less than rendering the
+geometry (at least, this is the case on today's 3D hardware.)<br><br>The process of hierarchical frustum culling is rather simple. A set of
+planes is generated that define the frusum (usually six planes, including
+hither & yon.) The Octree is traversed, and each node along the traversal is
+tested against an intersection with the view volume. From this test, one of
+three states is determined:
+<blockquote>
+<li>1. Completely outside the volume
+<li>2. Completely inside the volume
+<li>3. Partial inclusion in the volume
+</blockquote>
+Pseudocode for this traversal might look like this:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+proc	traverse(Node *n, Planes *list)
+{
+	CODE = CodeToVolume(n, list);<br><br>	<font color="#0000ff">if</font> (CODE == INSIDE)
+	{
+		<font color="#007f00">// The entire branch is inside, render
+</font>
+		renderBranch(n);
+	}
+	<font color="#0000ff">else</font> <font color="#0000ff">if</font> (CODE == OUTSIDE)
+	{
+		<font color="#007f00">// This node (and all children) are outside, skip
+</font>
+		<font color="#0000ff">return</font>;
+	}
+	<font color="#0000ff">else</font> <font color="#007f00">// CODE == PARTIAL
+</font>	{
+		<font color="#007f00">// Render any polygons associated to this node
+</font>
+		renderNode(n);<br><br>		<font color="#007f00">// Visit my children
+</font>
+		loop (i = 0 .. 8)
+		{
+			traverse(n->child[i], list);
+		}
+	}
+}
+ </font></pre></td></tr></table></div></center><br><br>The CodeToVolume() routine isn't trivial, but it's also a far cry from
+complex. And with a few tricks, you can make it fairly efficient. Many
+implementations use the Cohen-Sutherland outcode technique for determining
+if a node is within the volume. This is tedious, because it requires that we
+test all points of each node against all planes.<br><br>Fortunately, there is a better way.<br><br>The idea is to test a maximum of two points (from the node) against each
+plane. During this process, we have an "early out" if a node is completely
+outside the volume's plane. For the sake of clarity, let's assume the planes
+that define our volume point inward toward the center of the volume. So the
+volume can be considered the intersection of all positive halfspaces defined
+by the set of planes.<br><br>On to the specifics...<br><br>Given a node and a plane, how do we best choose the point within the node
+for testing against a plane's halfspace? It depends on which halfspace we're
+testing. If we are testing for a node to be completely within the positive
+halfspace, then we must choose the point within the node that has the least
+potential of going positive. Therefore, if the chosen point is on the
+postive side, then so must all other points within the node.<br><br>In other words, when testing to see if a node is completely within the
+positive halfspace, we'll want a point from the node that is "most
+negative." The reverse is also true for testing against the negative
+halfspace.<br><br>The planes given may be arbitrary (but must define a convex volume.)
+Fortunately, because our Octree is orthogonal, this does not complicate the
+issue of choosing the best point. First, we can narrow our calculations down
+to just corner points of the node. Next, we'll use the plane's normal to
+determine the best corner. Remember, if we're testing for "completly
+positive" then we'll want the "most negative" corner, and vice versa. So in
+practice, we'll be using inverted normals.<br><br>Our node corner point will be the farthest point along the vector defined by
+the inverted normal. Also, remember this goes both ways:
+<blockquote>
+<li>When testing for completely positive, we use the negative normal
+<li>When testing for completely negative, we use the positive normal
+</blockquote>
+Confused yet? :)<br><br>This can be done with a simple index calculation and a table lookup. First,
+the table:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+Point	CornerOffsets[] =
+{
+	Vector(-1, -1, -1),	<font color="#007f00">// - - -
+</font>	Vector( 1, -1, -1),	<font color="#007f00">// - - +
+</font>	Vector(-1,  1, -1),	<font color="#007f00">// - + -
+</font>	Vector( 1,  1, -1),	<font color="#007f00">// - + +
+</font>	Vector(-1, -1,  1),	<font color="#007f00">// + - -
+</font>	Vector( 1, -1,  1),	<font color="#007f00">// + - +
+</font>	Vector(-1,  1,  1),	<font color="#007f00">// + + -
+</font>	Vector( 1,  1,  1)	<font color="#007f00">// + + +
+</font>};
+ </font></pre></td></tr></table></div></center><br><br>The order of this table is important. Notice the pattern in the indexing
+(the pattern is shown in the comments to the right.) This pattern defines a
+3-bit value, where "-" is a zero-bit and "+" is a one-bit. If you know your
+binary conversions, you'll see that our -/+ patterns, when converted to 0/1
+patterns, will defined the values 0-7, in order.<br><br>The code to calculate the index into this table (from a given normal) is as
+follows:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+<font color="#007f00">// Note that the input vector must already be negated when using this code
+</font><font color="#0000ff">for</font> halfplane tests<br><br>proc	VectorToIndex(Vector v)
+{
+	index = 0;<br><br>	<font color="#0000ff">if</font> (v.z >= 0) index |= 1;
+	<font color="#0000ff">if</font> (v.y >= 0) index |= 2;
+	<font color="#0000ff">if</font> (v.x >= 0) index |= 4;<br><br>	<font color="#0000ff">return</font> index;
+}
+ </font></pre></td></tr></table></div></center><br><br>This index is then used to lookup a Vector from within the table. This
+vector, when multiplied by the radius of the node and added to the node's
+center point will return the correct corner point that is in the direction
+of the input vector.<br><br>We can now determine a corner point that is farthest in the direction of a
+vector. So let's get back to our volume inclusion test. We visit each plane
+in the volume and test the node for the negative halfspace. If the node is
+completely within the negative halfspace, the routine can quickly exit,
+knowing that the node is safely outside the volume. Otherwise, we'll need to
+test the node to see if it is completely within the positive halfspace. If
+not, then the node is bisected by this plane.<br><br>Note that the latter two cases (node is completely within the postive
+halfspace of a single plane, or bisected by that plane) is not our complete
+answer. Since there are multiple planes involved, a node may be within the
+positive halfspace of one plane, but within the negative halfspace of
+another. So when one of the two latter cases is detected, we must continue
+scanning our planes. The result looks something like this:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+proc	CodeToVolume(Node *n, Planes *list)
+{
+	<font color="#007f00">// Visit each plane once
+</font>
+	<font color="#0000ff">bool</font>	partialFlag = <font color="#0000ff">false</font>;
+	loop (i = 0 .. list[n])
+	{
+		<font color="#007f00">// Test against the negative halfspace first
+</font>		<font color="#007f00">//
+</font>		<font color="#007f00">// Note: we use the positive normal here
+</font>
+		Index = VectorToIndex(list[i]->normal);<br><br>		<font color="#007f00">// Get the corner point of the node
+</font>		<font color="#007f00">//
+</font>		<font color="#007f00">// Note: The addition and multiplication operators
+</font>		                      <font color="#007f00">// are component-wise operations
+</font>
+		negTestPoint = n->center + n->radius * CornerOffsets[Index];<br><br>		<font color="#007f00">// Test for completely within the negative halfspace of this plane
+</font>		<font color="#007f00">//
+</font>		<font color="#007f00">// If the halfplane test returns negative, the negTestPoint (as
+</font>		<font color="#007f00">// well as the rest of the node) is within the negative halfspace,
+</font>		<font color="#007f00">// so we can bail early.
+</font>
+		<font color="#0000ff">if</font> (list[n].halfplane(negTestPoint) == -1) <font color="#0000ff">return</font> OUTSIDE;<br><br>		<font color="#007f00">// Test against the positive halfspace
+</font>		<font color="#007f00">//
+</font>		<font color="#007f00">// Note: we use the negative normal here
+</font>
+		Index = VectorToIndex(-list[i]->normal);<br><br>		<font color="#007f00">// Get the corner point of the node
+</font>		<font color="#007f00">//
+</font>		<font color="#007f00">// Note: The addition and multiplication operators
+</font>		                      <font color="#007f00">// are component-wise operations
+</font>
+		posTestPoint = n->center + n->radius * CornerOffsets[Index];<br><br>		<font color="#007f00">// Test for completely within the positive halfspace of this plane
+</font>		<font color="#007f00">//
+</font>		<font color="#007f00">// If the halfplane test returns negative, the posTestPoint is _not_
+</font>		<font color="#007f00">// completely within the positive halfspace, and therefore must be
+</font>		<font color="#007f00">// bisected by the plane.
+</font>
+		<font color="#0000ff">if</font> (list[n].halfplane(posTestPoint) == -1) partialFlag = <font color="#0000ff">true</font>;
+	}<br><br>	<font color="#007f00">// At this point, the node must be either "partially included"
+</font>	<font color="#007f00">// or completely included. The partial flag is used to determine
+</font>	<font color="#007f00">// the result.
+</font>
+	<font color="#0000ff">if</font> (partialFlag) <font color="#0000ff">return</font> PARTIAL;
+	<font color="#0000ff">return</font> INSIDE;
+}
+ </font></pre></td></tr></table></div></center><br><br>If you rip out all the comments, you'll see this routine is really quite
+short. One thing to note about this routine, is that a node may be returned
+as "partial" when in reality it is completely outside the volume. In
+practice I've seen that this is a fairly rare occurance (with a thousand
+nodes, I would expect only a half dozen on average.) I've tried adding code
+to produce a more exact result, but this actually slowed things down. This,
+of course, depends on the amount of CPU time an extra node costs you.<br><br>Aside from view frustum culling, Octrees have the potential for being fairly
+useful for occlusion culling. Many people have proposed a number of
+documents on the subject. One excellent example is the '93 paper
+"Hierarchical Z-Buffer Visibility" by Green, Kass & Miller <a
+href="http://www.graphicspapers.com/search.cgi?op=showbib&id=9826">[bib]</a>
+. Later, in 96, Ned Greene revised the algorithm and published another paper
+titled "Hierarchical Polygon Tiling with Coverage Masks" <a
+href="http://www.graphicspapers.com/search.cgi?op=showbib&id=9804">[bib]</a>
+.<br><br>There are also a number of other self-published articles and documents on
+the matter. However, in all of the cases I'm aware of, they have the
+drawback of being software driven. The problem is that in order to get
+proper visibility of a node, a set of occlusions must be given. The papers
+mentioned above use software rendering to build occlusion masks (either in
+the form of bit masks or z-buffers). The nodes are then tested against these
+masks by transforming, projecting and pixel-testing the extents of a node
+against the mask. Because of the software rendering involved, transforms
+must also be performed in software, so even if your renderer is extremely
+fast, the transforms alone tend to cause these techniques to have a high
+overhead.<br><br>If you were to use an estimation of a block of polygons (say, a bounding
+box) rather than the adding the individual polygons to the mask, you would
+get the wrong result. This is because the bounding box is solid, whereas the
+polygons contained within that box may not be solid (consider the
+back-facing polygons, for example.) So the group estimation must be a
+minimum bounds estimation. This becomes a view-dependent calculation that is
+more expensive than simply rendering the polygons into the mask.<br><br>One option is to use specific polygons as occluders. However, this causes
+the visibility to be greatly conservative. If a node is determined visible
+(because of the conservative nature) it's entire contents must be drawn
+(usually hundreds of polygons.) By increasing the tree resolution (and
+therefore reducing the number of polygons per node) you end up trading the
+efficiency of occlusions for the numerous tests of nodes against the mask.<br><br>The next logical step is to look to the hardware for rendering the mask.
+However, reading information back from the hardware can get rather
+expensive, depending on the API, drivers and particular chipset used.<br><br>If hardware were able to perform a z-test for you and return a boolean
+result, this would greatly reduce the problem because the z-buffer from the
+rendered polygons could be used as the mask for the occlusion test. However,
+this would require perfect front->back sorting, which is not a trivial
+matter when it comes to Octrees. Greene's '96 paper discusses this topic
+thoroughly and solves it by using an octree of BSP trees.<br><br>Don't let me discourage you from trying. I'm a firm believer that every
+challenge has a solution.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23912">Octrees For Visibility</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193707">
+<a name="p193708">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    When a node is flagged as partially inside, while being completely outside, is it in one of these cases?<br><br><table width="100%" cellspacing=0 cellpadding=15 border=2><tr><td bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000"><br>       +<br>      / \<br>     +   \   &lt;-Node<br>      \   \<br>       \   \<br>        \   +<br> +-----+ \ /<br> |     |  +<br> |     |<br> +-----+  &lt;- frustum<br></font><br></pre><br></td></tr><br></table><br><br>(sorry for the low-quality ASCII drawing)<br>The node is inside the top and right planes of the frustum, but still completely outside. Such a case would be solvable with an intersection test for convex volumes, but that would indeed be an expensive calculation. I see two possibilities: splitting the nodes along the planes of the frustum, and testing each subobject, or finding a separating plane. In the 2D picture above, the bottom left plane of the node could be used as a separating plane, but that solution is not suitable for 3D in all cases. I do think that it would be possible (although I haven't proven so) to find a separating plane defined by two vertices of one volume and one of the other. The bad thing is that if there is no such plane, it might be necessary to evaluate all possible cases of such a plane.<br>Just curious, which system were you using?<br>I haven't made such a system before, but am considering starting on it as a hobby project.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2671">Wim Libaers</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>15 Aug 2001, 4:17AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23912&msg=193707#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23912&msg_quote=193707#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193707">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Octrees For Visibility</i></b> <font size=1>by Wim Libaers</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>08-15-2001 - 04:17AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23912&msg=193708">Re: Octrees For Visibility</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>08-15-2001 - 07:12AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193709">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Original reference</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    For those that are interested, this technique for testing an axis-aligned bouding box (i.e., an octree node) against a view frustrum is from the paper <a href="><a target="_blank" href="http://www.acm.org/jgt/papers/AssarssonMoller00/"">http://www.acm.org/jgt/papers/AssarssonMoller00/"</a>>Optimized View Frustum Culling Algorithms for Bounding Boxes</a> by Ulf Assarsson and Tomas Möller.  Some of their papers on the subject can be found on <a href="http://www.ce.chalmers.se/staff/uffe/">Ulf's page</a> and on <a href="http://www.ce.chalmers.se/staff/tomasm/publications.html">Tomas' s page</a>.<br><br>In any case, the papers are a good read.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=937">Ian Romanick</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>15 Aug 2001, 2:51PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23912&msg=193709#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23912&msg_quote=193709#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193709">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193710">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Here an alternative version of CodeToVolume by Niki:<br><br>"m_numFrustumPlanes is the number of planes that form the convex viewing frustum.<br><br>m_frustumPlanes is an array of m_numFrustumPlanes frustum planes.<br><br>aabbMin and aabbMax define the minimum and maximum points of the AABB (axis-aligned bounding box).<br><br>Note, that the plane normals are supposed to point to the outside of the frustum.<br><br>Also note, that there are cases were the algorithm reports an invisible AABB as partially visible. Just ignore that, if you don't need the algorithm to be 100% accurate. A 100% accurate algorithm will be much slower than this one.<br><br><br>//-----------------------------------------------------------------------------<br>// Name: CCamera::CullAABB<br>//<br>// Desc: Culls an axis-aligned bounding box. The return codes are:<br>//       -- CULL_EXCLUSION (completely outside the frustum)<br>//       -- CULL_INTERSECT (partially visible)<br>//       -- CULL_INCLUSION (completely inside the frustum)<br>//-----------------------------------------------------------------------------<br><br>CullCode CCamera::CullAABB(const D3DVECTOR& aabbMin, const D3DVECTOR& aabbMax)<br>{<br>    D3DVECTOR   minExtreme, maxExtreme;<br>    bool        intersect;<br><br>    intersect = false;<br><br>    for (int i = 0; i < m_numFrustumPlanes; i++)<br>    {<br>        for (int j = 0; j < 3; j++) // for each component x, y, and z.<br>        {<br>            if (m_frustumPlanes[ i ].m_normal[j] >= 0.0f)<br>            {<br>                minExtreme[j] = aabbMin[j];<br>                maxExtreme[j] = aabbMax[j];<br>            }<br>            else<br>            {<br>                minExtreme[j] = aabbMax[j];<br>                maxExtreme[j] = aabbMin[j];<br>            }<br>        }<br><br>        if (m_frustumPlanes[ i ].DistanceToPoint(minExtreme) > 0.0f) return CULL_EXCLUSION;<br><br>        if (m_frustumPlanes[ i ].DistanceToPoint(maxExtreme) >= 0.0f) intersect = true;<br>    }<br><br>    if (intersect) return CULL_INTERSECT;<br>    return CULL_INCLUSION;<br>}<br><br>DistanceToPoint is given by:<br><br>((A * Px) + (B * Py) + (C * Pz) + D) / sqrt (A^2 + B^2 + C^2)<br><br>The formula is correct, but it's not the fastest. The fast way is:<br>distance = ((A * Px) + (B * Py) + (C * Pz) + D)<br><br>The above requires that the planes are already normalized. You should do that in the function that computes the six frustum planes.<br><br>Well, I hope the following doesn't confuse you now, because I just told you to normalize the planes before you use the CullAABB function. It is a fact, that in the case of CullAABB you don't need to normalize the planes at all. That's because the CullAABB algorithm doesn't need a 'true' distance. It only needs to know on which side of a plane a point lies."<br><br> <br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1126">AGPX</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>15 Aug 2001, 9:13PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23912&msg=193710#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23912&msg_quote=193710#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193710">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193711">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    The "near" and "far" vertices can also be found without performing any comparisons (by formulating the dot products to use absolute values of plane normals instead). Below is my favorite AABB/frustum routine that also handles input and output "active planes masks" - quite useful if one performs hierarchical VF testing - the output masks can be passed to child nodes fully contained by the parent node... An output clip mask of 0 indicates that the AABB is fully inside the frustum.<br><br>cheers,<br>-wili<br><br>Ville Miettinen<br><a target="_blank" href="http://www.surrender3d.com/dpvs">http://www.surrender3d.com/dpvs</a><br><br><table width="100%" cellspacing=0 cellpadding=15 border=2><tr><td bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000"><br><br><font color="#007f00">//------------------------------------------------------------------------</font><br><font color="#007f00">//</font><br><font color="#007f00">// Function:        DPVS::intersectAABBFrustum()</font><br><font color="#007f00">//</font><br><font color="#007f00">// Description:     Determines whether an AABB intersects a frustum</font><br><font color="#007f00">//</font><br><font color="#007f00">// Parameters:      a           = reference to AABB (defined by min & max vectors)</font><br><font color="#007f00">//                  p           = array of pre-normalized clipping planes</font><br><font color="#007f00">//                  outClipMask = output clip mask (if function returns 'true')</font><br><font color="#007f00">//                  inClipMask  = input clip mask (indicates which planes are active)</font><br><font color="#007f00">//</font><br><font color="#007f00">// Returns:         true if AABB intersects the frustum, false otherwise</font><br><font color="#007f00">//</font><br><font color="#007f00">//                  Intersection of AABB and a frustum. The frustum may </font><br><font color="#007f00">//                  contain 0-32 planes (active planes are defined by inClipMask). </font><br><font color="#007f00">//                  If AABB intersects the frustum, an output clip mask is returned </font><br><font color="#007f00">//                  as well (indicating which planes are crossed by the AABB). This </font><br><font color="#007f00">//                  information can be used to optimize testing of child nodes or </font><br><font color="#007f00">//                  objects inside the nodes (pass value as 'inClipMask' next time).</font><br><font color="#007f00">//</font><br><font color="#007f00">//                  This is a variant of the classic "fast" AABB/frustum </font><br><font color="#007f00">//                  intersection tester. AABBs that are not culled away by any single </font><br><font color="#007f00">//                  plane are classified as "intersecting" even though the AABB may </font><br><font color="#007f00">//                  actually be outside the convex volume formed by the planes.</font><br><font color="#007f00">//------------------------------------------------------------------------</font><br><br>DPVS_FORCE_INLINE <font color="#0000ff">bool</font> intersectAABBFrustum (<font color="#0000ff">const</font> AABB& a, <font color="#0000ff">const</font> Vector4* p, <font color="#0000ff">unsigned</font> <font color="#0000ff">int</font>& outClipMask, <font color="#0000ff">unsigned</font> <font color="#0000ff">int</font> inClipMask)<br>{<br>    DPVS_ASSERT(p);<br>    DPVS_CHECK_ALIGN(p);<br><br>    <font color="#007f00">//------------------------------------------------------------------------</font><br>    <font color="#007f00">// Convert the AABB from (min,max) form into (center,half-diagonal).</font><br>    <font color="#007f00">// Note that we could get rid of these six subtractions and three</font><br>    <font color="#007f00">// multiplications if the AABB was originally expressed in (center,</font><br>    <font color="#007f00">// half-diagonal) form.</font><br>    <font color="#007f00">//------------------------------------------------------------------------</font><br><br>    Vector3 m(a.getCenter());           <font color="#007f00">// get center of AABB ((min+max)*0.5f)</font><br>    Vector3 d(a.getMax() - m);          <font color="#007f00">// get positive half-diagonal (max - center)</font><br><br>    <font color="#007f00">//------------------------------------------------------------------------</font><br>    <font color="#007f00">// Evaluate through all active frustum planes. We determine the relation </font><br>    <font color="#007f00">// between the AABB and a plane by using the concept of "near" and "far"</font><br>    <font color="#007f00">// vertices originally described by Zhang (and later by Möller). Our</font><br>    <font color="#007f00">// variant here uses 3 fabs ops, 6 muls, 7 adds and two floating point</font><br>    <font color="#007f00">// comparisons per plane. The routine early-exits if the AABB is found</font><br>    <font color="#007f00">// to be outside any of the planes. The loop also constructs a new output</font><br>    <font color="#007f00">// clip mask. Most FPUs have a native single-cycle fabsf() operation.</font><br>    <font color="#007f00">//------------------------------------------------------------------------</font><br><br>    <font color="#0000ff">unsigned</font> <font color="#0000ff">int</font> mk             = 1;    <font color="#007f00">// current mask index (1,2,4,8,..)</font><br>    <font color="#0000ff">unsigned</font> <font color="#0000ff">int</font> tmpOutClipMask = 0;    <font color="#007f00">// initialize output clip mask into empty. </font><br><br>    <font color="#0000ff">while</font> (mk &lt;= inClipMask)            <font color="#007f00">// keep looping while we have active planes left...</font><br>    {<br>        <font color="#0000ff">if</font> (inClipMask & mk)            <font color="#007f00">// if clip plane is active, process it..</font><br>        {               <br>            <font color="#0000ff">float</font> NP = d.x*Math::fabs(p->x) + d.y*Math::fabs(p->y) + d.z*Math::fabs(p->z);      <br>            <font color="#0000ff">float</font> MP = m.x*p->x + m.y*p->y + m.z*p->z + p->w;                       <br><br>            <font color="#0000ff">if</font> ((MP+NP) &lt; 0.0f)         <font color="#007f00">// near vertex behind the clip plane... </font><br>                <font color="#0000ff">return</font> <font color="#0000ff">false</font>;           <font color="#007f00">// .. so there is no intersection..</font><br>            <font color="#0000ff">if</font> ((MP-NP) &lt; 0.0f)         <font color="#007f00">// near and far vertices on different sides of plane..</font><br>                tmpOutClipMask |= mk;   <font color="#007f00">// .. so update the clip mask...</font><br>        }<br>        mk+=mk;                         <font color="#007f00">// mk = (1&lt;&lt;plane)</font><br>        p++;                            <font color="#007f00">// advance to next plane</font><br>    }<br><br>    outClipMask = tmpOutClipMask;       <font color="#007f00">// copy output value (temp used to resolve aliasing!)</font><br>    <font color="#0000ff">return</font> <font color="#0000ff">true</font>;                        <font color="#007f00">// indicate that AABB intersects frustum</font><br>}<br><br><font color="#007f00">//------------------------------------------------------------------------</font><br><br></font><br></pre><br></td></tr><br></table>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=758">Ville Miettinen</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>19 Aug 2001, 2:56PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23912&msg=193711#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23912&msg_quote=193711#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193711">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

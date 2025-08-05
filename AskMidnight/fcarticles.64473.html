@@ -1,0 +1,1282 @@
+<html>
+<head><title>flipcode - Good Programming Practice</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Good Programming Practice</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++ 'Khrob' +  '@' + 'smartis' +  '.' +  'com.au\">' + 'Khrob Edmonds' + '</a>')</script> (06 February 2002)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+When writing a program for stabililty, what should programmers
+look out for?  (Aside from using your memory manager!) :)  
+Any tips you can share for making sure our code is more
+stable than say - Adobe Premiere?  ;)
+Techniques/things to look out for etc...
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+This is a great question, one I'm sure will be flooded with reader's comments to
+follow. However, to properly answer this question would require enough content
+to fill a number of books.<br><br>Fortunately, those books have already been written by people much better at this
+stuff than I am. Three books come immediately to mind: <b>Code Complete</b> (by
+Steve McConnell, Microsoft Press), <b>Writing Solid Code</b> (by Steve Maguire,
+Microsoft Press) and <b>Effective C++</b> (by Scott Meyers, Addison Wesley).<br><br>You might be asking yourself, "Books?! Is that all the wise-and-all-knowing
+MidNight can offer us? A list of books?!" Of course not. Rather than deluge you
+with every tip I can think of off of the top of my head, how about three
+generalized tips? Possibly the most important tips of them all.<br><br><b>1. Know your language (assumes C++)</b><br><br>Did you know that a proper implementation of operator new requires an infinite
+loop? Or how about properly copying a list of objects includes the requirement
+of in-place construction with operator new and destruction of elements of the
+list?<br><br>How can you expect to write stable and robust code if you don't know the
+language you're writing it in?<br><br>There are a lot of hidden details in the C++ language. I learned this first-hand
+when I created my personal template library (lists, arrays, hashes, reservoirs,
+strings, etc.) Sure, you can make a list class, but can you make a <i>proper</i>
+list class? I probably only know a half-dozen people that can.<br><br>C++ is a horribly complex beast with a very misleading "simpler" side. If you
+only learn the simpler side of the language, you're missing out on the true
+beauty of the language. And wrapped up in all that complexity is a lot of power.
+Take command of that power and learn the language you're writing your code in.
+It'll save a lot of headaches.<br><br>Of the three books mentioned above, <i>Effective C++</i> is the best book for
+this task. The book is organized in a series of "Items" (similar to the tips
+you're looking for) that can be read out of order so you can jump to the ones
+you're most interested in. However, I recommend going through the book very
+thoroughly. As a matter of fact, it's the only technical book I've actually read
+cover-to-cover without picking and choosing the topics I wanted to read. And I
+can honestly say I'm a much better programmer because of it – it had a very
+severe impact on how I write code and taught me a lot about the language. More
+importantly, it spiked my interest in learning the language to a greater degree.<br><br>It also won't hurt to spend $18 and get an electronic copy of the ISO
+specification for C++ -- I find my copy invaluable at times. Though it may be
+insufferably dry at times, it can answer any non-compiler-implementation
+dependent question you have about the language.<br><br><b>2. Plan your coding</b><br><br>So you've got this great idea for a cool program. You open up your compiler and
+start coding away. Two weeks down the road, you realize it would be great to add
+this one feature, except doing so would require a huge re-write of many sections
+of the code, because the program wasn't organized in a way to allow you to have
+access to the data where you need it. Too bad, you shoulda planned ahead!<br><br>Unless you are writing a throw-away program, spend a little time up front and
+plan it out. At the very least, map out the primary and secondary components;
+how they relate and what each component is responsible for. Doing this simple
+task will help you see how everything fits together and where some holes might
+be. I find that this also helps with ideas for cool new features to add. In the
+end, it tells you where to put all of your code, development goes faster, and
+the end product tends to be much more stable.<br><br>If you're going to spend a few weeks on a program and don't want to spend the
+time for a proper design, at least spend a few hours up front doing this. You
+won't regret it.<br><br><b>3. Be patient, practice</b><br><br>No matter how experienced you are, every you ever write is practice for the next
+program. The bigger your mistakes are, the more you'll learn.<br><br>If you're not making mistakes, you're not gaining any real-world experience.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font>Invalid thread structure.<center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23920">Good Programming Practice</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193767">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    And another most important tip: Know your compiler and IDE!<br>Learn about things your compiler does that are not compliant with the standard (MSVC anyone? ;). Learn what great tools your IDE might have to speed up your coding process and, more importantly, help you track down bugs. (I love MSVC's debugging tools! :) <br><br>Also, learn the platform for which you are developing. For most that means reading everything on the Windows API and DirectX that MSDN has to offer. (For me, at the moment, it means going through the docs and source for SDL. ;)
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1842">=[Scarab]=</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>06 Feb 2002, 2:38PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193767#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193767#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193767">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193768">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    As an addition to #2, I'll add, " and stick to the plan!".  :)  I write out plans for my larger programs sometimes, but I find that I use that as a jumping off point and often will diverge completely as I write the code.  This is often a bad idea as it invalidates the original planning.<br><br>If you DO take the time to write out an initial plan, make an effort to color inside the lines and don't wander too much.<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=161">Warren Marshall</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>06 Feb 2002, 3:33PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193768#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193768#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193768">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193769">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    I'm in the beginning stages of a really big project ... fortunately it's a learning / hobby project, so I can take all the time in the world I need in order to do things The Right Way. :)<br><br>Something that has already saved my bacon a few times, and as things get truly complex will be a lifesaver (I hope!), is a good unit test suite with accompanying harness.<br><br>I'm in a unix environment and using the standard tools, and it is very very cool to be able to:<br>make<br>make test<br><br>And see that everything still works after a series of big changes. For interactive UI stuff / things that need a human to see if they 'look right' or not, I have a simple 'wait time' for an operator to press ESC (test failed) or return (test passed). If the time goes by, the test is left as undetermined.<br><br>Super handy :) but a bit of a time suck at first. I'm getting pretty disciplined now about writing a test simultaneously with a new feature, and it's getting a lot easier / more efficient.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2933">spacemanspiff</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>06 Feb 2002, 4:24PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193769#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193769#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193769">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193770">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Good response Paul!<br><br>I just wanted to add how right Paul is about the Effective C++ books.<br>There is a sequal called More Effective C++, which is just as good!<br><br>These books are such eye openers. First question I ask every C++ programmer I have to work with: "Have you read Effective C++?" If not, I tell them to do so immediately. Not that I'm in a position to give orders anyway, but I'd rather not work with incompetent programmers. <br><br>Reading Effective C++ will not make you a competent C++ programmer per se, but NOT reading it will surely make you an incompentent one.<br><br>Trust me,<br><br>Jape<br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=193">Jaap Suter</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>06 Feb 2002, 4:46PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193770#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193770#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193770">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193771">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    I love this subject!  Here are some of my "10 commandments", many of them probably stolen from Code Complete.<br><br>SLOW DOWN<br>If you take twice as long to write each routine/object, you'll probably finish your project in 1/2 the time.  It's the little bugs that will kill you in the end.<br><br>ASSERT EVERYTHING<br>It may sound crazy, but I use Assert()s to validate almost every parameter.  This goes hand in hand with the SLOW DOWN mentality.  Asserts are a good way of keeping you "honest" with your logic.  Hey... they don't cost anything other than typing time.<br><br>KEEP IT SIMPLE<br>If your solution to a problem seems like it is getting too complex, then it is probably wrong.  Rethink and attack the problem again.  You may need to learn from your mistakes to find a graceful solution.<br><br>MAINTAINABILITY OVER PERFORMANCE<br>Most of the time clarity and maintainability are FAR more important than performance.  Don't play cute coding tricks to shave 0.002% off the loop time of your program.  You're CPU is probably idle waiting for the video card anyway!<br><br>FIX BUGS IMMEDIATELY<br>That recurring bug getting you down?  Gonna get to it "someday".  Hell, I know how to avoid it.  I'll fix it next week.  NO! DO IT NOW!  If for any other reason, it will free up some RAM in your brain.<br><br>STOP WORSHIPING YOUR LANGUAGE<br>Hey... it's all assembly languange in the end.  Is your clever C++ object really saving you time?  Will you understand it later?  Can you debug through it?  Was it necessary?  Did you spend 20 minutes trying to follow the inheritance?  Keep it simple!<br><br>PROGRAMMING IS JUST A TOOL<br>Ok... you know how to use your saw and hammer... now build the damn house.  Get some plans, cut the wood, and hammer it together.  If the thing drives nails... then start pounding!  Unless you are a hobbyist, then don't forget that the real product is the game - not the "programming itself."  Granted, we are all geeks that love to polish our code.  Nothing wrong with that until it interferes with the paycheck!
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2578">Matthew Harmon</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>06 Feb 2002, 5:48PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193771#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193771#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193771">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193772">
+<a name="p193773">
+<a name="p193774">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Nice topic indeed....<br><br><b>Learn more than one programming language</b><br><br>C and C++ are nice languages - and one can write almost anything using them - but do try to expand your mental view about the idea of software engineering. Different languages almost always try expose and fix weaknesses in common languages. I would recomend one to at least learn one functional language aside the common path of C++.<br><br><b>Assertions</b><br><br>It took me a very long time to realize how to best use these constructions. At first - when learned the concept of design by contract - I would assert anything which sounded like a contract (function->function). What is a bit troublesome with assertions is that - you assume that the programmer will fuck up. And surely we do - but not anything near the kind of stuff we try to protect ourselves by using assertions.<br><br><table width="100%" cellspacing=0 cellpadding=15 border=2><tr><td bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000"><br>FILE *openRead(<font color="#0000ff">const</font> <font color="#0000ff">char</font> *filename)<br>{<br>  assert(filename);<br>  FILE *fp = fopen(filename, "rb");<br>  <font color="#0000ff">if</font> (!fp) <font color="#0000ff">throw</font> runtime_error("could not open file");<br>  <font color="#0000ff">return</font> fp;<br>}<br></font><br></pre><br></td></tr><br></table><br><br>I used to do this all the time. And a lot of people still do this - praising how assertions helped them trough the development. The basic idea is that you have to choose a path when you start developing, either you are keen on the fact that whenever your software crashes you know that there is a bug in your code - or else you want to create software that never crashes no matter what.<br><br>path 1: "Utilize assertion to the extent and quickly figure out whats wrong with your software when a assertion breaks"<br>path 2: "Monitor which codepaths could lead to a software termination, often (like in a graphics engine) the common path is where you load resources (textures/maps etc).  Create default solutions for these errnous situations."<br><br>Well, I chose path 2 - but I still use assertions. Confusing? Maybe - but the fact that I only use assertions for catching logical failures - making sure my code behaves like I want it to - saves quite some time instead of having to step trough it once in a while.<br><br>...<br><br>Why do I find that the assertion in 'openRead' is not very useful. It catches me when I'm passing a invalid filename so what could possibly be bad about this construct? Well, software becomes very complex in short period of time. Trying to rewrite stuff is a safe way to fail (netscape). What you need do is to think that each function - each module - each program - is an deserted island. When you first implemented 'openRead' you new that you would only call it from your code - you could eliminate any bugs while debugging. 4 weeks later you add a simple script parser - which read filenames from a script and processes them. Well guess what - your function is being called with unverifyed data. Rewrite? No. Write code which verifies every external resource? No. Keep it simple....<br><br>...<br><br><b>Easy way of understanding hard bugs</b><br><br>Go to the toy store. Buy a large teddy bear. Place it near your computer. Whenever you think "why in gods name is the happening to me" - take a walk - visit the teddy bear. Explain the issues and your problems to him/her. 9/10 times you will automatically end the conversation with "Never mind, I figured out what's wrong".<br><br>...<br><br>Sorry about the ranting, but it nice to get stuff ventilated.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=764">Babar Zafar</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>07 Feb 2002, 4:48AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193772#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193772#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193772">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Good Programming Practice</i></b> <font size=1>by Babar Zafar</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>02-07-2002 - 04:48AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23920&msg=193773">Re: Good Programming Practice</a> <font size=1>by warjo</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>03-20-2002 - 05:32AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23920&msg=193774">Re: Good Programming Practice</a> <font size=1>by gimp</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>08-22-2002 - 04:17AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193775">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Perhaps some more book recommendations. These are for C, but a lot of it is valid for C++ too.<br><br>"C traps and pitfalls", Andrew Koenig.<br>A thin book, basically a catalog of language features that will bite you when you don't expect it. Was made before the previous C standard, but still good enough to have it.<br><br>"Expert C programming, Deep C Secrets", Peter van der Linden.<br>More introductory than expert. Similar to the previous book, thicker. Also has a C++ section, which is simply hilarious. Has a lot of funny stories (mostly about interesting mistakes made in the past).<br><br>"Safer C", Les Hatton.<br>Haven,'t finished this one yet, but looks interesting. For safety-critical programming with C. Games may not be in the same category as flight control software, but it may still be useful.<br><br>"The Practice of Programming", Brian W. Kernighan, Rob Pike.<br>Covers many languages. Good introduction to the subject, more accessible IMHO than , also shorter.<br>Those who are considering buying the Dutch version may be interested to know that the translation is questionable. Expecially the tendency to translate language keywords occasionally can be annoying.<br><br>About "Writing Solid Code". I do not have this book. But reviews at ACCU indicate that it's not as good as it may at first seem.<br><a href="http://www.accu.org/cgi-bin/accu/rvout.cgi?from=0sb_writing_solid_code&file=w001915a">critical review</a><br><br>And, while I'm busy anyway, <a href="http://www.accu.org/bookreviews/public/reviews/0sb/writing_solid_code.htm">here</a> is a link to their list of book review about the subject
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2671">Wim Libaers</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>07 Feb 2002, 6:22AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193775#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193775#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193775">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193776">
+<a name="p193777">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Great responses, Matthew Harmon & Babar Zafar!<br>I figured out that in our current project we use too much assertions, sometimes just by inertion:<br><br><table width="100%" cellspacing=0 cellpadding=15 border=2><tr><td bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">ASSERT( pCmd );<br>pCmd->m_strMethod = ...<br></font><br></pre><br></td></tr><br></table><br><br>is quite useless, it will crush just where the first usage of the pointer is... I mean sometimes people become assert-addicted and often half of the code is just assertion which is rather ugly.<br><br>And one book-to-read from me: "Modern C++ Design" by Andrei Alexandrescu. A good one. Coding proper and reusabe classes is a GOOD THING! Before I used to write code just to be executed and thrown away... haven't you implemented lists about a dozen times in the past? Boring? Yes, it is - so if the design is clever there is chance for a portion of the code to be reused later and of course such code is easily maintained!
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1302">Zemedelec</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>07 Feb 2002, 7:08AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193776#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193776#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193776">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Good Programming Practice</i></b> <font size=1>by Zemedelec</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>02-07-2002 - 07:08AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23920&msg=193777">Re: Good Programming Practice</a> <font size=1>by warjo</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>03-20-2002 - 05:15AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193778">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Another good book: <a href ="http://www.mindview.net/Books/TICPP/ThinkingInCPP2e.html">"Thinking in C++"</a> by <a href="http://www.BruceEckel.com">Bruce Eckel</a>.<br>Just Lovely bookie, teaching c++ AND teaching it in the right way. It is too simple for some of you, but if wanna learn c++ without headaches, this is the right book.<br><br> -kr<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=3841">kranklys</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>07 Feb 2002, 7:47AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193778#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193778#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193778">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193779">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Babar:<br><br>Good clarifications on Assert usage.  Don't use Assert()s as a way of avoiding the graceful handling of a failure condition.  Asserts() are best used to monitor the logic of your code.  Although sometimes I use them as warnings to trap things that I know shouldn't happen, but can still be handled.  I should probably add some flags to my Assert() macro.<br><br>Also, you said something that I would put on my 10 commandment list:<br><br>"What you need do is to think that each function - each module - each program - is an deserted island"<br><br>This is important.  I call it "systems" programming (probably a misuse of the term.)  Basically, I try to write the lower levels of my code the way somebody would write the operating system.  Remove all assumptions of how it will be used, and concentrate on the internal task each routine will perform. Keep interfaces minimal and well defined.  This is probably the hardest thing for beginners to learn because it takes experience and a breadth of understanding to >fully< appreciate this idea.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2578">Matthew Harmon</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>07 Feb 2002, 7:52AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193779#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193779#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193779">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193780">
+<a name="p193781">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Again, know thou environment.  Consider the following contrived example:<br><br>#include "stdafx.h"<br>#include <windows.h><br>#include <assert.h><br>#include <winbase.h><br><br>int main(int argc, char* argv[])<br>{<br>    char *foo;<br><br>    assert(foo);<br><br>    if(foo)<br>    {<br>        printf("Should have asserted\n");<br>    }<br><br>    return 0;<br>}<br><br>Using MSVC the following will print "Should have asserted" (nevermind that the compiler did warn me about using an uninitialized variable).  In debug builds MSVC inits local vars to 0xcccccccc which will never cause an assertion to fail.  Instead MSVC offers the following functions:<br>IsBadCodePtr()<br>IsBadReadPtr()<br>IsBadStringPtr()<br>IsBadWritePtr()<br>(consult your online documentation for explanations)<br><br>Now adding the following assertion will catch what was intended:<br><br>#include "stdafx.h"<br>#include <windows.h><br>#include <assert.h><br>#include <winbase.h><br><br>int main(int argc, char* argv[])<br>{<br>    const int MAX_LENGTH = 16;<br>    char *foo;<br><br>    assert(foo);<br><br>    if(foo)<br>    {<br>        printf("Should have asserted\n");<br>    }<br><br>    assert(!IsBadStringPtr(foo, MAX_LENGTH));<br><br>    printf("Assert should have fired!\n");<br><br>    return 0;<br>}<br><br>In general, I think asserting on whether a element is NULL is generally useless since stack corruptions of variables or unitialization of variables will never trigger assertions.<br><br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=4203">bruceleesgrip</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>07 Feb 2002, 8:53PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193780#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193780#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193780">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Good Programming Practice</i></b> <font size=1>by bruceleesgrip</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>02-07-2002 - 08:53PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23920&msg=193781">Re: Good Programming Practice</a> <font size=1>by Matt Newport</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>02-08-2002 - 08:13PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193782">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    I have another one for you...<br><br><b>Take backups</b><br>No matter how trustful you are to your hardware, it WILL fail at the most irritating point. I've been having those problems there I first lost a whole web-based chessgame (really cool one too :-/ ) and at the company I was working for at the moment, I later lost an 2d animation player due to a system crash which fucked up my files since visual c was prob. just about to save them.<br><br>I did have backup, but it was two days old and I had to rewrite the animation player. The good part is that it came out much better but rewriting it was a real pain then I knew it was only because of my backup routines.<br><br>I myself use cvs, which is available for both unix systems and windows on both the server and the client side. This is a well-known trustful software, but I guess visual sourcesafe or simular would do the job as well.<br><br>The rest, especially with "plan your work" and "know your language" is just SO true :-) And this is also true for webpages and simular work, so don't try to come out easy on this ones.<br><br>Cheers<br>Albert "thec" Sandberg
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=46">thec</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>08 Feb 2002, 1:22PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193782#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193782#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193782">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193783">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    i'm actually only known with the common simple features of C++ and even tho i might be missing out on some nifty things here and there i want to claim that "being a C++ ace" ain't the route to accomplishment of your targets ;)<br><br>general knowledge of what you're doing, ins and outs of the system you're developing for (and especially it's hardware, including the API's you're using (for example, D3D requires a lot of nifty knowledge to be treated correctly)), and some good ideas about an object oriented structure of the software you are trying to write. i feel the "but object orientation IS C++" remarks coming up, but that would be somewhat untrue.. at least.<br><br>ohwell.. the general keyword is: experience (and paul perfectly emphasizes that at the end of his reply).<br><br>cheers.<br>plek/damage
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=4639">superplek</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>04 Aug 2002, 10:08PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193783#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193783#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193783">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193784">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Being my first time here, I'll write some short advices on some poor programming practices. I'm a C programmer not a C++ programmer, but what I'm going to speak about will also be of use to C++ programmers. I'm also not an english native speaker, so in advance I apologize any semantic, gramatical or otherwise lexical errors my post might contain.<br><br>One of the most normal type of errors, are overflows. They generally surpreend the programmer, when his code hasn't been enoughly stress-tested or otherwise designed security-wise/error-resistant. <br><br>For example, consider the case where you have defined a buffer that is 200 bytes in length. Your GUI is set up such that the user will add his name to an editbox, and that name will be copied using a function such as sprintf() or strcpy() to this buffer that you've previously defined. The problem arises when the name of the person is bigger than the actual buffer, although the programmer is conscious that there's no name bigger than 200 bytes, but does that avoid the error? the answer is no. <br><br>To avoid this errors, which are serious security breaches and can be exploited--which basicly means overwriting memory and execute arbitrary assembly code--the use should always avoid functions that can't limit its output by a size. Better functions to replace the forementioned ones would be snprintf() and strncpy() respectively. However, the latter can be as destructive as the previous one and the former even worse when improperly used--often happens as misconception from the programmer point of view.<br><br>Other situations where this type of bugs happen often is when using functions that accept format directives. These are: printf(), sprintf(), snprintf() and etc. Casual programmers are used to abuse this type of functions in a way that is similar to the following:<br><br>It looks pretty simple and safe. Now consider sending an %s or a %p or even an %n, and keep wondering what exactly hit your program that crashed it, certainly you know it now, but would you know it if a  user give you a bug report about it? ;-) Also interesting to note is that this type of bugs, let's you examine the stack and may be used to overwrite protections or leak parts of memory that may contain risky information, like passwords, serial numbers, private keys, you-name-it.<br><br><table width="100%" cellspacing=0 cellpadding=15 border=2><tr><td bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000"><br>...<br><font color="#0000ff">char</font> buffer[200];<br><br>snprintf(buffer, <font color="#0000ff">sizeof</font>(buffer) - 1, editbox->text);<br>MessageBox(. . . , buffer,  . . .); <br>...<br></font><br></pre><br></td></tr><br></table><br><br>Integer and Unsigned-Integer conversion fsck ups.<br><br>Consider the simple and plain C program that accepts an unsigned int number and stores it on a signed integer. Consider the number that is actually stored is 0xffffffff, now consider it to be the value to allocate a string that is fed to malloc or some other sort of allocator, also that it will allocate space for a string, being a conscious programmer you'll add 1 for the leadding \0 byte. What exactly happens is that your 2^32-1 number turns out to be -1 + 1 which in the end becomes 0. When copying the string, you're sitted in your chair looking at the monitor and thinking "It's safe, because i've allocated enough space for the string, it will not crash" well, bad news, actually you requested an allocation of only 0 bytes, these are often more than just 0, but your used memory will become 0, does it will crash. This is often one of the types of bugs that are hard to detect and pose serious risk to the security and stability of your program. Also, integer arithmetic generally is notorious to make this type of errors to appear often, I think I gave the global view of the vulnerability and will not need to sum up anymore.<br><br><table width="100%" cellspacing=0 cellpadding=15 border=2><tr><td bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000"><br><font color="#0000ff">int</font> len = 0xffffffff;<br><font color="#0000ff">char</font> *cp;<br><br>cp = malloc(len + 1);<br>strcpy(cp, editbox->text);<br><br></font><br></pre><br></td></tr><br></table><br><br>It's also considered good programming practice to end all strings before passing them to a string-handling function with a zero-byte ('\0' or simply 0).<br><br>This type of errors I referenced in this post are mainly security issues, but occur often when you don't know how to program well or simply just don't think the program from a user point of view. Be careful with what date your program accepts, think of it as "What if i was able fool the logic of this program, how would I do so, what routes would I take for that ?!<br><br>I hope this is of any value, I'm actually not a game/windows/c++ programmer. I'm a UNIX C programmer, but it's clear this type of errors are notoriously on any system and arch. <br><br>Thanks for reading this symbolic post and I hope it was of any help. I wish there is more focus on future articles about safe programming practices or how to avoid the bad ones. This will actually turn out to be a great deal for us all.<br><br>Cheers,<br>Gonçalo Gomes
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=6819">lucipher</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>24 Mar 2003, 11:11AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg=193784#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23920&msg_quote=193784#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193784">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center><font face="Verdana,Helvetica" color="#ffffff" size=2>This thread has been moderated based on your <a class="menulink" href="deadend.html">Account Settings</a>. &nbsp;You're currently viewing 18 of 19 <a class="menulink" href="deadend.html?show=64473&type=all">total messages</a>.</font></center><br><br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

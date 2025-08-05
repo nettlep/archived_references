@@ -1,0 +1,482 @@
+<html>
+<head><title>flipcode - Solid Node BSP And Random Geometry</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Solid Node BSP And Random Geometry</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++ 'odin' + ''    
++''    
++''    
++ '@' + 'psyclonegames' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++ 'com\">' + 'Odin Jensen' + '</a>')</script> (16 January 2002)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I'm working on a BSP render, and I'm exporting the data from max, using
+my "written in 15-mins polysoup exporter(tm) for MAX 4.2".<br><br>Anyhow. There are, as you probably know a few limitations in the
+geometry you can feed the BSP compiler. (Which is why most FPS engine
+levels are build from boxes :)<br><br>1. Polygon planes must have the same normal or things go wrong.<br>
+2. Polygons can't intersect.<br><br>The first problem is solved by grouping polygons according to the normal
+they share.<br><br>The second, by performing a Boolean union on meshes that intersect. (BSP
+trees are great for this too)<br><br>I was wondering, if you know of any other problematic cases, and good
+solutions to those and maybe the above problems?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+This is going to be an unusually short response for me (it seems I
+really, really, really, really, really like to type. :)<br><br>Actually, I'm not aware of any limitations in the geometry that you can
+feed to a BSP compiler -- you should be able to feed it completely
+random polygons. As a matter of fact, this was one of the tests I gave
+my BSP compiler while developing it.<br><br>You're correct about grouping polygons by plane (actually, this isn't
+absolutely necessary, but it can save some tree depth and a few
+headaches.) However, at least with a splitting BSP tree (I'm not sure of
+the other techniques) polygons can interpenetrate.<br><br>In my experience with BSP trees (and I'll warn you, this experience is
+somewhat limited) the key to a successful BSP compiler is an accurate
+polygon clipper. Furthermore, the key to an accurate polygon clipper is
+to properly trap the vertices within epsilon distances to the splitting
+plane.<br><br>Here's that last statement again, in cleartext: when clipping a polygon
+to a plane, you need to determine which side of the plane each vertex is
+on. In reality, a vertex can be on the front side, the back side or on
+the plane itself. And because of precision errors, you might determine
+two vertices are on opposite sides of the plane, when in reality,
+they're on the same side. To solve this problem, any vertex that is
+within an epsilon distance to the plane, should be considered on the
+plane. After classifying each vertex (as either in-front-of, behind or
+on the plane) I perform the actual clipping. This requires some slightly
+tricky logic, but the results are quite reliable.<br><br>My experience with BSPs, as stated earlier, is rather limited. This
+experience is so limited, in fact, that it goes no further than a single
+implementation. To further limit this experience, the implementation
+bears little resemblance to any other BSP compiler. However, you're
+welcome to take a look at it if you like. It uses a technique I derived
+but never had an inclination to prove until I wrote <a
+href="http://www.FluidStudios.com/fsrad.html">FSRad</a> (the radiosity
+processor.) Once implemented, the technique proved quite useful -- it
+produced trees for very complex datasets very quickly with very low tree
+depth and very few splits. The technique is explained in the article
+<i><a href="http://www.FluidStudios.com/publications.html">Fast BSP Tree
+Generation Using Binary Searches</a></i>. Note that the trees generated
+are quite standard -- it's the generation technique that's different.
+The implementation can be found in <a
+href="http://www.FluidStudios.com/fsrad.html">FSRad</a>, inside bsp.cpp.<br><br>Hopefully, you'll find at least some of this useful.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23918">Solid Node BSP And Random Geometry</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193759">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    He is talking about solid node BSP's, which means that the limitations to the geometry are that the mesh needs to be closed, non self intersecting and only two polygons can share the same edge (called a 2-manifold surface if I'm correct).<br><br>If you store the polygons in your BSP then there are no limitations to the geometry, but then you would not call it a solid node BSP anymore.<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1923">Jorrit</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>17 Jan 2002, 4:58AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23918&msg=193759#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23918&msg_quote=193759#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193759">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193760">
+<a name="p193761">
+<a name="p193762">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Paul, your paper is very interesting, but it misses one very important detail - sometimes you need to select planes that do not belong to any of the scene polygons. Take for instance a sphere with 1000 polygons. The BSP three depth for that sphere will be 1000. This happens a lot with organic-looking complex geometry. To evercome this problem I select orthogonal BSP planes (kd-tree style) that have equal number of polygons on both sides till the number of polygons in a BSP node fells below a certain threshold.<br><br>Also balanced BSP trees are not always optimal for raytracing and collision detection where spartial balance is also very important as mentioned in the discussion for <A HREF="deadend.html?showThread=23August2001-SplittingPlaneHeuristics&forum=askmid&id=-1">this</a> <i>Ask MidNight</i> column.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=706">Angel Popov</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>17 Jan 2002, 6:08AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23918&msg=193760#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23918&msg_quote=193760#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193760">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Solid Node BSP And Random Geometry</i></b> <font size=1>by Angel Popov</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>01-17-2002 - 06:08AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23918&msg=193761">Re: Solid Node BSP And Random Geometry</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>01-18-2002 - 12:54AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23918&msg=193762">Re: Solid Node BSP And Random Geometry</a> <font size=1>by Angel Popov</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>01-18-2002 - 03:34AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193763">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    well, creating a BSP from polygon soup is no problem, but creating a BSP that you can actually use for anything (like collision detection for example) will probably require you to have geometry as described by Jorrit. I cannot imagine any way to make a solid node BSP out of polygon soup that contains "overlapping primitives" (like "in contains intersecting polygons").
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=86">cgk</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>17 Jan 2002, 12:37PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23918&msg=193763#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23918&msg_quote=193763#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193763">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

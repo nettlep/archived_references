@@ -1,0 +1,218 @@
+<html>
+<head><title>flipcode - Portability And Performance</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Portability And Performance</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' +  '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++ 'jhaughey' + ''    
++''    
++''    
++ '@' + 'hyperchip' + ''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'com\">' + 'John Haughey' + '</a>')</script> (18 November 1999)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+Years ago, I started coding 3d stuff with DirectX 2.0, using my own 3D engine. 
+DirectX 3.0 came out and I quickly learned RM mode. 
+Currently, at work, I'm required to write 3D code for 98, NT and Linux.
+I use Mesa for the portability, but unless I use the Voodoo chip set, I get pretty lousy performance.
+If I port my Mesa apps to use OpenGL l under NT or 98, I also get lousy performance.
+I've written a few apps, that use glide, it's fast, but being so tied to the Voodoo chips set, it not a valid option.
+Recently, I've started using DirectX 6.0/7.0 IM mode, I get great performance, but, of course, I'm not compatable w/ Linux or NT.<br><br>This is what I'd like: <br><br>I can use Mesa w/ 3dfx support for Linux ( I can dictate the video cards under Linux). 
+I'd like to be able to easily port the code to NT/98 and have it work fast. ( with hardware support)<br><br>What's a guy to do?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Considering the fact that you want portability, OpenGL seems to be the
+best choice. It also sounds like you already have working OpenGL/Mesa
+code so if it were me, I would certainly try to make this option work.<br><br>I've got a VooDoo3 and a TNT2 in my home machine, and they both perform
+very similar under OpenGL.<br><br>Read up on the OpenGL drivers you're using under Windows. Make sure you're
+using the hardware accelerated versions. This may sound silly to say out
+loud, but I've been caught in this trap a few times. For example, NVidia's
+TNT1 OpenGL drivers didn't use hardware acceleration unless you were in
+16-bit mode.<br><br>If your performance isn't THAT lousy (i.e. your definition of 'lousy' is
+10% slower rather than 2000% slower) then start doing some profiles. You
+may find that you're doing something incorrectly. For example, you might
+not be initializing something properly, which doesn't affect the
+performance of one card, but does affect the performance of another. It
+might be that the incorrect initialization dosn't affect the Mesa
+performance, but does affect the OpenGL performance.<br><br>Take certain things out of the equation (i.e. render without textures) to
+try to narrow in on the culprit.<br><br>Are you using the OpenGL texture caching? Remember that it's up to the
+particular OpenGL driver developer as to how the memory is managed. Poor
+management could make the difference between 30FPS and 4FPS (I've seen
+this for myself.) If so, a possible option is to write your own texture
+caching algorithm (they're not difficult, and it would help you get more
+consistent performance across multiple platforms.)<br><br><center>[Insert a billion other possible scenarios here]</center><br><br>The point is, you can't fix something unless you know what's broken. So
+narrow down the what's causing the bottleneck and fix it.<br><br>Every problem has a solution.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

@@ -1,0 +1,272 @@
+<html>
+<head><title>flipcode - Data Structures And The World</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Data Structures And The World</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++ 'granteld' + ''    
++''    
++ '@' + 'home' +  '.' + ''    
++''    
++ 'com\">' + 'Grant Eldridge' + '</a>')</script> (12 June 2000)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+Being relatively new to the 3D programming world I am having difficulty
+drawing the connection between a data structure (saved in a file) and the
+method used to render them.  For example, I understand the principle behind
+an Octree as far as sudividing cubes until they meet certain polygon count
+criteria, etc.  However, how do you go from a data/map file to a structure
+that you can apply an Octree to.  It seems to me that the manner in which
+this data is stored could have a great impact on your engine performance.
+Do you need to sort this data in the file so that polygons fall into
+predefined cubes (Octree developed as you make the map) or just fire all the
+polygons etc into a map file and let the game engine determine the octree
+structure at run time?  For that matter do you need to sort your polygons
+along the z-axis at the data structure level before run time?
+I have found a wealth of information about rendering methods and such, but
+very little really useful information on creating the actual data
+file/structure.  Could someone please give me a polite shove in the right
+direction?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Let me cover your question one point at a time:<br><br><b>1. How do you go from a data/map file to a structure that you can apply
+an Octree to?</b><br><br>Often times, games will store the data in the file as they would use it in
+memory. Games tend to use a lot of data and hence, require quite a bit of
+loading. To minimize this, they store the data in such a fashion as can be
+loaded quickest.<br><br>To answer your question in a point, store the Octree on disk. Sound simple?
+It actually is...<br><br>At some point, you've got your geometry in memory (probably before you write
+out the data/map file. At that point, build the Octree. Since the Octree is
+a recursive structure, you have to build it recursively. When you want to
+use it, you have to traverse it recursively. If you want to save it, you
+have to save it recursively. How do you do this? You simply recurse the
+entire tree (not making any decisions along the way, but simply visit each
+and every node.) At each node, store the data at that node. This data might
+consist of the number of children, any flags you keep, and any data (i.e.
+polygons) in that node. Just make sure not to store pointers. Store just
+enough information to be able to read the tree properly. My trees typically
+have either: children (nodes) or data (leaves). In my case, I need to make
+sure I store a flag stating what kind of node this is.<br><br>Reading the tree then becomes an exercise of traversing the tree as it is
+being loaded... read a node (root) check to see if it has any children, if
+so, allocate them and traverse into each, which then reads a node, checks to
+see if it has any children, etc. As long as you do everything in the same
+order, it will work fine.<br><br>If your loading is performance critical (or if you just like fast code :)
+there are a couple things you can do to speed it up. Before you save, run a
+quick traversal of the entire tree and count the total number of nodes.
+Write this information to the front of the file. This way, when you load,
+you can pre-allocate the nodes in one allocation (this also helps reduce
+memory fragmentation.) Then, as you load, you can simply pluck nodes from
+your pre-allocated reservoir of nodes as you load.<br><br>You might also consider synchronizing your in-memory nodes with your on-disk
+nodes. If you're storing a flag on disk, include that flag in the node
+structure. By pre-allocating your nodes and synchronized data/disk
+structures, you can load very fast. The loading procedure simply needs to
+pre-allocate a block of memory for all nodes. The size (in bytes) of this
+memory should now be the same size as the remaining data in the disk file
+(they're synchronized.) Next, point at the beginning of your pre-allocated
+block of nodes and just read the entire file in. Note that you'll need to
+fix-up any pointers in your tree (most likely pointers to child nodes) once
+it has been loaded in. Also, make sure that you use tight (1-byte) packing
+on your structures, or you could have problems loading/saving these to disk.<br><br>I'm STILL not done babbling yet...<br><br>If you're more concerned about ease of use and expandability (and if you're
+using classes in C++), there's a simple trick that makes things tremendously
+easier. In each class, create a "read()" and a "write()" routine. These
+routines will read/write their specific data members as well as call any
+appropriate read/write routines of classes they own. An example of a polygon
+class might store the vertex count, the vertex indices a texture ID and a
+surface normal (of class "Vector"). The Polygon::write() routine would
+manually store the vertex count and their indices, the texture ID and then
+call normal.write().<br><br>Extending this to the Octree example above, each node would have a read()
+and a write() routine. Reading the tree in would be as trivial as opening
+the file, and calling Octree::read() for the root Octree node. The root node
+would read in its data, then would call Octree::read() for each child, which
+would continue to recurse.<br><br><b>2. Let the game engine determine the Octree structure at run time?</b><br><br>This is an option. Octrees don't typically take as long as BSPs to generate,
+but they're also not generally considered structures that can be generated
+in real-time. If your Octrees are small enough that they can be generated at
+load-time, then it might be wise if, for example, you're short on disk
+space. It all depends on what your needs are.<br><br>Nothing I've said in this Q/A response (or in this entire column) is ever
+carved in stone, I'm simply offering options.  Though you may decide to take
+my advice one day, you may decide not to on another. I'm usually pretty
+careful with my responses (by using phrases like "generally not considered
+real-time") but this doesn't mean that you should consider them golden! If
+you need real-time Octree generation, then <i>Go Do It!</i><br><br>I rarely use the word "can't" because I don't want to discourage others (or
+even myself) from thinking that something is truly impossible. Some day, we
+will be able to do something that is "generally not possible" today... but
+if it's ingrained in our heads that we "can't", we'll never try.<br><br>This is not a soap-box I'm on... I prefer to call it a "detergent
+container".<br><br><b>3. Do you need to sort your polygons along the z-axis at the data
+structure level before runtime?</b><br><br>Assuming this is for a 6-DOF engine, you can't. :) The only reason for
+sorting on the z-axis that I can think of is for render-time sorting.
+Render-time sorting happens in camera-space (i.e. the "z-axis" refers to the
+vector protruding from the front of the camera.) Camera space changes on a
+frame-by-frame basis. What might be correct sorting for one frame, might not
+be correct sorting for another frame.  This doesn't mean that you can't come
+up with some really cool pre-sort technique that speeds up the render-time
+sorting.<br><br>Did you catch it? At the top of that paragraph, the words: "you can't" may
+have sounded like a joke. The fact is, in this case you actually CAN... A
+BSP can give you a perfect camera-space z-order sort when you traverse it,
+and an Octree comes close by giving you a "rough sort" when you traverse it.
+These are just a few.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

@@ -1,0 +1,299 @@
+<html>
+<head><title>flipcode - Lightmaps</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Lightmaps</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'agoth' + ''    
++ '@' + 'virtools' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++ 'com\">' + 'Aymeric BARD' + '</a>')</script> (23 June 1999)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I want by all means use radiosity to light my static environments. After
+reading a bunch of good articles,radiosity process has became clear in
+my mind : Form Factor Calculation, Occlusions, Progressive Refinement
+are now subjects known. I even implemented a radiosity test program were
+the lighting was done per vertex and it worked perfectly well, when my
+objects were tesselated enough.<br><br>Now I want to go a step further : I want to use lightmaps that will
+contains my lighting information, I know many games (Quake, Unreal...)
+use this process but I couln't find any articles on the way they
+process... What are the size of the texture ? Are they per objects
+texture ? If so, We need 6 Textures per object (one for each direction)
+to do planar mapping... How the hell can all these textures stay in
+memory ?<br><br>Really, Help me, I'm totally lost....
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+The concept of light mapping is pretty simple. The illumination across a surface
+
+256x256 texture applied to it will have a much higher texel density than a the
+same surface with only a 32x32 applied to it.<br><br>Ideally, we would like to have a uniform texel density across the entire scene
+(at least, to start with...)<br><br>Aside from texel density, we need to consider polygon seams (where two adjoining
+polygons meet along a shared edge.) These shared-edged polygons should have
+similarly mapped light maps so that the seam is not noticeable. This usually
+applies to the standard texture maps, but it is more important for light maps.
+Even non-planar polygons should have a shared mapping across the bend where they
+meet to keep the light continuous.<br><br>The only way to accomplish this is to maintain the same texel density as well as
+the same mapping scheme.<br><br>Another thing we want to try to accomplish is to have an even resolution across
+a surface. Ideally, we want to minimize the "stretch" of a light-map across any
+surface, giving us as close to an equal resolution in U as in V.
+<br>
+<font size=2 face="Verdana,Helvetica" color="#ffff99">The mapping scheme</font>
+<hr noshade><br><br>To accomplish this seamless mapping across planar as well as non-planar
+surfaces, we'll need a shared frame of reference (a frame of reference that all
+polygons fit into) for all mapping. I'll use world-space coordinate system as a
+frame of reference for this example, but feel free to find your own.<br><br>World-space mapping is done by using two of the three world-space components
+(X&Y, Y&Z or Z&X) and applying them directly to the UV coordinates. By using
+these world-space coordinates we effectively apply a planar mapping to
+everything in the scene using the plane defined by the coordinates chosen. And
+magically, any polygons that share a common edge (and hence, vertices that
+define those edges) will end up with the same UV values at those edges.<br><br>To properly map a 3D scene, we can't use just one planar mapping, we need to use
+all three (X/Y/Z). To accomplish this, we simply consider each surface normal.
+For the surfaces whose normal is primarily in the X/Y plane (i.e. Z is the
+largest value in the normal) we'll use the X&Y world-space coordinates...<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+ <font color="#0000ff">if</font> (surface.normal.z > surface.normal.y && surface.normal.y > surface.normal.x)
+ {
+	 <font color="#0000ff">for</font> (each vertex i)
+	 {
+		 surface.lightmap[i].u = surface.vertex[i].x;
+	     surface.lightmap[i].v = surface.vertex[i].y;
+	 }
+ }<br><br> <font color="#0000ff">if</font> (surface.normal.y > surface.normal.x && surface.normal.x > surface.normal.z)
+ {
+	 <font color="#0000ff">for</font> (each vertex i)
+	 {
+		 surface.lightmap[i].u = surface.vertex[i].z;
+	     surface.lightmap[i].v = surface.vertex[i].x;
+	 }
+ }<br><br> <font color="#0000ff">if</font> (surface.normal.x > surface.normal.z && surface.normal.z > surface.normal.y)
+ {
+	 <font color="#0000ff">for</font> (each vertex i)
+	 {
+		 surface.lightmap[i].u = surface.vertex[i].y;
+	     surface.lightmap[i].v = surface.vertex[i].z;
+	 }
+ }
+ </font></pre></td></tr></table></div></center><br><br>In the above example code, you'll see that the planar mapping is applied
+specific to the surface direction to get the most resolution out of each
+surface. Since world-space is a 3-space, we'll get seamless edges across
+non-planar polygons as well as planar polygons.<br><br>You may find that world-space coordinates will give you a mapping that is not
+ideal in terms of resolution or texel density.  You can adjust this by applying
+a scalar to each vertex before applying it to the UV value.  For example, if
+your world space coordinate system is mapped to a 1:1 correlation of units to
+feet, and you want two texels per feet, simply multiply your light-map UV values
+by 2.<br><br>The resolution of the light maps is completely up to you. I will suggest that
+you use as high of a resolution as you can get away with. Play with it and see
+what you find works best.
+<br>
+<font size=2 face="Verdana,Helvetica" color="#ffff99">Light-map sizes</font>
+<hr noshade><br><br>Many 3D accelerators have limitations on their texture dimensions (power of two
+sizes only, etc.) and maximum resolutions (2048x2048, etc.)<br><br>If a surface requires a light-map that exceeds your 3D accelerator's maximum
+resolution, that surface will need to be split. Surfaces require an odd sized
+light-map (65x75) on an accelerator that requires power-of-two texture
+dimensions will end up wasting some space. This waste can be reduced, however
+(see "Optimizations").
+<br>
+<font size=2 face="Verdana,Helvetica" color="#ffff99">Caching the textures</font>
+<hr noshade><br><br>Caching these textures should work pretty much the same as caching the standard
+textures. I'm only including this section to point out one important aspect.
+Each surface will have its own unique light-map, which means a LOT of light
+maps.<br><br>Fortunately, these maps are usually much smaller than the standard textures used
+to give the scene its detail. This reduces the amount of memory required, but
+your combined light maps will probably be much larger than your combined detail
+texture library.
+<br>
+<font size=2 face="Verdana,Helvetica" color="#ffff99">Optimizations</font>
+<hr noshade><br><br>There really are a lot of potential optimizations. For example, if you have many
+small surfaces that map to the same planar mapping and share edges, these
+surfaces can be combined into a single light-map. This improves your ratio of
+light-maps to surfaces as well as reduces potential wasted light-map texture
+space.<br><br>You could take this a step further and place smaller textures into the wasted
+areas of larger textures, though this can prove to be quite tricky.<br><br>Using n-gons rather than triangles for your data can effectively help accomplish
+these tasks by combining small planar polygons.<br><br>This list goes on...
+<br>
+<font size=2 face="Verdana,Helvetica" color="#ffff99">Further reading</font>
+<hr noshade><br><br>I wrote a document a while back that discusses the surface caching mechanism
+used in KAGE. A surface cache is used for software rendering systems that store
+light-maps blended with their surface texture to avoid a dual-texturing pass and
+improve performance (thanks to John Carmack for this bit o' brilliance.)<br><br>Although KAGE has abandoned the surface cache for a more flexible design, this
+document still offers some good insight into the process of light-mapping.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

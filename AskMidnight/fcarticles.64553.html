@@ -1,0 +1,233 @@
+<html>
+<head><title>flipcode - Quake-Like Console, Part 2 </title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Quake-Like Console, Part 2 </b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'lilianam' +  '@' + 'cictelnet' +  '.' + ''    
++''    
++ 'ro\">' + 'T101-Predator' + '</a>')</script> (19 January 2000)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I've followed your example and made a simple test-console who quite works. I've
+also added variables  ( witch I call them cvars,  in the spirit of Quake ! ) by
+using void pointers and explicit casting like this : *(int *)ptr->address =
+atoi(...)
+r *(float *)ptr->address = atof(...). One problem is that when I try using
+string type cvars : *(char *)ptr->address = *some_string_pointer ( or something
+like that ) it doesn't work. If you know what's wrong or maybe you have a better
+solution please tell me.<br><br>        The other problem is about functions with different numbers ( and types 
+) of parameters. Your approach suggested that the type cheching and parameter
+passing would have to be done right in the function. It is simple and clean but
+not very flexible : all the functions the engine is using have to be rewritten
+and my idea was to make the engine functions available to the console just by
+adding them  to the list. Is it possible to add to the command list functions
+like : set_name(char *PlayerName), sky(char *skyImage, float angleX, float
+angleY, float angleZ), attack() (with no arguments), or
+the_impossible_and_I_have_no_idea_how_to_do_it" Quake-bind , a command that has
+for arguments other commands. Just kidding about that last one or maybe...;)?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+For the strings, try this:  *(char *)(ptr->address) = *string_pointer;<br><br>This is assuming you want the string_pointer to be stored in the value of
+'address' and not 'ptr'. This is also the case for the ints and floats, so
+you might have something really strange going on here.<br><br>I don't understand why it's not very flexible. Yes, the functions need to
+have some extra code added to them to do the parameter parsing. With some
+clever helper functions, this should be easy (for example, a function that
+parses out a floating point value as well as doing some range-checking to
+make sure that the value is valid, or maybe set a default if the parameter
+is missing.)<br><br>You can't think of these as C functions. They are commands with
+parameters. C-functions are flexibility-limited in that they have to be
+hard-coded to accept only a very specific set of parameters. Commands are
+different in that these parameters are whatever the user types, given a
+usage criteria.<br><br>In our last discussion on this topic, I created a list that looked like:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+stuct   console commandList[] =
+{
+        {"showFrameRate",           showFrameRate},
+        {"showStats",               showStats},
+        {"enableFog",               enableFog},
+        {"killerLeemursOnTheLoose", killerLeemursOnTheLoose},
+        {NULL, NULL} <font color="#007f00">// list termination
+</font>};
+ </font></pre></td></tr></table></div></center><br><br>You can add to this, whatever you want. I would start by adding some help
+information to this list:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+stuct   console commandList[] =
+{
+        {"showFrameRate", "showFrameRate [fps|ms]",   showFrameRate},
+        {"showStats",     "showStats [all|renderer]", showStats},
+        {"enableFog",     "enaleFog [linear|log]",    enableFog},
+        {NULL, NULL, NULL} <font color="#007f00">// list termination
+</font>};
+ </font></pre></td></tr></table></div></center><br><br>If they get the function parameters wrong, then the function can spit out
+its little usage string. You can also create a help function that can get
+usage on any specific command, or one that spits out the entire table of
+command usages.<br><br>You'll probably need to add a few more elements to each structure entry as
+you want more functionality.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

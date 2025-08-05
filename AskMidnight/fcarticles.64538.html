@@ -1,0 +1,248 @@
+<html>
+<head><title>flipcode - Modular 3D Engines</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Modular 3D Engines</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'sentinal' + ''    
++''    
++ '@' + 'ihug' + ''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++ 'co.nz\">' + 'Wayne Baker' + '</a>')</script> (19 November 1999)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I'm relatively new to 3D programming and trying to write a 3D engine
+which can use different rendering APIs (Glide, OpenGL, DirectX).<br><br>From what I can find out, I need to create separate DLLs for each of
+the rendering APIs, and the DLLs have to share a common interface, is
+this correct? How do you handle different vertex structure layouts
+without writing specific transform/clipping/etc routines for each
+rendering API? or is that necessary?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+You are correct. In my case, I call them LAPI (Local API) DLLs. They have
+a common (local) API that is used by the application (game) to communicate
+to any type of underlying EAPI (External API -- DirectX, OpenGL, etc.)
+It's simply a layer of abstraction.<br><br>How do you handle data layouts? Well, that depends on where you want to
+draw the line. Do you want low-level control or high-level control?
+Fortunately, the higher-level interfaces tend to be better off. Here's
+why:<br><br>Adding more and more levels of abstraction will slow things down. You want
+the thinnest layer between the game and the EAPI. And you would hope that
+the EAPI is the thinnest layer to the 3D hardware. A thin layer is a
+high-level interface. I know this sounds backwareds, but hear me out.<br><br>Consider an over-simplified LAPI interface that has only three function
+calls:
+<blockquote>
+ <li> displaySetup()
+ <li> renderObject()
+ <li> manageTextures()
+</blockquote>
+In a design like this, the game has less to worry about. It doesn't need
+to worry about texture caching, for example, since the manageTextures()
+will take care of it. But more importantly, the manageTextures() was
+written for a specific EAPI so it has full freedom to optimize
+specifically for any given EAPI.<br><br>The advantage to a renderObject() call rather than rendering by primitives
+is that the data for an entire object is passed in at once, rather than
+many calls to pass in lots of little pieces of data. This is the same
+philosophy behind 'display lists' in OpenGL -- which have proven to be
+faster. And, again, rendering by object is simpler for the game code.<br><br>Not only is the game code simplified, but so is the LAPI code. The LAPI
+code is given more freedom to do it's job, rather than trying to mangle a
+LAPI into an EAPI. For example, if you chose a LAPI interface similar to
+OpenGL, you'll have a difficult time interpreting that into DirectX calls.
+To handle them both well, you'll need a least-common-denominator API (i.e.
+high-level.) This doesn't mean that you're limited to
+least-common-denominator functionality, though.<br><br>When you pass in your object (to renderObject()), there is a LOT of data
+there. This data contains the vertices (possibly shared) along with the
+polygons (or other primitives.) Each polygon might have a couple of
+texture layers (a texture & a light map for example.) Each texture layer
+will have the blending modes associated with it, so that the LAPI can
+properly render what you want.<br><br>If you're still following me, you'll notice how we've moved from a "code
+heavy" API to a "data heavy" API. Meaning, most of the feature set is in
+the data, not in functino calls. This allows the LAPI to optimize better,
+and it also allows it more freedom on how to handle situations where a
+requested feature (such as an alpha blending mode associated to a texture)
+isn't supported. This is how you relieve yourself from that dreaded
+least-common-denominator functionality.<br><br>So all the game needs to do is to fill in the data at the highest level of
+interpretation and pass it to the LAPI. The LAPI decides how best to
+filter that data down to the EAPI.<br><br>To help clarify, here's another quick example: Given such a high-level
+interface, you'll probably want to pass in untransformed vertices to the
+LAPI, so that the LAPI can either let the hardware do the transforms, or
+do the transforms itself. Let the LAPI choose the best way to do things.
+Again, the high-level interface proves itself to be the logical choice.<br><br>Of course, you'll never get away with a 3-call API. :) But start there,
+and only add the calls you really NEED.<br><br>Simplification is a <b>good</b> thing.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

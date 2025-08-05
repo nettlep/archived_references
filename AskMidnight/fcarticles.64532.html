@@ -1,0 +1,229 @@
+<html>
+<head><title>flipcode - Background Level Loading</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Background Level Loading</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' +  'jamesbotkin' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '@' + 'hotmail' + ''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++ 'com\">' + 'James Botkin' + '</a>')</script> (17 November 1999)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+   I'm just a newbie with 3d graphics engine development, but i am trying to 
+do one special thing with my game engine that no one else (that i've heard 
+of) has done before. I call it 'background loading'. I want to be able to 
+load the 'next' approaching level of a world as the player in the game is 
+approaching it. For instance: what Half-Life and Quake2 do... but without 
+the damm 10-30 second wait for loading).<br><br>   Many say this is impossible. I think everything is impossible until it 
+has been done eventually by someone.<br><br>   My graphics engine deals with Quake 1/2/3, HL, Hexen, etc... .MAP files. 
+(there is no BSP information) I'm looking at using Octree-based portals. Any 
+ideas on how to 'background load' a level with NO wait time?
+   Another thing that sparked my interest in this was the mention of the new 
+GeForce cards that will be out on the market soon enough. (More free CPU 
+power to background load)<br><br>   So far, when the player approaches a point in the next level, i think i 
+might run a thread that loads more MAP information into the brush/vertex 
+lists. But when i run this thread, i want the loading to be slow enough to 
+'divy-out' enough processing power to the actual rendering engine so things 
+don't slow down...<br><br>   I guess this might be more of a question of how to work with threads, but 
+i also want to know if you experts have any other advice or ideas on how to 
+'background load' a level with NO wait time. Thanks for any help,
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+It's quite possible. Though, in most cases there will always be SOME
+affect on the frame rate simply because IDE drives steal a lot of
+processor power.<br><br>Consider just about any flight simulator. They don't stop and say "loading
+next continent, please wait." :) Having just released a flight simulator,
+I can say that you might wish to avoid loading in a separate thread.
+Simply put the loading in the main game loop, loading little bits and
+pieces at a time.<br><br>In any case, you'll need to be able to load a little, render a frame, and
+load a little more.  You can temper the amount you load by only loading...
+say... 4096 bytes at a time (ideally, the size of a single cluster). This
+way, you get as much data in a chunk as you can without suffering a lot of
+thrashing for fragmented files.<br><br>You might also determine that 50ms is the longest you're willing to give
+each load cycle. With this, you can keep a running average as to how long
+it takes to load each chunk, and decide if you have time to read another
+chunk before your 50ms runs out. Then simply call this timed loader once
+every second. If you can acheive this, you'll drop a 20FPS frame rate down
+to 19FPS (I doubt few people will ever notice this.)<br><br>To aid in the success of this, you'll need to store your data linearly and
+as tightly packed as possible. And remember, it's almost always faster to
+load/decompress than to load the whole amount of data from disk (depending
+on the decompression, of course.)<br><br>Once you have all of this working, you'll need to find some way to make
+sure that by the time you need the data for the next level, it's already
+loaded. But this is application specific, so I can't really help very much
+here.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

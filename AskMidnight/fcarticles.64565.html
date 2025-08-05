@@ -1,0 +1,324 @@
+<html>
+<head><title>flipcode - Simplification Algorithm</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Simplification Algorithm</b><br>
+<font size=2>Question submitted by <a href="mailto:">Bart van Hest (DaBit)</a> (21 June 2000)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I am writing an octree-based 3D engine. For calculating the visible set 
+of polygons, I use a c-buffer based algorithm. It works as follows: Each 
+octree node's bounding box that is in the frustum is tested against a 
+c-buffer, in front-to-back order. If this node contains triangles, the 
+triangles are sent to the rendering stage, and a simplified model of the 
+triangles in the node are sent to the c-buffer, so this node can occlude 
+other nodes. Rendering all the triangles is no problem for the modern 
+T&L enabled 3D hardware, but it is a burden for the software transform 
+and span generation in the c-buffer section (I'm targetting >50k 
+triangles/frame). This is why I need a simplified version of the 
+geometry. <br><br>But the simplified geometry needs a property which none of the 
+algorithms I have searched for can assure me: the silhouette seen from 
+any possible direction of the simplified data must be as large or 
+smaller than the silhouette seen from the original data. If this is not 
+the case, the simplified geometry rendered into the c-buffer might 
+occlude triangles which would be visible when the original geometry was 
+rendered into the c-buffer. <br><br>Do you know how I can simplify my geometry and fullfilling the described 
+property? 
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Try this...<br><br>Warning: I'm making this up as I go along... so decide for yourself how valid
+you think this answer is.  :)<br><br>First, pre-calculate the convex hull of the object. This is guaranteed to
+completely enclose your object. Ideally, you want to test the silhouette of the
+convex hull against your c-buffer. Because it's a silhouette of a convex hull,
+your silhouette ends up being a single convex polygon.<br><br>During runtime, you can quickly determine the silhouette of the convex hull when
+you perform back-face culling; any edge that separates a front-face polygon and
+a back-face polygon is an edge from the silhouette. Once you have a list of
+edges, project them and sort them in order of top-to-bottom (in screen space).
+If you're not familiar with convex polygon rendering, check out <a
+href="deadend.html">this</a> article.<br><br>This isn't the best-case scenario, because objects with large holes in them
+(such as a scene full of hula-hoops) would end up with poor visibility results
+since the convex hull would completely encompass the object and the hole. For
+complex objects that suffer from this case, you can create a series of smaller
+convex hulls that better approximate the object.<br><br>To do this, visit each polygon in the object, and split the object on that
+polygon. Each time you find a split, keep track of the total surface area of all
+polygons on each half of the object. You'll want to find the polygon that splits
+the object into two equally sized pieces (or as close to this as possible.)
+Recursively repeat this process on both pieces, choosing a polygon from each
+piece that results in the best split.<br><br><center><img src="am_simple01.png" width=600 height=210></center><br><br>Figure 1: In the [poorly drawn] example on the left, you see an object with a
+hole. The silhouette is highlighted. The first edge is located that splits the
+objects (as closely as possible) into two equally sized pieces. You can see this
+split on the right, indicated by the white line. From those two remaining pieces
+(on either side of the white line) you see two cyan lines, which were used to
+split each sub-object. Referring back to the object on the left, you will notice
+that each split takes place along an existing edge. This extends perfectly into
+three-dimensions using polygons instead of edges.<br><br>If you continue to do this recursively, you'll eventually reach a point where
+there are no concave pieces, because a completely convex object will not split
+on any of its polygons. In other words, you've generated a set of completely
+convex objects that, when combined, form your complex object.) From these, you
+can determine a set of convex hulls that define your object precisely. You can
+use these convex hulls to determine the visibility of your object, while using
+the original object geometry to render.<br><br>You may find that in many cases, your set of convex hulls will eventually end up
+with just as many (if not more) polygons than your original object. This is
+where visibility conservation comes into play. During the recursive subdivision
+process, you may decide to stop splitting, if your ratio of the total surface
+area from one side to the other reaches 10% or lower. For example, the best
+split results in only 10% of the total surface area on one side, and 90% on the
+other side. If you play with this, you may find a good threshold.<br><br>You may find better results if your threshold is based on the total number of
+polygons needed to represent the set of convex hulls. For example, a 400-polygon
+model may be represented by 30 convex hulls (consisting of ~400 polygons total)
+for a perfect fit, but only 10 convex hulls (consisting of only 100 polygons)
+for a nearly perfect fit. In this case, the ratio of object polygons (400) to
+total-convex-hull polygons (100) is 4:1. Play with this threshold, and you may
+find good results.<br><br>Don't be afraid to explore other avenues. The first obvious choice would be a
+combination of these two, with different thresholds for each. Is it possible to
+dynamically choose thresholds for each object automatically? This could result
+in an excellent adaptive technique making the whole process return ideal results
+in every case.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23884">Simplification Algorithm</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193375">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Actually, convex hull isn't quite what the original poster wanted -- it will enclose the original mesh but for occluding other polygons, you want simplified geometry which is enclosed by the original mesh.  Check out Hughes Hoppe's paper on Silhouette Clipping at <a target="_blank" href="http://www.research.microsoft.com/~hoppe/">http://www.research.microsoft.com/~hoppe/</a>.  In it he presents a modification to his mesh simplification algorithm which guarantees that the simplified mesh encloses the original (not what the poster wanted) but he also points out a simple change which will guarantee that the simplified mesh is enclosed by the original (which is what the original poster wanted).
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=144">Douglas Muir</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>21 Jun 2000, 7:37PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23884&msg=193375#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23884&msg_quote=193375#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193375">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

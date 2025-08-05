@@ -1,0 +1,633 @@
+<html>
+<head><title>flipcode - Lightmap Storage</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Lightmap Storage</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++ '' + '' + ''    
++''    
++''    
++ 'Virtual.BLooD' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '@' + 't-online' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++ 'de\">' + 'Maik Lathan' + '</a>')</script> (06 June 2000)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I'd like to implement light mapping in my 3D-Engine. Light mapping is not my
+problem, but the storage of the Lightmaps. Everybody says that you should use a
+16:1 ratio for your lightmaps. I think that's not good for every poly because
+your lightmaps are stretch for every poly. If you have a big poly then your
+lightmap texels are very big, or if you have a small poly then your lightmap
+texels are very small. You can calculate an individual lightmap ratio for every
+poly. Primarily I would use Memory-Banks of 256x256, and a lightmap ratio of
+16.1 so I can put 256 lightmaps in one bank.  But if I calculate an individual
+lightmap ratio for every poly then I can get or better I get different lightmap
+ratios. So I can't put 256 in one Memory-Bank or maybe the ratio is greater as
+256 than I can't create a lightmap in a Memory-Bank. I experimented with
+Quake3Arena and Quake and I found out that the lightmaps of all polys (small
+polys, big polys) consist of the same sized texels. How do they perform this? I
+think I need a sort algorithm, to find the best structure of the different sized
+lightmaps in the Memory-Banks. Is the way the right?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Your solution is hidden in the mapping, not the storage of those lightmaps. I've
+covered this a couple times before, but not to my satisfaction. Let's try this
+again...<br><br>Ideally, you want your lightmaps to be relative to space, not the size of the
+polygons they cover. In other words, you want your light map resolutions to be
+"one texel equals one square centimeter, regardless of how big the polygon is"
+or something similar. This is called "texel density". There is an inherent
+problem by going with this, and that is the problem of a polygon that is so
+large that it requires a texture larger than your maximum texture size (for
+example, 256x256.) The solution to this is to find these situations and split
+the polygon into multiple pieces, each of which being no larger than your
+largest texture size. I know that at least KAGE & Quake both do this. I won't
+cover this here, but I will cover the mapping process. Once you understand the
+mapping process, you should be able to figure out the process to split the
+problem polygons that extend past the maximum size of a lightmap.<br><br>The trick is to use world-space coordinates to do your mapping.<br><br>By using world-space coordinates, you also solve another tricky problem. As far
+as I can tell, this is the only way to solve this problem properly. The problem
+I'm referring to is the problem of lightmap seams between abutting polygons.
+Unless you get the lightmap texels lined up perfectly between two polygons,
+you'll get seams. This problem is easily solved for boxes, but what about
+non-orthogonal geometry? What about light mapping a sphere? If you line up the
+lightmaps on two polygons from a sphere, you'll throw off the alignment of other
+neighboring polygon's lightmaps.<br><br>The trick is picking the proper UV coordinates for your lightmaps. This process
+is actually quite simple and automatic process of planar mapping from the
+orthogonal axes.<br><br>Think of it as if you're viewing a polygon that is directly facing the camera.
+If you were to gradually rotate this polygon away from the camera, it would
+occupy less and less screen space, until it was infinitely thin (i.e. at a
+90-degree angle to the camera.) We want to map the polygon from the axis that
+sees the "largest view" of the polygon. By doing this, we get the most detail
+mapped onto our polygon with as little "stretching" as possible. Stretching is
+bad, yes, but in this case, it's necessary. It's this stretching that allows us
+to properly map a sphere with the texture and avoid the seams. Without
+stretching the texture at least a little, we would not be able to map a sphere
+with a series of flat textures that all line up at the edges of the polygons.
+But we want to minimize the stretching as much as possible, so we apply our
+mapping from the axis that "sees" the most of our polygon (i.e. the polygon's
+primary axis.)<br><br>By primary axis, I mean if the polygon faces mostly forward, mostly up, or
+mostly to the right (or the inverse of any of these.) To do this, we simply need
+to get the polygon's normal (x, y & z) and find the largest value. The largest
+value is the direction that the polygon primarily faces (i.e. it's primary
+axis.) So if the polygon's normal's X is larger than its Y or Z, then the
+polygon primarily faces along the X-axis.<br><br>To extend this, let's consider a polygon that faces directly along the X-axis.
+This polygon will have no deviation from vertex to vertex in the X direction. In
+other words, the X coordinate of all vertices in this polygon will all be equal
+(this polygon lies flat on the X plane.)<br><br>Extending this even further, we find that if we were to throw away the X
+coordinate of the polygon's vertices (remember, they're all equal in this case)
+we're left with a 2D polygon, using the Y and Z components of each vertex. If
+you were to visit each vertex and copy these Y and Z world-space coordinates
+into its U and V coordinates for the polygon's lightmap, you've just mapped the
+polygon in a planar fashion along the X-axis.<br><br>But not all polygons face directly along their primary axis. The polygons that
+are slightly rotated away from their primary axis (up to 45 degrees) will have
+stretched texels. But this stretching is necessary. And the stretching is never
+more than a 2:1 ratio at it's worst. This is actually, hard to notice. Did you
+noticed this when looking at Q3Arena? It's there.<br><br>We're not done yet. We've still got two problems to solve. First, we've simply
+copied the Y and Z world-space components over. This gives us a 1:1 correlation
+from world-space density to lightmap density. In other words, if one unit in our
+world space were one meter, this would mean that a lightmap texel would be one
+square meter in size. So we need a way to scale it. I do this by simply
+multiplying the resulting lightmapping UVs by a scalar. If we wanted our final
+lightmap density to be one square centimeter per lightmap texel, then we would
+divide our UVs by 100.0 (or, multiply by 0.01) since one centimeter is 1/100th
+of a meter. This scales our lightmaps to be the density that we want. By
+applying this process to every polygon in a scene, we get automatic lightmap
+mapping of the entire scene that will never have a single seam in the lightmaps.<br><br>Here's a pseudo-code snippet of the process up to this point:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+<font color="#0000ff">void</font> Polygon::calcLightMapCoords(<font color="#0000ff">double</font> density)
+{
+    <font color="#007f00">// Calculate the |Normal| of the polygon, using
+</font>    <font color="#007f00">// the polygon's normal (this does an ABS() on each
+</font>    <font color="#007f00">// element of the normal)
+</font>
+    Vector  absNorm = normal.abs();<br><br>    <font color="#007f00">// Does the polygon primarily face along the X-axis?
+</font>
+    <font color="#0000ff">if</font> (absNorm.x >= absNorm.y && absNorm.x >= absNorm.z)
+    {
+        <font color="#0000ff">for</font> (each vertex in polygon)
+        {
+            vertex.lmap.u =  vertex.world.z * density;
+            vertex.lmap.v = -vertex.world.y * density;
+        }
+    }<br><br>    <font color="#007f00">// Does the polygon primarily face along the Y-axis?
+</font>
+    <font color="#0000ff">else</font> <font color="#0000ff">if</font> (absNorm.y >= absNorm.x && absNorm.y >= absNorm.z)
+    {
+        <font color="#0000ff">for</font> (each vertex in polygon)
+        {
+            vertex.lmap.u =  vertex.world.x * density;
+            vertex.lmap.v = -vertex.world.z * density;
+        }
+    }<br><br>    <font color="#007f00">// The polygon primarily face along the Z-axis
+</font>
+    <font color="#0000ff">else</font>
+    {
+        <font color="#0000ff">for</font> (each vertex in polygon)
+        {
+            vertex.lmap.u =  vertex.world.x * density;
+            vertex.lmap.v = -vertex.world.y * density;
+        }
+    }
+}
+ </font></pre></td></tr></table></div></center><br><br>But we're still not done... Since we're just copying in world-space coordinates
+(and scaling them), we will most likely end up with UVs that are way out of
+range.  We might end up with UVs for a single polygon that range from
+[1000-1004] in U and [6000-6100] in V. The size of this map is only 4x100, but
+the values are way out of range, so we need to translate them. This is as simple
+as finding the minimum U and minimum V and subtracting that from the rest. In
+this example, we would subtract 1000 from all the Us and we would subtract 6000
+from all the Vs. This gives us a new set of ranges: [0-4] in U and [0-100] in V.
+Those are manageable. If our ranges ever exceed 256 (or your maximum texture
+size) then this is where you'll need to split the polygon.<br><br>Are we done yet? Nope. When we subtract the minimum values from our texels, we
+translate the upper-left corner of our lightmap texture to be relative [0,0].
+But we didn't take the floating point precision into account. If, for example,
+our range in U was actually [1000.5-1004.5], then we've placed the center of
+that texel at [0,0]. This is not what we want. Also, we need to work on a fixed
+grid (as opposed to a floating-point grid) to avoid those seams. So before we do
+the subtraction, we simply need to run the minimum U and V through floor(). This
+aligns our texels on a 2-Dimensional grid on it's primary axis. This grid is
+what helps us avoid the seams for neighboring polygons - they all map to this
+same grid as a reference point.<br><br>When people say to use a mapping of 16:1, they mean that you want a single
+lightmap texel to be equal to a 16x16 grid of texture texels. But this only
+works if your textures have a similar world-space mapping technique. This
+technique works for textures as well, just pass in a different density (for 16:1
+mapping, use a density that is 16 times greater than the one you use for your
+lightmap UVs.)<br><br>I recommend using this technique for textures and lightmaps. It's useful when
+trying to avoid seams in your textures as well as your lightmaps. It also keeps
+things manageable. I've had many cases where an artist mapped a surface with a
+texture that was so dense, it required over 100MB of surface caching space
+(remember the old days of software surface caching?) I was forced to use this
+technique on my textures to avoid this problem. By using this on textures, I
+found that everything has a uniform texture density (this makes for some
+good-looking results.) Of course, you'll want to provide a method for adjusting
+the automatically mapped textures, so you can line your textures up with your
+geometry. But it's the density that matters, and this technique gives you a
+great starting point.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23872">Lightmap Storage</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193321">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Very well done Paul. But i still have a question, which looks important to me, unless i'm missing something. Just imagine a cube. Take one of its face. Using your algorithm, we can find the u/v coordinates in the lightmap. Fine. Now, try the same for the exact opposite face. It has an opposite normal too, but since the algorithm uses ABS, it uses the same projection and you'll finally end up with the same u/v coordinates. So.. how do you deal with polygons which are mapped at the same position on the lightmap ?<br>Do you detect that the position is already filled ? If so, if you place the polygon on another lightmap, what will happen for the seams ?<br>Really wondering...<br><br>Y.<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=55">ysaneya</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>07 Jun 2000, 3:34PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23872&msg=193321#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23872&msg_quote=193321#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193321">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193322">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: lightmapping</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    I faced this problem too, and I solved it by using another texture map in these cases. <br>However, in my engine this is a rare situation since when I use a box for a wall, for example,<br>the never visible parts of the box get culled during scene preprocessing anyway.<br><br>When you implement this, you have to be very careful to avoid seams in your lightmaps. <br>I am sorry that I cannot give you working code since I switched to (both preprocessed <br>and dynamic) vertex lighting, which should be feasible with modern T&L hardware.<br><br>Good luck,<br>DaBit.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=65">DaBit</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>08 Jun 2000, 10:50AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23872&msg=193322#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23872&msg_quote=193322#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193322">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193323">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Using ABS</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Y -<br><br>The example was pretty highly modified. The original code would reverse the direction of individual U or V coordinates depending on the sign of the largest value of the polygon's normal.<br><br>In your cube example, a face would be chosen by it's primary axis. Let's assume this was the face along the right side of the cube. The normal for this face would be [1, 0, 0]. The primary axis is X, so we use the sign of the X component of the normal (positive). The opposite face would be the left face, with a normal of [-1, 0, 0]. Same axis, but the sign of the X component is now negative.<br><br>In the case of faces with a primary axis of X, we would assign the U coordinate to Z and the V coordinate to Y. However, if the primary axis component is negative, we simply invert the resulting U coordinate. The effect of this, is that it allows you to rotate an auto-mapped cube and see the texture on both faces properly. Without doing this, one texture would be backwards.<br><br>Your question also makes me think that I didn't explain something very clearly. You asked "how do you deal with polygons which are mapped at the same position on the lightmap?" The answer I posted assumes that each polygon has its own lightmap, not each object.<br><br>You can avoid lots of little lightmaps by combining the lightmaps from planar polygons into one. For example, one lightmap for a flat tesselated surface. Another case would be using a single lightmap for a complex polygon that is comprised of a number of triangles (you'll notice that this is basically a flat tesselated surface.)<br><br>- MidNight
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=81">MidNight</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>10 Jun 2000, 4:23PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23872&msg=193323#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23872&msg_quote=193323#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193323">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193324">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Re: Ask MidNight</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    A comment to an old thread.  I was looking through the recently released quake 3 tools source, and in q3map, you can see how JC packs lightmaps into one texture, I was, uh, inspired by it and got it working for me in a couple of hours.  It ends up making pretty good use of the texture space.<br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=61">Mitch</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>06 Jan 2001, 2:28AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23872&msg=193324#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23872&msg_quote=193324#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193324">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

@@ -1,0 +1,520 @@
+<html>
+<head><title>flipcode - Moving The Player</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Moving The Player</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++ '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++ 'ramkripal' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '@' + 'rediffmail' + ''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'com\">' + 'Ram Kripal Singh' + '</a>')</script> (21 January 2002)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+i m a kid in games programming. though i use direct3D while desiging my
+demo programms and thus have some knowledge of Matrices and their
+manipulation methods available in Direct3D.<br><br>but now i want to develope a fps - game like programme in which movement
+of camera in controlled by keyboard. though i have knowledge of force
+feedback through directinput i m realy having problems while drawing my
+projections on screen after user have changed the location of camera.
+when user pressed forward key i need to handle that by drawing camera
+velocity units + current position.<br><br>please help me how can i move, rotate, jump the camera according to keys
+pressed?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+If you've got even the most basic knowledge of matrices and how to use
+them, then you've already won half the battle. Sometimes, it's just
+tricky to pull the pieces together to get the end result you're looking
+for.<br><br>Let's start by defining the exact behavior we want. You said you were
+developing an FPS and that has a fairly popular interface which can be
+coded fairly simply as long as we understand it. Our chief principle is
+rotation .... rotation and movement .... movement and rotation .... Our
+two principles are movement and rotation .... and looking up & down ....
+Our three principles are movement, rotation and looking up & down ....
+and an almost fanatical devotion to jumping .... Our four .... no ....
+Amongst our principles .... are such elements as movement, rotation ....
+I'll come in again.   [exit stage left]<br><br>For those non-Python fans out there, let's state this a bit more
+clearly: rotation, movement, looking up/down and for dessert, we'll have
+just a smidgen of jumping.<br><br>We'll only need a few variables to pull this off. We'll keep track of
+the player's location (3D point), his look up/down angle in radians (a
+single float) and his turning rotation angle in radians (a single
+float.) We will not, however be required to store the matrix because
+we'll rebuild the matrix every frame.<br><br>At the beginning of every frame, we'll start with an identity matrix --
+this will be our working matrix. At various steps along the way, we'll
+apply the proper rotation and translation to this matrix based on the
+user input. The end result will be a proper transform we can use for
+player control of a single frame of animation.<br><br>As we enter a frame of animation, we'll gather the user input (via
+mouse, for example) and translate that to degrees. There are a
+<i>lot</i> of ways to do this, but for the sake of simplicity, we'll
+simply scale the input; every 10 mouse ticks will be 1 degree of
+rotation. Note that our rotation is positive when the mouse is moved in
+one direction and negative when moved in the other direction. We'll then
+translate this into radians and add it to our stored variable (his
+turning rotation angle.)<br><br>From this, we'll build a matrix that contains rotation on the Y axis
+only with the amount of rotation being that of our stored variable (if
+you're not sure how to build a Y-specific matrix, I'll cover this
+later.) This is our first rotation matrix. We'll concatenate it with our
+working matrix (which is currently still just an identity matrix.)<br><br>Before we go any further, let's grab the player's movement vector. This
+is the direction the player will move when the user asks him to. This
+vector is quite simply the Z vector of our working matrix (think of a
+3x3 matrix as three 3D vectors -- we want the Z vector.) Set this vector
+aside, as we'll need it for movement later.<br><br>Our next step is to apply the look up/down. This works just like the
+rotation; we gather the input, translate it into a positive or negative
+look up/down angle, convert it to radians and add it to the stored
+variable. Our previous rotation is not limited (we can continuously turn
+to the left or right until our mouse falls apart), but this is not the
+case for look up/down (we're not allowed to tilt upward or downward,
+further than straight up or straight down.) So we'll need to take our
+final result and clamp it. We'll be clamping it between -(PI/2) and
++(PI/2). This will allow our player to look all the way straight up and
+all the way straight down (but no further.)<br><br>From this, we build a new matrix that contains rotation on the X axis
+only with the amount of rotation being that of our stored variable
+(again, if you're not sure about how to do this, I'll cover it later.)
+We can now concatenate this with our working matrix (which currently
+holds our turning left/right rotation) and we'll end up with a matrix we
+can use for proper player camera view angles.<br><br>Before I go on, it's important to note the order in which these two
+rotations are performed - don't do them in reverse order, or your camera
+might get lopsided.<br><br>It's time to deal with movement. Go get that vector that you set aside
+(you know... the one that came out of the first matrix we calculated.)
+Where did that come from? Why did we save a piece of a matrix and what's
+it for? Well, with simple orthogonal matrices, the third column/row is a
+vector that will point in the direction that you will be looking, if you
+were to use that matrix as a camera rotation matrix. Therefore, this
+vector points in the direction that we'll be facing after we've applied
+our rotation. It's important to set this vector aside before we apply
+the look up/down rotation, because otherwise, our direction vector may
+point up or down as well -- which would be useful for a 'flying' mode,
+but not the usual stuff.<br><br>Time for movement; I'll assume you've already got an idea of how you
+want the user to specify movement and that you already know how far to
+move the player (in world space) -- you just need to know how to apply
+it. We'll start by applying that movement distance to the direction
+vector (the one we yanked from the matrix). Simply set the length of the
+matrix to the distance (if you're not familiar with how to do this, you
+can cheat by simply normalizing the vector and then multiplying each
+component in the vector by the world-space distance you want your player
+to move.) This resulting vector is known as the <i>velocity vector</i>
+-- it's the direction and distance to move the player in a single frame.<br><br>Applying this movement is trivial -- you simply add the velocity vector
+to your player's current position (which we have conveniently stored in
+a 3D point.)<br><br>I mentioned that I would cover those X-specific and Y-specific
+rotations. Most texts will cover this clearly, but for reference, I'll
+include them here:<br><br><center><img src="askmid-01212002-fig1.gif"></center><br><br>Finally on our list is jumping. This is a different beast entirely. In
+order to implement proper jumping, you need gravity. Gravity thus
+implies collision detection (though not necessarily.) So rather than try
+to cover it here, I'll defer you to some example source you can use to
+look at an implementation of all of the stuff described here, and even
+peek at how jumping and collision detection are done. You did ask for
+source, didn't you? :)<br><br>It's the collision detection demo/source I released sometime last year.
+You can find it <a
+href="http://www.FluidStudios.com/publications.html">here</a> under the
+link titled <i>A demonstration of the enhanced Fluid Studios collision
+detection algorithm</i>. For the stuff pertaining directly to this
+article, look in render.cpp and find the Render::animate() routine.<br><br>Before I let you go, I'd like to point out another Ask MidNight article
+that covers a method for smooth user input filtering (available <a
+href="deadend.html?showThread=26June2001-SmoothMouseFiltering&forum=askmid&id=-1">here</a>) that also includes a running
+demo and may add some insight into the stuff described in this article.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23919">Moving The Player</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193764">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Great response.<br><br>It reminded me a lot of when I first worked with matrices and cameras.<br><br>What made things simpler for me, was to get into the way of thinking that there really is no camera.  Moving the camera right is equivalent to moving the scene left.<br><br>- Pete
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1168">Peter Mackay</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>22 Jan 2002, 7:07AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23919&msg=193764#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23919&msg_quote=193764#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193764">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193765">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    According to Peter this is a very good answer <br><br>But i want to add something : <br><br>If you are like me : at school don't hesitate to ask your math teacher ... <br>Mine gave me an answer to this question ...
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=3930">DxAvatar</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>22 Jan 2002, 9:13AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23919&msg=193765#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23919&msg_quote=193765#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193765">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193766">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Pretty obvious stuff, but remember for a FPS you'll probably want to rotate about the player's local space right vector for look up/down and rotate about the world space up vector for left/right - this will probably involve translating the player to the world origin, rotating him, then translating him back.<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=689">Rompa</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>18 Jun 2002, 4:55AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23919&msg=193766#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23919&msg_quote=193766#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193766">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

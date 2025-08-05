@@ -1,0 +1,784 @@
+<html>
+<head><title>flipcode - Constructive Solid Geometry</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Constructive Solid Geometry</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' +  '' + '' + ''    
++''    
++''    
++''    
++''    
++ 'admin' + ''    
++''    
++''    
++''    
++''    
++ '@' + 'daedalusd' + ''    
++''    
++ '.' + ''    
++ 'com\">' + 'Adam Hoult' + '</a>')</script> (13 November 2000)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I have a question which I hope you will be able to answer for me (or
+at
+least point me in the right direction). It's to do with Constructive Solid
+Geometry. Im currently writing an editor for my engine which is very similar
+in most respects to worldcraft. Now what I need to do is to have the ability
+to CARVE one object from another, for example, if I have a solid cube, and i
+place a cylinder partially inside that cube, and hit CARVE, it will subtract
+the shape of that cylinder from the cube. This will be entirely in the
+editor, so i need to know how to split my geometry/faces up to subtract (and
+maybe even add at a later date) brushes from/to other geometry. The only
+example I have ever seen which touches on this subject, uses BSP trees to do
+a lot of the work, but I'm not using BSP trees at all.<br><br>Hoping you can shed any light on this huge void of information =)
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+
+I wasn't using BSP trees with my work. Looking back, I'm not convinced that I
+made the right decision. You should investigate them both and choose for
+yourself. In the meantime, I'll explain what I know about the Laidlaw approach,
+which does work very well.<br><br><b><i>Closed Objects</i></b>
+<hr noshade>
+When calculating the result of a Boolean Operation, it's important that both
+input objects (we'll call them A and B) are completely closed. By this, I mean
+that each object must define a closed surface with shared (or "merged")
+vertices. If your object contains a t-junction, your object is not technically
+closed.<br><br>One way to determine if an object is closed, is to visit each polygon and make
+sure that each edge of that polygon shares an edge with another polygon. If you
+find an edge that's not shared, then the object is not closed. A shared edge is
+defined as two vertices from one polygon are shared with two vertices from
+another polygon, with opposite winding order between the two edges:<br><br><center><img src="fig2.gif"><br><b><font size=1>Figure 2: Opposite winding order for shared edges </font></b></center><br><br><b><i>Splitting Up The Objects</i></b>
+<hr noshade>
+In order to perform any Boolean Operations, we need to bisect the polygons of
+each object that intersect polygons of the other object. To clarify, this means
+that if a polygon from object A intersects a polygon from object B, then both
+polygons need to be bisected by one another: object A's polygon is bisected by
+the plane of object B's polygon, and object B's polygon is bisected by the plane
+of object A's polygon. The trick is, you only need to do this when there is an
+actual intersection of the two polygons. There are a few ways of going about
+doing this, but I'll describe a simple technique.<br><br>Start by making two copies of each object; we'll call these objects A' and B'.
+We'll need to do this because we'll be replacing polygons with the multiple
+pieces from any bisection that takes place.<br><br>Visit each polygon in A' and compare its bounding box with the bounding box from
+each polygon in B'. If no overlap exists, then there's no intersection (and no
+bisection is required.) If there is an overlap, go ahead and attempt to bisect
+each polygon by the other polygon's plane. If both polygons end up being
+bisected, then replace the original polygons from both objects with their
+bisected counterparts. However, if one polygon or the other ends up not being
+bisected, then leave both polygons unmodified.<br><br>A' and B' are now 'refined' for the Boolean Operations. The only thing left to
+do is to figure out which polygons from each object is part of the result.<br><br><b><i>Quick Recap</i></b>
+<hr noshade>
+At this point, we have two closed objects that probably share some volume
+between the two (i.e. they're embedded.) At every point where the surfaces of
+the two objects penetrate each other, we've sliced the surfaces of the objects.<br><br>What we need to do now is to remove the polygons that don't belong. Some
+polygons are removed because they are interior polygons (i.e. polygons from one
+object within the volume of the other object) and some polygons are removed
+because they are exterior polygons. Depending on the Boolean Operation being
+performed, one group of polygons or the other from each object will need to be
+removed. For example, if we're trying to subtract object B from object A, part
+of the task is to remove the polygons of object A that are within the volume of
+object B.<br><br>If you want your Boolean operations to be robust, you'll also need to detect and
+deal with shared polygons. Shared polygons are those polygons that overlap, as
+in figure 3:<br><br><center><img src="fig3.gif"><br><b><font size=1>Figure 3: A situation where two embedded objects have polygons that share surface area. </font></b></center><br><br>Note that because these polygons lie on the same plane and overlap, we see
+artifacts in the z- buffer. Also note that these polygons only partially
+overlap. Fortunately, after we slice up our objects, we'll end up with polygons
+that are completely overlapped, or not overlapped at all. Because of this, these
+polygons are easy to detect (the normals and the D values of both polygons are
+all within an epsilon distance.)<br><br><b><i>Removing The Unnecessary Polygons</i></b>
+<hr noshade>
+The basic premise of this next step is to remove polygons from our refined
+objects (A' and B') that correspond to the result. The result, in this case,
+depends on the Boolean Operation being performed.<br><br>Here are the necessary operations:
+<blockquote>
+<b>Subtraction</b>
+<blockquote>
+<li>Remove polygons from A' that are within the volume of B (remove shared).
+<li>Remove polygons from B' that are outside the volume of A (remove shared).
+<li>Invert the normals of the remaining polygons from B'.
+<li>Merge A' and B' to get the result.
+</blockquote>
+<b>Union</b>
+<blockquote>
+<li>Remove polygons from A' that are within the volume of B (remove shared).
+<li>Remove polygons from B' that are within the volume of A (keep shared).
+<li>Merge A' and B' to get the result.
+</blockquote>
+<b>Intersection</b>
+<blockquote>
+<li>Remove polygons from A' that are outside the volume of B (remove shared).
+<li>Remove polygons from B' that are outside the volume of A (keep shared).
+<li>Merge A' and B' to get the result.
+</blockquote>
+</blockquote>
+<i>
+Note 1: We are removing polygons from the refined objects A' or B' that are
+within/outside the original objects (A or B). This is not a misprint. Doing this
+increases our accuracy and reduces the amount of work required.<br><br>Note 2: In some cases we keep the shared polygons. This is necessary because the
+shared polygons from the other object are kept, and we can't simply delete both
+polygons (except in the case of subtraction.)
+</i><br><br>Before we can consider our overview of Boolean Operations complete, we need to cover one last topic... <br><br><b><i>Determining If A Polygon Is Interior, Exterior Or Shared</i></b>
+<hr noshade>
+To determine if a polygon is within the volume of an object, we'll need a ray
+that points outward away from the polygon, along it's normal. So we start by
+creating a ray that has its direction set to the polygon's normal and originates
+at the center of the polygon. We then locate all of the polygons from the test
+object to see which ones the ray hits. Note that we're only interested in those
+intersections that actually intersect the test object's polygons. This usually
+means that we need to perform a ray/plane intersection, and then determine if
+that point is within the boundaries of the test object's polygon.<br><br>Our goal is to locate the shortest intersection distance (usually referred to as
+'time') that is positive. Negative distances can be ignored.<br><br>Note that if time is within an epsilon to zero (i.e. |time| < epsilon) then the
+polygon is considered shared.<br><br>Once we know which polygon (from the test object) had the nearest intersection,
+we need to know if that polygon is facing our input polygon or not. If it is,
+(i.e. a dot product of the two normals is positive) then the input polygon is
+inside the test object. If the dot product is negative, then the input polygon
+is outside the test object.<br><br>It is quite possible that we might not find any intersection at all. This simply
+means that our polygon is outside the test object.<br><br>Note that on occasion, a dot product will be near zero (|dot| < epsilon). In
+these cases, it will be unclear as to weather the polygon is an interior or
+exterior polygon. A solution to this is to randomly perturb the normal of the
+ray slightly and try again. Because of this, it's wise to use the normal of the
+input polygon in the dot product calculation, rather than the normal of the ray,
+since the ray may have been perturbed.<br><br>This may seem like a rather extensive way to determine if a polygon is inside or
+outside of an object, but it is necessary because this allows us to perform
+Boolean Operations on non-convex objects.<br><br><b><i>Summary</i></b>
+<hr noshade>
+Rather than typing a lot, I'm just going to add some more images, to help visualize what's going on... <br><br><center><img src="fig4.gif"><br><b><font size=1>Figure 4: Composite of a subtraction operation </font></b></center><br><br>Figure 4 shows a composite of an entire Boolean Operation after bisections. In
+the upper-left corner, we have the interior (inside the cylinder) polygons of
+the box. The lower left corner shows the exterior of the box. The upper-right
+corner shows the interior (inside the box) of the cylinder and the lower-right
+corner shows the exterior of the cylinder. The center of the image shows each of
+the four pieces overlaid in their original positions with the interiors
+highlighted in red.<br><br><center><img src="fig5.gif"><br><b><font size=1>Figure 5: The result of a subtraction operation using the pieces from figure 4. </font></b></center><br><br><b><i>Helpful Features</i></b>
+<hr noshade>
+If you were implementing this for an editor, I would recommend adding a couple
+other painless features. First, add a "split" operation. A split performs the
+polygon bisections of an object by another object, but does nothing else. This
+offers your artists a very unique way to tessellate an object for easy
+manipulation.<br><br>Also, allow the Boolean Operation to keep either of the two input objects. If
+you think of the operation in terms of: "sphere – box = result" then the Boolean
+Operation usually calculates the result, and deletes the original objects.
+However, when doing many Boolean Operations, it might be wise to keep one or the
+other (or both) of the input objects.<br><br><b><i>In Closing</i></b>
+<hr noshade>
+Writing code to perform Regularized Boolean Set Operations is not trivial.
+Making it robust is tricky to say the least. And because of the need for
+epsilons, you may find that you will never get it exactly to your liking.
+However, know that even the advanced modeling packages today can result in
+disappearing objects as a result from accuracy loss during Boolean Operations.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23896">Constructive Solid Geometry</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193521">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Ok I should read the image of the day text next time before asking. But I became so happy with your post that I lost my mind...<br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=104">Strepto</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>13 Nov 2000, 12:19PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg=193521#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg_quote=193521#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193521">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193522">
+<a name="p193523">
+<a name="p193524">
+<a name="p193525">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    wrt. your point inside an object algorithm:<br><br>An alternative would be to set up a count variable (initially 0), then take your ray and test it with all polygons in the object.  For each polygon that the ray intersects (with a +ve time) increment the count variable.<br><br>When finished, the point is inside the object iff the count variable is odd.<br><br>No need for the comparisons or the dot-product test/ambiguity.<br><br>HTH<br><br>Matt<br><br>PS.  I think this'll work - correct me if I'm wrong :)
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=702">Matt</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>13 Nov 2000, 1:56PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg=193522#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg_quote=193522#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193522">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Constructive Solid Geometry</i></b> <font size=1>by Matt</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>11-13-2000 - 01:56PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23896&msg=193523">Re: Constructive Solid Geometry</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>11-13-2000 - 02:38PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23896&msg=193524">Re: Constructive Solid Geometry</a> <font size=1>by Strepto</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>11-14-2000 - 05:36AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23896&msg=193525">Re: Constructive Solid Geometry</a> <font size=1>by Matt</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>11-14-2000 - 06:21AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193526">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    I working , too an an 3d editor ... <br>I try to implement an sector-based systen , which are transformed to csg`s like in the unrealed ... then I can add detail csg`s ..<br><br>I think I have got an approach, which works accurate enough.<br><br>for csg- operations I transform my geomety (brushes) to a boundary representation using halve-edge-data-structures<br><br>I use the already metioned techniqe of odd / even surface hits.<br><br>the problem can then be reduced to face by face clipping and can be done in the 2 dimensional room.<br><br>My mainproblem is: I use multimesh brushes for an Lod algorithm, which makes the problem much more komplicated, but I think the face, by face projection in 2 dimensions makes it more easy...
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=186">M.Knuth</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>14 Nov 2000, 11:35AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg=193526#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg_quote=193526#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193526">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193527">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Paul,<br><br>Thanks for taking the time to write this HUGE response to my problem =) I didn't think that you were going to respond to it (I sent the e-mail way back on the 18th of July) so in the end I implemented a BSP type system, where a Mini-BSP tree is compiled for each brush, then with one small "ClipTree" function it does all the work relatively efficiently and very accurately....<br><br>I did spend a lot of time attempting to implement CSG operations without the aid of BSP trees, and eventually gave up when my "Cast a ray, and check if it intersects an odd number of Polys" didn't work when edges intersected two connected polys (as you correctly deduced in an earlier response ;)<br><br>And although I know the response wasn't just for me ( and that it will help a lot of people) I just wanted to say thanks anyway  =)<br><br>Adam
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=375">Adam Hoult</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>13 Dec 2000, 8:55PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg=193527#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg_quote=193527#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193527">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193528">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    An alternative to determining if your mesh is a closed surface is Euler's number.<br><br>V - E + F<br><br>V = number of verticies<br>E = number of edges<br>F = number fo faces<br><br>Euler's number is always 2 for a closed surface.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1503">Velo</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>21 Jan 2001, 8:07PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg=193528#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg_quote=193528#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193528">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193529">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    i've recently begun investigating CSG for landscape creation (instead of voxels) and this piece was very informative. however when coming to the part of shared polygons and when you clip the polygons against each other. will the polygons then not be clipped to far since they're parrallel and thus create a hole in the object? or should i cut polygon a with b (not object A,B) forming b' and then cut a with b' and create a' therefor still being neatly clipped without a hole?
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2220">cubicle</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>14 Jun 2001, 10:01AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg=193529#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23896&msg_quote=193529#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193529">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

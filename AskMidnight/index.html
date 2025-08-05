@@ -1,0 +1,975 @@
+<html>
+<head><title>flipcode - Question & Answer Articles</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="http://www.flipcode.com/"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="10" bgcolor="#303030" valign="top" align="center"><font face="Tahoma, Helvetica, Verdana" size=1><img src="ls-stilt.gif"></font></td>
+
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+<br>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><center><img src="logo_qa.png"></center>
+<center><table cellspacing=0 cellpadding=2 border=0 width="98%"><tr><td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td></tr></table></center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64474.html">Octree Neighbor Nodes</a></b> - <font size=1>Question by <b>Maxime Delorme</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64474.html#comments">10 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2002-06-17</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64473.html">Good Programming Practice</a></b> - <font size=1>Question by <b>Khrob Edmonds</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64473.html#comments">18 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2002-02-06</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64472.html">Moving The Player</a></b> - <font size=1>Question by <b>Ram Kripal Singh</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64472.html#comments">3 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2002-01-21</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64470.html">Solid Node BSP And Random Geometry</a></b> - <font size=1>Question by <b>Odin Jensen</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64470.html#comments">5 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2002-01-16</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64471.html">Question On Portals</a></b> - <font size=1>Question by <b>Georges Delorme</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64471.html#comments">20 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2002-01-15</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64469.html">N-Patches for Terrain LOD</a></b> - <font size=1>Question by <b>Ivan</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64469.html#comments">4 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2002-01-09</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64468.html">Interpolating Normals For Ray-Tracing</a></b> - <font size=1>Question by <b>AGPX</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64468.html#comments">6 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-09-21</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64467.html">Determining Free Video Memory</a></b> - <font size=1>Question by <b>Dirk Gerrits</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64467.html#comments">12 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-09-18</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64465.html">Splitting Plane Heuristics</a></b> - <font size=1>Question by <b>AGPX</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64465.html#comments">5 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-08-23</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64466.html">Octrees For Visibility</a></b> - <font size=1>Question by <b>Crestez Leonard</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64466.html#comments">5 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-08-14</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64464.html">3DS Camera Orientation</a></b> - <font size=1>Question by <b>Mikko Leppdnen</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64464.html#comments">7 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-07-23</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64463.html">Resource Management</a></b> - <font size=1>Question by <b>Leonhard Gruenschloss</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64463.html#comments">13 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-07-07</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64462.html">Smooth Mouse Filtering</a></b> - <font size=1>Question by <b>n/a</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64462.html#comments">19 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-06-26</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64460.html">Billboards And Transformations</a></b> - <font size=1>Question by <b>Henry Maddocks</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64460.html#comments">4 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-06-22</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64461.html">Plotting A 3D Point On A 2D Screen</a></b> - <font size=1>Question by <b>Adam Ward</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64461.html#comments">3 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-06-18</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64459.html">Lightmap Render States</a></b> - <font size=1>Question by <b>Eric Fortier</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64459.html#comments">1 Comment</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-06-12</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64458.html">Polygon Winding Order</a></b> - <font size=1>Question by <b>Jon Morin</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64458.html#comments">2 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-05-29</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64457.html">Third-Person Game Cameras</a></b> - <font size=1>Question by <b>Håkon Anders Myhra</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64457.html#comments">14 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-05-18</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64456.html">Working With Others</a></b> - <font size=1>Question by <b>Craten Toby</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64456.html#comments">7 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-05-16</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64455.html">Software Protection</a></b> - <font size=1>Question by <b>Warvair</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64455.html#comments">61 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-04-04</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64454.html">Merging Polygons And Sub-Pixel Gaps</a></b> - <font size=1>Question by <b>Dennis Meffert</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64454.html#comments">15 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2001-03-27</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64450.html">Future Experience</a></b> - <font size=1>Question by <b>Thomas Ludwig</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64450.html#comments">4 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-12-04</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64448.html">Constructive Solid Geometry</a></b> - <font size=1>Question by <b>Adam Hoult</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64448.html#comments">9 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-11-13</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64447.html">Getting A Job</a></b> - <font size=1>Question by <b>Amit</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64447.html#comments">11 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-11-09</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64446.html">n-Dimensional Matrix Class</a></b> - <font size=1>Question by <b>n/a</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64446.html#comments">12 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-10-11</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64445.html">Compile-Time Assertions</a></b> - <font size=1>Question by <b>n/a</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64445.html#comments">6 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-10-10</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64444.html">Presenting A Memory Manager</a></b> - <font size=1>Question by <b>n/a</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64444.html#comments">100 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-09-12</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64443.html">Memory Management</a></b> - <font size=1>Question by <b>Mike Jarosch</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64443.html#comments">1 Comment</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-08-22</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64442.html">Compiler Directives</a></b> - <font size=1>Question by <b>James Bryant</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64442.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-08-21</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64441.html">Octrees And Beam Trees</a></b> - <font size=1>Question by <b>v71</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64441.html#comments">6 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-08-08</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64440.html">Performance Questions</a></b> - <font size=1>Question by <b>Patrick Harty</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64440.html#comments">6 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-08-04</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64439.html">C-Buffers And Z-Buffers</a></b> - <font size=1>Question by <b>Uthman Apatira</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64439.html#comments">6 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-08-03</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64437.html">Polygons In Octant</a></b> - <font size=1>Question by <b>Eugene Chabot</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64437.html#comments">2 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-31</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64438.html">Game Lighting Model</a></b> - <font size=1>Question by <b>Victor Ho</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64438.html#comments">2 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-30</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64436.html">Octree Implementation</a></b> - <font size=1>Question by <b>Vishnu Ranganathan</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64436.html#comments">5 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-24</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64433.html">OpenGL Text Output</a></b> - <font size=1>Question by <b>Jelmer Cnossen</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64433.html#comments">2 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-21</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64434.html">Gravity And Collision Question</a></b> - <font size=1>Question by <b>Chris Wallace</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64434.html#comments">7 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-19</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64435.html">Unreal File Format</a></b> - <font size=1>Question by <b>Anonymous</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64435.html#comments">5 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-19</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64431.html">Graphics Skeleton</a></b> - <font size=1>Question by <b>Wilklin@aol.com</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64431.html#comments">1 Comment</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-15</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64428.html">Windows NT Or 9x</a></b> - <font size=1>Question by <b>Anonymous</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64428.html#comments">6 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-10</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64430.html">Texturing As In Unreal</a></b> - <font size=1>Question by <b>Li Sheng Yong</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64430.html#comments">6 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-10</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64432.html">Constant FPS Under DirectDraw</a></b> - <font size=1>Question by <b>Chris</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64432.html#comments">2 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-10</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64429.html">Mirrors And Reflections</a></b> - <font size=1>Question by <b>Anonymous</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64429.html#comments">6 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-07-05</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64427.html">Texturing Landscapes</a></b> - <font size=1>Question by <b>Anoymous</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64427.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-30</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64424.html">Texturing My Landscape</a></b> - <font size=1>Question by <b>Anoymous</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64424.html#comments">3 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-29</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64425.html">Optimizing For Different Systems</a></b> - <font size=1>Question by <b>Alex Herz</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64425.html#comments">1 Comment</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-24</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64426.html">Starting A 3D Engine</a></b> - <font size=1>Question by <b>Fop</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64426.html#comments">2 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-22</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64565.html">Simplification Algorithm</a></b> - <font size=1>Question by <b>Bart van Hest (DaBit)</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64565.html#comments">1 Comment</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-21</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64562.html">Hybrid Engines</a></b> - <font size=1>Question by <b>Anonymous</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64562.html#comments">4 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-19</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64563.html">Beginner Question</a></b> - <font size=1>Question by <b>Justin Lecheminant</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64563.html#comments">7 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-15</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64564.html">Shadows In 3D Engine</a></b> - <font size=1>Question by <b>Ingenu</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64564.html#comments">4 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-15</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64561.html">Data Structures And The World</a></b> - <font size=1>Question by <b>Grant Eldridge</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64561.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-12</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64421.html">Point-Plane Collision</a></b> - <font size=1>Question by <b>Peter Carey</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64421.html#comments">1 Comment</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-07</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64422.html">MMX Vs. Floating Point</a></b> - <font size=1>Question by <b>Bennett Foddy</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64422.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-07</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64423.html">Lightmap Storage</a></b> - <font size=1>Question by <b>Maik Lathan</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64423.html#comments">4 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-06</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64566.html">Accumulation Buffer</a></b> - <font size=1>Question by <b>Anonymous</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64566.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-06-06</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64554.html">Quadtrees</a></b> - <font size=1>Question by <b>Tom</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64554.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-03-15</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64555.html">DLL Design</a></b> - <font size=1>Question by <b>Wayne Baker</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64555.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-03-14</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64556.html">Scene Graphs</a></b> - <font size=1>Question by <b>Johan Blomgren</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64556.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-02-20</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64559.html">Putting A Car On The Ground</a></b> - <font size=1>Question by <b>FXnut@excite.com</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64559.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-02-08</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64453.html">Graphics Interface Layer</a></b> - <font size=1>Question by <b>Void</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64453.html#comments">18 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-01-22</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64452.html">World-Texture Scale</a></b> - <font size=1>Question by <b>Ben Caudle</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64452.html#comments">8 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-01-19</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64553.html">Quake-Like Console, Part 2 </a></b> - <font size=1>Question by <b>T101-Predator</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64553.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-01-19</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64449.html">Transformations</a></b> - <font size=1>Question by <b>Jim Miller</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64449.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-01-15</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64451.html">Floats And Doubles</a></b> - <font size=1>Question by <b>MoJo</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64451.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-01-15</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64552.html">Texture Switching, Part 2 </a></b> - <font size=1>Question by <b>Juha.J.Paaso@nokia.com</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64552.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-01-12</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64549.html">Landscape Visibility</a></b> - <font size=1>Question by <b>Andreas Löffler</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64549.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>2000-01-05</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64547.html">Data Stored In Executables</a></b> - <font size=1>Question by <b>Nicky Maniac Wolfen</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64547.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-12-22</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64543.html">Modular 3D Engines - Part 2</a></b> - <font size=1>Question by <b>Tristan</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64543.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-12-11</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64544.html">Fading In 16 / 32-bit Color Modes</a></b> - <font size=1>Question by <b>Jx</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64544.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-12-10</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64541.html">Landscape Collisions</a></b> - <font size=1>Question by <b>Gary Simmons</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64541.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-12-09</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64542.html">Lense Flares</a></b> - <font size=1>Question by <b>Michael Day</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64542.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-12-06</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64540.html">Creating Solids</a></b> - <font size=1>Question by <b>Mattias Berglund</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64540.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-11-30</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64539.html">Creating A Quake-Like Console</a></b> - <font size=1>Question by <b>Consiliul Judetean Teleorman</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64539.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-11-29</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64538.html">Modular 3D Engines</a></b> - <font size=1>Question by <b>Wayne Baker</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64538.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-11-19</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64533.html">Portability And Performance</a></b> - <font size=1>Question by <b>John Haughey</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64533.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-11-18</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64532.html">Background Level Loading</a></b> - <font size=1>Question by <b>James Botkin</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64532.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-11-17</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64529.html">Black Hole Portals</a></b> - <font size=1>Question by <b>Tom Nuydens</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64529.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-11-15</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64530.html">Save/Load Game Functions</a></b> - <font size=1>Question by <b>blacksport</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64530.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-11-12</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64527.html">Level Storage & Element Relationships</a></b> - <font size=1>Question by <b>Colin Doncaster</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64527.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-11-10</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64523.html">Implementation - Re-Implementation</a></b> - <font size=1>Question by <b>Kosh</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64523.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-10-25</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64524.html">Creating Game Patches</a></b> - <font size=1>Question by <b>Thomas Perry</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64524.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-10-23</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64522.html">2D Polygon Selection</a></b> - <font size=1>Question by <b>Jason Ingle</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64522.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-10-20</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64520.html">Getting Started In Games</a></b> - <font size=1>Question by <b>Jason Cochran</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64520.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-10-19</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64519.html">Clicking A Sphere</a></b> - <font size=1>Question by <b>Fabio Vinicius Binder</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64519.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-10-18</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64515.html">Z-Buffers & Visibility</a></b> - <font size=1>Question by <b>Matthew Cleary</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64515.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-09-22</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64514.html">Texture Switching</a></b> - <font size=1>Question by <b>Marco Koegler</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64514.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-09-09</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64512.html">Timing In Games</a></b> - <font size=1>Question by <b>NoOnE</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64512.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-09-02</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64513.html">Octree Traversal</a></b> - <font size=1>Question by <b>Scott Cutler</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64513.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-08-31</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64510.html">Lighting Question</a></b> - <font size=1>Question by <b>Jason McClanahan</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64510.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-08-24</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64511.html">Octrees For Collision Detection</a></b> - <font size=1>Question by <b>Alan Brunton</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64511.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-08-23</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64509.html">Alpha Blending</a></b> - <font size=1>Question by <b>David Brown</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64509.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-08-13</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64508.html">Assigning UVs To Complex Objects</a></b> - <font size=1>Question by <b>Josh Fender</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64508.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-08-12</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64506.html">Development IDEs For Cross-Platform Games</a></b> - <font size=1>Question by <b>Michelle Elliott</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64506.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-07-30</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64507.html">Trouble With Texture Mapping</a></b> - <font size=1>Question by <b>Dennis Meffert</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64507.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-07-29</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64503.html">Triangles Versus Quads</a></b> - <font size=1>Question by <b>Jim Miller</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64503.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-07-27</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64504.html">Outdoor Collisions & Culling</a></b> - <font size=1>Question by <b>Peter Mackay</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64504.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-07-27</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64502.html">Room Finding</a></b> - <font size=1>Question by <b>Kilbert</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64502.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-07-26</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64501.html">Calculating Normals</a></b> - <font size=1>Question by <b>Craig Hamilton</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64501.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-07-23</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64498.html">3D Clipping</a></b> - <font size=1>Question by <b>TopCoder</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64498.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-07-19</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64488.html">Simulation Games</a></b> - <font size=1>Question by <b>Saracen</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64488.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-07-06</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64486.html">Scene Management</a></b> - <font size=1>Question by <b>Bart van Hest</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64486.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-07-02</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64485.html">U-V Overflow in Perspective Texture Mapping</a></b> - <font size=1>Question by <b>James E. Nelson</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64485.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-06-30</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64481.html">Cross Platform Compatibility</a></b> - <font size=1>Question by <b>Jaap Suter</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64481.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-06-28</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64483.html">Lightmaps</a></b> - <font size=1>Question by <b>Aymeric BARD</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64483.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-06-23</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64479.html">Data Alignment</a></b> - <font size=1>Question by <b>Mark Neumann</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64479.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-06-22</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64480.html">Stealth Effects</a></b> - <font size=1>Question by <b>Steven Wojciechowski</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64480.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-06-22</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64478.html">Quaternions & Representing Object Orientation</a></b> - <font size=1>Question by <b>Ian @ byte-site</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64478.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-06-21</center></font></td>
+</tr>
+</table>
+</center><center>
+<table width="98%" border=0 cellpadding=2 cellspacing=1>
+<tr>
+   <td bgcolor="#1D2530" width="60%"> &nbsp; &nbsp;<img src="menu_arrow-r.gif"> &nbsp;<font face="Verdana, Helvetica" size=2><b><a class="menulink" href="fcarticles.64475.html">Rendering An Oddball 3D Model Type</a></b> - <font size=1>Question by <b>Benedict</b>, Response by <b>Paul Nettle</b></font></b></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center><a class="menulink" href="fcarticles.64475.html#comments">0 Comments</a></center></font></td>
+   <td bgcolor="#1D2530" width="20%"><font face="Verdana, Helvetica" size=2><center>1999-06-16</center></font></td>
+</tr>
+</table>
+</center><center>
+<table cellspacing=0 cellpadding=2 border=0 width="98%"><tr><td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td></tr></table></center>
+<br>
+</font>
+
+
+
+</td>
+<td width="10" bgcolor="#303030" valign="top" align="center"><font face="Tahoma, Helvetica, Verdana" size=1><img src="ls-stilt.gif"></font></td>
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1><font face="Helvetica,Tahoma,Verdana" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <center><font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="http://www.flipcode.com/terms.shtml">Terms</a>, <a href="http://www.flipcode.com/terms.shtml">Conditions</a>, and <a href="http://www.flipcode.com/terms.shtml">Privacy information</a>.</font></center></font></center>
+<br>
+</body>
+</html>
+

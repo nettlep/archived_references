@@ -1,0 +1,361 @@
+<html>
+<head><title>flipcode - Lightmap Render States</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Lightmap Render States</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++''    
++''    
++''    
++ 'eric.fortier3' + ''    
++''    
++''    
++''    
++''    
++''    
++ '@' + 'sympatico' + ''    
++''    
++ '.' + ''    
++''    
++''    
++ 'ca\">' + 'Eric Fortier' + '</a>')</script> (12 June 2001)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+Using DirectX 8 I want to add lightmaps to my scene, so that I can have
+effects like the lights on a wall behind a lamp. (<a href="km_lm04.gif">see this</a> for example). I want to use
+single-pass multitexturing, as my hardware supports 2 textures, and 8
+texture blend stages.<br><br>I can't seem to have the right combo of RenderState and/or
+TextureStageState... The result is almost always blackness.<br><br>What is the correct way to do this?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Let's start with an excerpt from the DX8 documentation. For those readers
+that want to locate this in the DX8 documentation, they'll find it in the
+Contents, using this path:<br><br>&nbsp;&nbsp; DirectX 8.0<br>
+&nbsp;&nbsp; &nbsp;&nbsp;  + DirectX Graphics<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;   + Using DirectX Graphics<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;    + Textures<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;     + Texture Blending<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;      + Light Mapping With Textures<br>
+&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;       + Diffuse Light Maps.<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+    <font color="#007f00">// This example assumes that d3dDevice is a valid pointer to an
+</font>    <font color="#007f00">// IDirect3DDevice8 interface.
+</font>    <font color="#007f00">// lptexBaseTexture is a valid pointer to a texture.
+</font>    <font color="#007f00">// lptexDiffuseLightMap is a valid pointer to a texture that contains
+</font>    <font color="#007f00">// RGB diffuse light map data.
+</font>
+    <font color="#007f00">// Set the base texture.
+</font>    d3dDevice->SetTexture(0,lptexBaseTexture );<br><br>    <font color="#007f00">// Set the base texture operation and args.
+</font>    d3dDevice->SetTextureStageState(0,D3DTSS_COLOROP, D3DTOP_MODULATE );
+    d3dDevice->SetTextureStageState(0,D3DTSS_COLORARG1, D3DTA_TEXTURE );
+    d3dDevice->SetTextureStageState(0,D3DTSS_COLORARG2, D3DTA_DIFFUSE );<br><br>    <font color="#007f00">// Set the diffuse light map.
+</font>    d3dDevice->SetTexture(1,lptexDiffuseLightMap );<br><br>    <font color="#007f00">// Set the blend stage.
+</font>    d3dDevice->SetTextureStageState(1, D3DTSS_COLOROP, D3DTOP_MODULATE );
+    d3dDevice->SetTextureStageState(1, D3DTSS_COLORARG1, D3DTA_TEXTURE );
+    d3dDevice->SetTextureStageState(1, D3DTSS_COLORARG2, D3DTA_CURRENT );
+ </font></pre></td></tr></table></div></center><br><br>I'm going to assume you are already using code similar to this, yet your
+textures are still black. Let's first understand what these texture stage
+states are doing for us.<br><br>After setting the base texture, we set three texture stage states which
+control the color operations. There are color operations and alpha
+operations. As their names imply, they control the how color and alpha are
+calculated through the pixel pipeline.<br><br>The color operation for our base texture is set to modulation
+(multiplication). The two color arguments (D3DTSS_COLORARG1 and
+D3DTSS_COLORARG2) define what gets modulated (multiplied). The two arguments
+that get multiplied are D3DTA_TEXTURE (the texture for this stage) and
+D3DTA_DIFFUSE (the diffuse color from the vertices as it is interpolated
+across the polygon using Gouraud shading.) In other words, the result from
+the first stage is to perform a pixel-by-pixel multiplication of the diffuse
+color of the polygon (i.e. how it would look with no texturing) with the
+texture from this stage.<br><br>You'll notice that the next texture stage is setup almost the exact same
+way. However, rather than multiply the texture (in this case, the light map)
+against the diffuse component of the vertices, we'll be multiplying it
+against D3DTA_CURRENT (the result from the previous texture stage.)<br><br>Okay, I'll stop telling you what you probably already know and get down to
+the heart of the matter, your black textures.<br><br>It's important to note all of the details behind these color arguments. In
+the case of the first texture stage state, we're using D3DTA_DIFFUSE as the
+second color argument. If your vertices don't contain a diffuse component,
+then the default color (0xffffffff) is used. The result of this would be the
+texture from the first stage, unmodified. However, if you are including
+diffuse color information in your vertices, yet the diffuse color of those
+vertices is black, the result from the first stage will be a black surface.
+Since the second stage is also using modulation, it won't matter what is in
+your lightmap, the result from the second stage (and as a result, what you
+see) will, again, be black.<br><br>While we're on the topic of the diffuse color component... If you're
+multiplying a pure red texture (in the first stage) against a pure blue
+vertex color, your result will be black.<br><br>The next obvious problem would be if either, the texture itself or the
+lightmap were black. I'll assume you've already considered this possibility
+(if not, you should be shot, quartered and hung at dawn.) By the way, do you
+actually know what it means to be quartered? It's pretty gross. :)<br><br>I would recommend rendering the scene in single texture mode. Just render
+the texture map first to make sure it appears correctly. Then do the same
+for your light map. This is a sure-fire way to validate that you're passing
+it valid textures with valid UV values, proper texture addressing/wrapping,
+etc. Most importantly, this validates your render states are correct.<br><br>So, you've already been down all these paths and you still can't get your
+lightmaps to look right? I have another suggestion, then. Do you have
+lighting enabled (SetRenderState(D3DRS_LIGHTING, TRUE))? If so, this could
+casuse your black textures if the lighting results in black for that
+surface. This is especially true with lighting enabled, but no lights
+defined. With lighting enabled, the diffuse color of your vertices is
+ignored and the result from the lighting calculations is used instead.<br><br>If you're intentionally not using lighting and don't want the diffuse color
+of the vertices to impact the texture mapping, you can change the color
+operation for the first stage to D3DTOP_SELECTARG1 (make sure your
+D3DTSS_COLORARG1 is set to D3DTA_TEXTURE.) This will insure that your result
+of the first stage is not affected by the diffuse color of the vertices. On
+some older hardware (and especially with software renderers) this will speed
+things up since you're not performing any needless multiplications in the
+first texture stage.<br><br>From my experience, it's a good idea to test your code in the reference
+rasterizer - even when things are working. So make sure you get the same
+problem in the ref rast.<br><br>There are a lot of possibilities here, but these suggestions should help you
+narrow in on the problem, if not correct it. If these suggestions don't
+help, then we should carry this into the comments for this column entry.<br><br>Personally, I'm willing to bet it's the lighting. Am I right? :)
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23905">Lightmap Render States</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193659">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Of course, don't forget to validate your renderstates and most importantly disable the stage after those you use (using D3DTOP_DISABLE for BOTH colour and alpha channels). On some stupid drivers, you may even need to set a NULL texture on unused stages.<br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=689">Rompa</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>13 Jun 2001, 7:29AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23905&msg=193659#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23905&msg_quote=193659#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193659">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

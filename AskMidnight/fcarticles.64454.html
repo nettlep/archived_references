@@ -1,0 +1,1026 @@
+<html>
+<head><title>flipcode - Merging Polygons And Sub-Pixel Gaps</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Merging Polygons And Sub-Pixel Gaps</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' +  'dennismeffert' + ''    
++''    
++''    
++''    
++ '@' + 'hotmail' + ''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'com\">' + 'Dennis Meffert' + '</a>')</script> (27 March 2001)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+My BSP/PVS compiler does CSG on all brushes before BSP-ing to remove all the
+"illegal geometry" (caused by intersecting and touching brushes). This
+causes a LOT of splits. It doubles the polycount. When I look at the
+wireframe shots I can see a lot of faces can be merged.
+How do I know when 2 faces are convex forming and more important: how do I
+merge them?<br><br>My second problem is: sub-pixel gaps caused by T-junctions. How can I find
+and correct those gaps?
+I thought of the following but for some reason it
+doesn't work:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+<font color="#0000ff">for</font> each vertex in world
+{
+   <font color="#0000ff">for</font> each poly in world
+   {
+       <font color="#0000ff">if</font> distance between vertex and closest point on
+          polygons perimeter &lt; some small value
+       {
+           move vertex to edge
+       }
+   }
+}
+ </font></pre></td></tr></table></div></center><br><br>Any help would be appreciated,<br><br>Dennis Meffert
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Hi Dennis,<br><br>Two excellent questions! The first question, in particular, I've been
+waiting for somebody to ask (I even hinted around about it in a previous
+response.) The second question is actually the last phase to the solution
+for the first. Confused? :)<br><br>To clarify your first question, what you're really asking is how to
+automatically "optimize" a set of polygons. The answer to this is
+non-trivial. Fortunately, it's on my list of "documents to write when time
+allows." Unfortunately, time doesn't look very forgiving for me in the near
+future, so I'll run through the important points here, and skip the details.
+It's been a long time since I had to do this (before my TRI days), so I beg
+your pardon in advance for anything I may overlook.<br><br><B>DEFINE THE GOAL</B><br><br>Don't get lost in your problem of "merging polygons" - that's only a part of
+the problem. I'm going to attack it in terms of optimization. This is not to
+be confused with LOD reduction. We want to keep the exact same topography
+for the scene, but we just want to do it in fewer polygons.<br><br>When I originally set out to do this, my goal was to find "the most optimal
+set of convex n-gons from a set of polygons." Let's pull that statement
+apart. I realize this sounds over-dramatic, but please bear with me. The
+three parts are "most optimal set" and "convex n-gons" and "set of
+polygons". I'll cover the last two first, because they're quickest.<br><br>Obviously, "convex n-gons" means just what it says. I chose to go with them
+because, at the time, it was best (and I'm still convinced that they're good
+to go for the current state of things.)<br><br>When I say "set of polygons", I mean set of <I>any</I> kind of polygon. I
+didn't actually intend on handling any kind of input polygon, but as it
+turns out the technique allows for complex input polygons.<br><br>Now about that "most optimal set" bit. What does this mean, and to whom? No
+I'm not trying to act like a psychologist, I really mean it. For example, I
+might optimize the set into the fewest possible polygons, which would speed
+up my pipeline. However, this doesn't necessarily always get you the best
+frame rate.<br><br><center><img src="mp-fig1.gif"></center><br><br>In figure 1,we see a standard wall with an archway. This shape is
+represented with 9 polygons (12 triangles.) Take special notice of the red
+square. This is the portion of the surface that is within the frustum (or
+not occluded by something.) In this case, I count a minimum of 5 polygons (6
+triangles) inside the frustum.<br><br><center><img src="mp-fig2.gif"></center><br><br>In figure 2, we see a much different approach. This shape is also
+represented by 9 polygons, but 18 triangles (as opposed to 12 triangles in
+figure 1.)  However, there is only one polygon (2 triangles) in the frustum.<br><br>Obviously, it depends on what is being viewed as to whether or not there is
+a savings in going with the way figure 2 has things laid out, but in
+practice, I found this way to be better than the standard solution. This is
+especially true for highly occluded scenes.<br><br><B>OVERVIEW</B><br><br>In short, you have to completely rebuild your scene. Anything less would
+simply be an incomplete solution. The advantage to doing so is that your
+scene gets completely optimized.<br><br>The steps are as follows:<br><br>1. Completely rebuild the scene into complex polygons<br>
+2. Split the whole scene up using whichever "best fit" solution you want<br>
+3. Remove t-junctions<br><br><B>STEP 1: HOMOGENIZE</B><br><br>Step 1 is really the most involved. Notice that step 1 uses <I>complex</I>
+polygons, not convex polygons. This means that polygons can be concave and
+can also have holes. The only limitation I place on this, is that they
+cannot have crossing edges. Also, note that they will need to be correct
+complex polygons (i.e. the winding order of the vertices in the holes go
+opposite to the winding order of the exterior vertices.) This may sound
+difficult, but its not too bad, really, if you're careful.<br><br>Step one actually starts by removing t-junctions. But since I'm going to
+cover them in step 3, I'll not waste the space here. Just know that the
+whole process starts <I>and</I> ends with t-junction removal.<br><br>Start by choosing a polygon (it doesn't matter which.) Put the vertices into
+an ordered list. If your input polygon is a triangle, you'll have three
+vertices in your list: A->B->C. Remember, this list represents vertices, so
+it should be treated like a circular queue (i.e. A -> B -> C -> A ...) Now
+throw that polygon away; consider it "processed."<br><br>We're going to be building on this list of vertices, adding vertices to it
+until we have a complete polygon and we can find no more polygons that share
+edges with it. In order for a polygon to be considered for merging, we need
+to make sure that the polygons have the same properties. For example, the
+two polygons must be coplanar. They must have the same material applied to
+them, etc.<br><br>So let's start merging. Find a polygon that shares an edge with our vertex
+list (ABC.) Remember, sharing edges go the opposite direction. You would
+naturally think that two polygons with the same winding order would be
+shared in the order they appear. For example, polygon ABC and polygon DEF
+might share BC with EF. In reality, it's BC shared with FE. Here's an
+example of two polygons sharing an edge:<br><br><center><img src="mp-fig3.gif"></center><br><br>When you find a polygon that shares an edge (and shares the same surface
+properties), it's time to merge them. Simply delete the two vertices from
+polygon DEF that were shared with the vertex list. This would delete E and
+F, leaving us with D. If your input set is more than triangles, you will
+have more vertices left over. Insert the remaining vertices (in this case,
+just D) into the list between the two vertices that were shared (in this
+case, between B and C.) Now throw away the polygon that was just merged and
+consider it "processed." Our new list now is A->B->D->C.<br><br>Continue this process until you find no more shared edges. At that point,
+you'll have your first (potentially complex) polygon. Pick another polygon
+(any polygon will do) and start over. Lather, rinse, repeat.<br><br>Before I go on to step 2, let me briefly point out a few common gotchas (at
+least, the ones I can remember.) First, if your input data has a lot of
+garbage in it (as was most of the archaic 3DS file stuff I was working
+with), you might run into some degenerate polygons (i.e. polygons that are
+infinitely thin) or polygons that are multiply defined (i.e. three vertices
+used to define two identical polygons with the same normal.) These can
+really trip you up, so be careful, and use lots of ASSERTS.<br><br><B>STEP 2: SPLIT IT UP</B><br><br>At this point, you have no more polygons; they've all been merged into a
+bunch of vertex lists (which, in effect are still polygons, but lets think
+of them as lists for now.) How we proceed from here, depends on which best
+fit solution we want to go with. I'm going to stick to what I know, Monty,
+and go with what's behind figure #2. After reciting a short prayer to the
+deity of computational geometry, we're ready to begin (no, that doesn't
+actually help, but the chicks dig it. =)<br><br>We're going to be working with one list at a time, splitting them each up
+into usable polygons. For this, we'll need a concavity test and an area
+calculation that works with complex polygons. You'll find them in the
+appendices (?!) at the end of this document. We want to split up these
+polygons until we get a "best set" of convex n-gons. If you want triangles
+in the end, then you'll have to take that last step on your own (there are
+plenty of references out there that cover this.)<br><br>If the list of vertices defines a convex polygon, consider it finished.
+Otherwise, we'll need to split it up. This process begins by selecting an
+edge (two consecutive entries in the list) from the list of vertices. We'll
+attempt to split the polygon by that edge. Here's an example:<br><br><center><img src="mp-fig4.gif"></center><br><br>In this example, we have two possible splits. Notice that if we tried to
+split by any other edge, the polygon would remain whole. We'll be testing
+each possible edge for a split. We don't want to stop when we find one that
+works; remember, we want a "best fit" solution. What we're looking for is
+the split that results in the single, largest, valid fragment. Looking at
+figure four, we see two potential splits. On the left, we find a split that
+results in a very small fragment and a larger fragment; we'll keep track of
+the area of the larger fragment. On the right, we see another split. If we
+calculate the areas, we'll find that the area of the larger fragment is not
+as big as the larger area of the previous split. I sure hope that's not too
+confusing.<br><br>Once we've tried all possible splits for this polygon, we go back to the one
+that resulted in the largest fragment. It is now safe to throw away our
+current list of vertices and replace it by the two smaller fragments.<br><br>Next, go back up a few paragraphs to the point where I said, "If the list of
+vertices defines a convex polygon..." and (you know the drill) - lather,
+rinse, repeat.<br><br>So, how do you split a complex polygon? This actually goes beyond the scope
+of this document, but there are plenty of references on the net. Paul
+Bourke's home page (<a target="_blank" href="http://www.swin.edu.au/astronomy/pbourke/)">http://www.swin.edu.au/astronomy/pbourke/)</a> is a good
+place to start.<br><br><B>STEP 3: REMOVE T-JUNCTIONS</B><br><br>If you've made it this far, you've probably noticed that we've completely
+munged our world geometry (twice!) in order to completely reconstruct it. At
+this point, we've got a terribly optimized database, but filled with a lot
+of t-junctions, because of the way we've split up the polygons. No problem,
+step 3 to the rescue!<br><br>I've done t-junction removal two ways in the past. Take a peek at figure 5:<br><br><center><img src="mp-fig5.gif"></center><br><br>On the left, we have the standard "split it up" and on the right, we have
+the "slide". These aren't dance moves, they're just lame names I come up
+with for stuff when I'm bored.<br><br>Splitting it up is really straight forward, but ends up with an extra
+polygon. Occasionally, however, you can slide a vertex to collapse two
+polygons into one. It's usually a good idea to do this whenever possible,
+because in this case, fewer polygons is always the best. Note that you can
+only slide a vertex when the two polygons being collapsed are coplanar (and
+share the same surface properties, don't forget!)<br><br>We must first detect when a vertex is the source of a t-junction.  Looking
+closely at either half of figure 5, notice how the two polygons share two
+vertices, but <I>not</I> an edge. This is a great trivial rejection test. If
+you don't find this to be the case, then you're guaranteed not to have a
+t-junction with these two polygons. Otherwise, we need to test for a
+t-junction. Testing for a t-junction involves ignoring all vertices that are
+shared and testing the remaining vertices to see if they lie on the edge
+defined by the opposite polygon.<br><br>How do you determine if a point lies on the edge? Here's a simple way (there
+are more efficient solutions, but this one, at least, is pretty simple):
+Calculate the vector of the edge and then calculate the vector from one
+point on the edge to the vertex being tested. Normalize them and then take
+the absolute value of their dot products. If that value is within a
+tolerance to 1.0, then the vertex lies on the line defined by the edge. The
+only thing left to do, is to determine if the vertex is between both edge
+points. You can do this, by creating two vectors (one from each endpoint of
+the edge, pointing at the vertex) and see if they point at one another. For
+those purists out there, you'll find a more efficient solution on Paul
+Bourke's page.<br><br>Once we determine that there is, in fact, a t-junction, we can split the
+opposing polygon. This is as simple as inserting the source t-junction
+vertex into the opposing polygon (between the two edge vertices) and
+replacing that polygon with the two pieces. This is all just simple vertex
+manipulation, but what about sliding?<br><br>Sliding involves a little bit of extra work. As a matter of fact, it's a lot
+trickier than I expected to explain, and since I'm already on page four or
+five of this response, I'm going to totally bail on this one and leave it up
+as an exercise to the reader. :)  Actually, if somebody is interested, send
+in another question and I'll cover it.<br><br>That pretty much covers the topic, but we've still got some loose ends to
+clean up...<br><br><B>APPENDIX A: CONCAVITY TEST</B><br><br>The way I've always done concavity testing was quite simple. I would build a
+plane out of each edge. You can do this, by taking the cross product of the
+polygon's normal and the edge-vector. This gives you an "edge-plane" normal.
+An edge plane is that plane, which is defined by the two endpoints of the
+edge, and perpendicular to the polygon.<br><br>If you were to attempt to bisect the polygon on all of its edge planes, what
+would happen? If the polygon was convex, nothing would happen. So we test
+for this. The quick and dirty answer is to simply visit each edge-plane and
+test each vertex to make sure they're all on the same side. If not, then the
+polygon is not convex.<br><br><B>APPENDIX B: AREA CALCULATION FOR COMPLEX POLYGONS</B><br><br>We need an area routine that works for complex polygons. I found a fantastic
+little ditty in CGP&P that worked for 2D polygons, and extended that to 3D.
+It's fast, and very accurate:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+	areaXY = 0;
+	areaYZ = 0;
+	areaZX = 0;<br><br>	<font color="#0000ff">for</font> (each edge)
+	{
+		areaXY += (edge1.x + edge0.x) * (edge0.y - edge1.y) / 2;
+		areaYZ += (edge1.y + edge0.y) * (edge0.z - edge1.z) / 2;
+		areaZX += (edge0.x + edge1.x) * (edge1.z - edge0.z) / 2;
+	}<br><br>	area = sqrt(areaXY * areaXY + areaYZ * areaYZ + areaZX * areaZX);
+ </font></pre></td></tr></table></div></center><br><br><B>CLOSING</B><br><br>I should warn you that this is not trivial code to write. This is the kind
+of code that can be pretty hairy without good debugging tools and
+techniques. I remember actually writing a mini-debugger for this that would
+render the polygons (perpendicular to their plane) to a series of image
+files, so I could investigate what was happening along each step of the
+process. When I eventually tackle this again (and I will -- it's already
+been scheduled), I'll be sure to publish the source code to it.<br><br>In my experience, I've seen this algorithm (or something very similar to it,
+depending on how true my recollection really is) generate, on average,
+greater than 50% polygon reduction, with similar improvements to my frame
+rates. Personally, I would consider that well worth the effort.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23900">Merging Polygons And Sub-Pixel Gaps</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193560">
+<a name="p193561">
+<a name="p193562">
+<a name="p193563">
+<a name="p193564">
+<a name="p193565">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Just a question :<br>Wouldn't it be easier to use the Half-Edge structure ?<br>As far as i remember they're very good to prevent t-junctions, because you save the edges instead of vertices, and every edge has a pointer to the opposite edge.<br>It would be simple to prevent t-juntions by splitting the opposite Edge too, when you split an edge. So you would always "Split it up" (like read in step 3).<br>By the way, under figure 5 you can read " but ends up with an extra polygon". No, it ends up with an extra Triangle, or with an extra vertex in your Polygon. Which wouldn't be that bad. You could then erase redundant edges(and the opposite edges)  afterwards, so you would have "slided" it.<br><br>I hope you can understand what i want to say.<br>If you need more information about Half-edges, there's a very good article about it here at flipcode.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1170">Mahoo</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>28 Mar 2001, 4:46AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg=193560#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg_quote=193560#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193560">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Merging Polygons And Sub-Pixel Gaps</i></b> <font size=1>by Mahoo</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>03-28-2001 - 04:46AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23900&msg=193561">Re: Merging Polygons And Sub-Pixel Gaps</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>03-28-2001 - 01:17PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23900&msg=193562">Re: Merging Polygons And Sub-Pixel Gaps</a> <font size=1>by Frank Krueger</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>03-28-2001 - 03:32PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23900&msg=193563">Why I chose largest area...</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>03-29-2001 - 03:15AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23900&msg=193564">Re: Why I chose largest area...</a> <font size=1>by Frank Krueger</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>03-31-2001 - 01:32PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23900&msg=193565">Re: Merging Polygons And Sub-Pixel Gaps</a> <font size=1>by Mahoo</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>03-29-2001 - 08:07AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193566">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Paul, nice response. By the way, don't you mean:<br><CPP><br>  areaXY = 0;<br>                                     areaYZ = 0;<br>                                     areaZX = 0;<br><br>                                     for (each edge)<br>                                     {<br>                                             areaXY += (edge1.x - edge0.x) * (edge0.y - edge1.y) / 2;<br>                                             areaYZ += (edge1.y - edge0.y) * (edge0.z - edge1.z) / 2;<br>                                             areaZX += (edge0.x - edge1.x) * (edge1.z - edge0.z) / 2;<br>                                     }<br><br>                                     area = sqrt(areaXY * areaXY + areaYZ * areaYZ + areaZX * areaZX);<br></CPP><br><br>Sincerely,<br>Greg
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=208">EGreg</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>28 Mar 2001, 5:42PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg=193566#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg_quote=193566#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193566">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193567">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp;<img src="comments_ball.gif"> &nbsp;<font size=2><b>Area calc...</b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Heya Greg,<br><br>Nope... what's in the doc is correct.<br><br><b><i>- MidNight</i></b>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=81">MidNight</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>29 Mar 2001, 3:04AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg=193567#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg_quote=193567#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193567">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193568">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Paul, thanks for your response. This is exactly what I need.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=611">Dennis</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>29 Mar 2001, 4:40AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg=193568#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg_quote=193568#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193568">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193569">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    You say you even allow polygons with gaps in them, but how does this work?<br>IMO, you will get 2 indepent vertex lists, and when you're going to split the polygon, it will see the vertex lists with the largest area as a closed polygon and the gap-vertex list as a back faced polygon.<br>I would not know how to solve this, but maybe i'm wrong and it all goes well.<br><br>BTW, I can't find the info on clipping concave polygons with gaps on the site of Paul Bourke. Could you point me in the right direction.<br><br>Thank you very much.
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=173">MrDevlin</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>29 Mar 2001, 6:05AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg=193569#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg_quote=193569#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193569">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193570">
+<a name="p193571">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    <EGreg> doomwiz better tell me how to do these 3 things:<br><EGreg> Complete code to load an image from a file into openil image and shit.<br><EGreg> Complete code to get HBITMAP from that<br><EGreg> Completely code to get image from HBITMAP<br><EGreg> that's it :)<br><br>It cna't be correct, paul, IMHO... because if you're ADDING (as in the original) then the polygon's area depends on it's position, which doesn't seem right :)<br><br>There has to be a -, not a +, as far as I can tell.<br><br>Sincerely,<br>Greg
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=208">EGreg</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>04 Apr 2001, 10:11PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg=193570#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg_quote=193570#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193570">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Merging Polygons And Sub-Pixel Gaps</i></b> <font size=1>by EGreg</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>04-04-2001 - 10:11PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23900&msg=193571">Re: Merging Polygons And Sub-Pixel Gaps</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>04-06-2001 - 07:56PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193572">
+<a name="p193573">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    That is funny I was just wondering how to merge triangles too.  Because Paul Nettle, I was trying to use your collistion detection program, but with triangles and I noticed that if I traveled accross a square, and at the point where the two triange edges were shared, it would slow down, and speed up as I went over it.  So with your program (the one that you can download with the source code and loads a .oct map.  Well what I did is I allowed it to load .x files as 100% triangles.  Now, did you procces those oct maps so that the polygons are merged, and if I were to merge all my appropriate trianges into the input for your collision detection routine, since you wrote the program Paul Nettle (Midnight), if I go along and merge my trianges that share edges and ones that are on the same plane, will that fix the slowing down between triangle edges?  Cause in your collision demo .exe it worked "PERFECTLY" and I assume I need to merge my polygons, am I right?<br><br>Thanks Paul Nettle for your Collision Detection turorial, and thanks for the Answer to this column on triangle merging...<br>---Erik W---
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1123">ErikW432513245</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>18 Apr 2001, 2:13AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg=193572#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg_quote=193572#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193572">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: Merging Polygons And Sub-Pixel Gaps</i></b> <font size=1>by ErikW432513245</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>04-18-2001 - 02:13AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23900&msg=193573">Re: Merging Polygons And Sub-Pixel Gaps</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>05-22-2001 - 01:58AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193574">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Thanks for your answer it is very complete.<br>I started to implement the code to optimize the polygon database and to remove the t-junction and now I arrived at the second point "split it up the complex polygon". Here I have a doubt, actually I see that after creating the complex polygon I found that I can have a lot of them that can be splitted up in a lot of different way, I mean, in some case, I can split the same complex .polygon with 3 or 4 convex poly.So to select which plane use to split a polygon beside the largest fragment, I think we should take in account also how many polygons it creates.So my new Heuristic to select the best splitting plane should be:<br><br>float Heuristic = Area - NumberOfNewPolygons * n;<br><br> Am I wrong??
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2294">ZKawaZ</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>19 May 2001, 9:19PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg=193574#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23900&msg_quote=193574#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193574">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

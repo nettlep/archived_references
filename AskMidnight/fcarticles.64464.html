@@ -1,0 +1,596 @@
+<html>
+<head><title>flipcode - 3DS Camera Orientation</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>3DS Camera Orientation</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' +  '' + '' + ''    
++''    
++''    
++''    
++''    
++''    
++ 'mikkoantero' + ''    
++ '@' + 'rocketmail' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++''    
++ 'com\">' + 'Mikko Leppdnen' + '</a>')</script> (23 July 2001)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I load my 3d-scenes from a .3DS file. And i use
+gluLookAt() for camera movement. Promblem is that when
+i render my scene it appears oriented somehow wrong
+compared to 3dstudio. So i'm wondering what i'm doing
+wrong... the camera's up-vector calculations or do i
+call the OGL calls in wrong order. Or am i missing
+something else.. oh and what is the bank value for the
+camera in .3ds file? I hope i described my problem
+right... due to my bad english :X. Anyway, tnx.
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+I'm not aware of a way to create 3DS emulated look-at matrices through
+OpenGL. So, I'll offer an explanation that should help you implement your
+own.<br><br>A long time ago, a friend once explained a concept to me that finally
+allowed me to grasp the concept of how matrices worked, from the inside. Not
+just what functions to call to put them together and make them do what I
+wanted, but to actually understand what the numbers themselves represented,
+and how to manipulate them manually, if I needed to. To put my new knoledge
+to the test, I set out on something that had always intimidated me in the
+past: generating a look-at matrix.<br><br>If you are still intimidated even by a simple 3x3 rotation matrix, I will
+attempt to pass this knowledge (and more importantly, the ability to
+<i>understand</i> these basics) on to you using common-sense terms rather
+than mathematical terms. And yes, along the way, I plan to answer the
+question; but the math experts out there might just get a little bored along
+the way. The heavy (dare I use the word "millitant"?) math guys may even
+feel slighted by my simplistic approach to the following explanation on
+matrices. To you, I only ask that you please remember that I'm targeting an
+audience that is still very new to matrices.<br><br>A simple 3x3 matrix can be thought of as three vectors. Each of these
+vectors representing an arrow pointing in the direction of its respective
+primary axis:
+<center><img src="askmid-axes.gif"></center><br><br>Looking at figure 1, we have three vectors: the X vector (1, 0, 0), the Y
+vector (0, 1, 0) and the Z vector (0, 0, 1). If we arrange these into three
+vertical columns, place them side-by-side, we get a matrix that looks like
+this:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+ 1 0 0
+ 0 1 0
+ 0 0 1
+ </font></pre></td></tr></table></div></center><br><br>This should look familar, because it's an identity matrix.<br><br>Anything you pass through a matrix (a point, a vector, a dirty pair of
+sweaty socks) will be rotated into a world that has axes aligned to the
+three vectors in the matrix. Our current identity matrix is the same as
+world-space, so rotating from world-space to world-space does nothing.
+That's why rotating points through an identity matrix does nothing.<br><br>Let's examine a 90-degree clockwise rotation on the Z axis (roll). Try to
+visualize what would happen to figure 1 if we did this to those three
+arrows. Our X vector will point straight down and our Y vector will point
+directly to the right (our z-vector wouldn't move.) Put this in a matrix,
+and this is what we get (remember, three vertical columns, X vector, then Y
+vector, then Z vector):<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+  0 1 0
+ -1 0 0
+  0 0 1
+ </font></pre></td></tr></table></div></center><br><br>The cool thing here is, we've just generated a 90-degree rotation matrix
+without using sin() or cos(). This means, that if you pass a vector through
+that matrix, it will be rotated 90-degrees clockwise on the Z axis.<br><br>If, using standard techniques, we generate any 3x3 matrix that has more
+complex rotations (say a 3-degree rotation in X and a 27.8 degree rotation
+in Y) we could just as well extract the X, Y and Z vectors from that matrix
+and see which way they point. A very common use of this is to extract the Z
+vector from a matrix to determine which way is "forward" (I do this to
+determine which way to move my character when the user pushes the "go"
+button.)<br><br>If you extract these three vectors from a matrix, you'll notice an
+interesting fact about them. They are all perpendicular to each other. In
+other words, the X vector will be perpendicular to the Y and Z vectors, the
+Y vector will be perpendicular to the X and Z vectors, and the Z vector will
+be perpendicular to the X and Y vectors. You should note that this is only
+true for orthogonal 3x3 matrices (actually, this is what defines a matrix as
+being orthogonal.)<br><br>Before I continue, I'll cover an essential vector-specific topic that is
+important to fully understand the creation of a look-at matrix. A vector
+cross product has a few properties, but one of the primary uses is to create
+a vector that is perpendicular to two other vectors. This means that if we
+end up with a matrix that is missing the Y vector, we can extract the X and
+Z vectors and perform a cross product on them to get the Y vector. We can
+now re-create a whole 3x3 matrix that was once missing a vector.<br><br>Creating a look-at matrix (in the way that I'm going to show) is little more
+than a bit of detective work and a few clever cross products.<br><br>Our goal is to create three vectors, put them together and end up with a 3x3
+matrix that acts as a look-at matrix. In order to do this, we'll need a
+starting point: the look-at vector itself. Remember how we can extract the Z
+vector to determine which way the player is facing? Well, we can invert that
+logic and follow along with the assumption that our look-at matrix will have
+a Z vector that is exactly the same as our input look-at vector.<br><br>That gets us the Z vector for our matrix. The next step is to generate our X
+and Y vectors. For the moment, let's assume "UP" is always "UP". We'll
+temporarily fill our look-at matrix with an up vector of.. well.. UP (0, 1,
+0).<br><br>Aha! Now that we have two of the three vectors, we can use the handy cross
+product to get the third (X) vector. So by crossing our Y and Z vectors, we
+calculate the X vector. Smashing. But we're not done yet. Our Y vector was
+only a temporary. If, for example, our input look-at vector pointed forward
+and slightly down, then our Z and X vectors would be correct, but our Y
+vector isn't. Try to visualize the following using figure 1: Our Y vector
+points directly UP, but if the input look-at vector is tilted down a little,
+then our Y vector should be tilted forward a little (as you can see, I'm
+trying very dilligently to confuse you. :) We've got two correct vectors (X
+and Z) with which we can use to create the actual Y vector. Cross product to
+the rescue.<br><br>Hopefully, at this point, things are making sense. If not, one of two things
+has happened: (1) you stumbled across a link to this page while performing a
+web search for SEX, PORNOGRAPHY or PAMELA ANDERSON (yes, those words
+actually appear in this article, can you find them?) or (2) I suck at
+explaining matrices.<br><br>Now to throw a wrench into the works. What if our look-at vector points
+directly up? Well, we'll be creating our temporary Y vector (which also
+points directly up) and when we try to use the cross product on these two
+vectos (in hopes of findin the X vector) we find that it doesn't work. This,
+my friends is called the degernerate case. Actually, the degenerate case
+isn't only when the two vectors only point directly up, but when the angle
+between them approaches 0 or 180. So, what is one to do? There are a number
+of options. What you want, Mr. Confused, is the specific option that 3DS has
+chosen.<br><br>So when I sat down to create this routine, I did so with the intention of
+duplicating 3DS behavior. Doing this simply meant playing with 3DS and
+playing with my routine until I figured out what 3DS was doing. Here's what
+I came up with.<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+	<font color="#007f00">// Build the Y vector of the matrix (handle the degenerate case
+</font>	<font color="#007f00">// in the way that 3DS does) -- This is not the TRUE vector, only
+</font>	<font color="#007f00">// a reference vector.
+</font>
+	Vector yAxis;<br><br>	<font color="#0000ff">if</font> (fabs(lookatVector.x) &lt; EPSILON && fabs(lookatVector.z) &lt; EPSILON)
+	{
+		yAxis = Vector(-lookatVector.y, 0, 0);
+	}
+	<font color="#0000ff">else</font>
+	{
+		yAxis = Vector(0, 1, 0);
+	}
+ </font></pre></td></tr></table></div></center><br><br>Quite simply, what this code segment does, is examine the input look-at
+vector and detect the degenerate case, then build the proper Y vector based
+on my examination of how 3DS handled the degernerate case.<br><br>This will give us the proper look-at matrix, but we're still not quite done
+yet. The look-at matrix simply makes sure that, once rotated by the matrix,
+we are looking in the direction of the look-at vector. But that only gets us
+looking in the direction, there's a final rotation that has gone completely
+ignored. And this is what is referred to ask the "bank" (or "Roll") angle.
+This simply controls the rotation on the look-at vector.<br><br>For example, if we create a look-at vector that points directly behind us
+(0, 0, -1) then we've only asked to look in a certain direction -- we
+haven't completely specified all aspects of rotation. If, standing in a room
+you turn to your left to look at a book case. If you were able to do
+cartwheels in place (I'd pay money to see that) couldn't you then do so, and
+remain looking at that same book case? The bank angle allows us control over
+that final aspect of rotations for a complete look-at matrix.<br><br>In closing, I should mention that this may not be exactly what 3DS does. It
+is based on my observations of how 3DS handles specific cases (purposely
+setup to help me determine how it handles the degernerate cases.) However,
+from my uses, it worked pretty darned well. You might be able to find a
+reference on the net that explains exactly how 3DS handles the degenerate
+case (or some friendly reader will post it in the comments below.)
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23911">3DS Camera Orientation</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193700">
+<a name="p193701">
+<a name="p193702">
+<a name="p193703">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Should this matrix:<br><table width="100%" cellspacing=0 cellpadding=15 border=2><tr><td bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000"><br> 0 1 0<br>-1 0 0<br> 0 0 1<br></font><br></pre><br></td></tr><br></table><br><br>Make figure 1's x vector point up and the y vector point to the left?<br><br>-SirKnight
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=1066">SirKnight</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>24 Jul 2001, 12:21AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23911&msg=193700#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23911&msg_quote=193700#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193700">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: 3DS Camera Orientation</i></b> <font size=1>by SirKnight</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>07-24-2001 - 12:21AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23911&msg=193701">Re: 3DS Camera Orientation</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>07-24-2001 - 12:43AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23911&msg=193702">Re: 3DS Camera Orientation</a> <font size=1>by SirKnight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>07-24-2001 - 01:21AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23911&msg=193703">Re: 3DS Camera Orientation</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>07-24-2001 - 02:37AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193704">
+<a name="p193705">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    Thanks for this explanation midnight. I'm pretty clueless about matrices, and I've a specfic problem which is very similar to what you're talking about:<br><br>I use D3D and specifically, D3DXMatrixLookAtLH() to create my view matrix (incidentally, 4x4 not 3x3 as you discussed - any relevence?). This accepts, vLookAt, vEye and vUp. I've got a vauge idea after reading your column as to how this fn. might be doing its work, but a massive problem remains. When I look *directly* up or down, as I rotate past +/-180 degrees, the view 'flips', or inverts. This looks strange to say the least. <br><br>I found that I could counteract the 'flip' by inverting my UpVec, and by simple empircal observation noted that the flip occurs when the signs of x and z of normalized camera orienation also change. This works, but NOT QUITE, as ever:<br><br><table width="100%" cellspacing=0 cellpadding=15 border=2><tr><td bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000"><br>	CCamera::SetViewMatrix(LPDIRECT3DDEVICE8 pDev)<br>	{<br>		<font color="#0000ff">static</font> D3DXVECTOR3 vPrevOrientation ;<br><br>		m_vOrientation = m_vLookAtPt - m_vEyePt ;<br>		D3DXVec3Normalize(&m_vOrientation, &m_vOrientation) ;<br><br>		BOOL bXChanged = FALSE, bZChanged = FALSE ;<br>		<font color="#0000ff">if</font> (m_vOrientation.x > 0.0f && vPrevOrientation.x &lt; 0.0f) bXChanged = TRUE ;<br>		<font color="#0000ff">if</font> (m_vOrientation.x &lt; 0.0f && vPrevOrientation.x > 0.0f) bXChanged = TRUE ;<br>		<font color="#0000ff">if</font> (m_vOrientation.z > 0.0f && vPrevOrientation.z &lt; 0.0f) bZChanged = TRUE ;<br>		<font color="#0000ff">if</font> (m_vOrientation.z &lt; 0.0f && vPrevOrientation.z > 0.0f) bZChanged = TRUE ;<br>		<font color="#0000ff">if</font> (bXChanged && bZChanged)<br>			m_vUpVec.y *= -1.0f ;<br><br>		D3DXMatrixLookAtLH(&m_matView, &m_vEyePt, &m_vLookAtPt, &m_vUpVec) ;<br>		pDev->SetTransform(D3DTS_VIEW, &m_matView) ;<br><br>		vPrevOrientation = m_vOrientation ;<br>	}<br></font><br></pre><br></td></tr><br></table><br><br>Do you have any suggestions / clues for me? I'm really quite desparate. I've even resored to dumping the contents of m_matView and tinkering with the elements directly, which produced some weird and wonderful effects, but not the one I wanted.<br><br>The code above **NEARLY** works. Very nearly. Sometimes though it flips the UpVec when it shouldn't. To give it some context, I call CCamera::SetViewMatrix from a spaceship class; the ship can rotate around its center in all three axes, i.e. I want it to be able to *invert*, and the camera to invert with it...<br><br>thanks, d.<br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=517">dom</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>24 Jul 2001, 8:37AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23911&msg=193704#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23911&msg_quote=193704#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193704">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: 3DS Camera Orientation</i></b> <font size=1>by dom</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>07-24-2001 - 08:37AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23911&msg=193705">Re: 3DS Camera Orientation</a> <font size=1>by MidNight</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>07-24-2001 - 02:38PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+<a name="p193706">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    there is a nice article on rotations using splines and quaternions which are compatible to 3d studio 4.0 in <a href="http://www.hugi.de">hugi #12</a>.<br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=2788">Johannes Spohr</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>26 Jul 2001, 7:58AM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23911&msg=193706#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23911&msg_quote=193706#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193706">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

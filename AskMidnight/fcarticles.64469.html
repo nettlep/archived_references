@@ -1,0 +1,430 @@
+<html>
+<head><title>flipcode - N-Patches for Terrain LOD</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>N-Patches for Terrain LOD</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '' + '' +  'iat' + ''    
++ '@' + 'iria-bg' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++ 'com\">' + 'Ivan' + '</a>')</script> (09 January 2002)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+Hi, guys! Is somebody there who can help me ?
+(I apoligise, my english is probably awful, but I hope you'll be able to
+understand me)<br><br>I plan to implement a simple terrain rendering engine in my spare time with
+DirectX 8. My idea is to use n-patches for terrain LOD generation. Now, be patient and let
+me explain what is my problem:<br><br>Ok, let's say I know how to load a gray-scale bitmap from a file, generate a
+terrain mesh from it, and compute a quadtree for my visibility detection algorithm. My
+problem is how to produce various terrain LOD according to the distance from the
+camera using n-patches. An obvious solution is for every visible quadtree leaf
+to determine it's distance to the observer and then compute the tesslation amount
+(number of segments) for that node, using a formula like this:<br><br>NumSegments = ((MaxDistance - Distance) * MaxSegments + (Distance - MinDistance) * MinSegments) / (MaxDistance - MinDistance),<br><br>where:<br><br>Distance - the distance from the quadtree node to the camera,<br>
+MinDistance - the distance to the near plane of my view frustum;<br>
+MaxDistance - the distance to the far plane of my view frustum;<br>
+MinSegments - the number of segments at the farthest distance;<br>
+MaxSegments - the number of segments at the nearest distance.<br><br>Probably the formula is not correct, but I hope you've got the main idea. So, my
+problem is: when rendering adjacent n-patches tesslated with different number of
+segments it's most likely to have noticeable seams between them, but I really
+have no idea how to avoid these seams. May be there is a better solution than
+mine. Have you got any ideas?<br><br>Thank you for any suggestions and ideas!
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Boy, it's been a while! The Ask Midnight mailbox was so full of some really
+great questions and when I finally popped my head up from my stack of
+commitments, I realized I couldn't possibly answer all of the questions in
+there. That would be a posting of one answer a day for the next three months!
+Considering that many of these responses can take a number of hours (and even a
+few days in a few cases), there was simply no way.<br><br>So I'm forced to take a spattering of the more recent questions, hoping my
+answers will still be of some use to those that have asked them. However, if
+you've asked a question in the past and would like a shot at getting it answered
+again, just <a href="mailto:askmidnight@flipcode.com">resubmit</a> it with a
+note saying it was a resubmission. Those resubmissions will be put at the top of
+the Ask MidNight priority list. Of course, the rules still apply for getting a
+question answered ([1] I have to know the answer <g>, [2] it has to be a
+question that applies to at least a few people, [3] It has to be thoroughly
+explained, etc.)<br><br>On a lighter note, the time I haven't been spending on these questions has been
+spent on a fairly large-scale project (a 3D modeler) which I hope to release to
+the public with full source. If/when this happens; you can bet it'll be
+announced here on flipCode first.<br><br>On to the question...<br><br>Hello Ivan,<br><br>Your formula for calculating the number of segments may need some work and some
+fine-tuning. You may want to replace it with a more general heuristic that
+allows you to modify the rate at which tessellation occurs in the distance
+(possibly based on a quality level, or in an attempt to maintain a specific
+frame rate.) However, I don't believe this has much to do with the polygon edges
+you're seeing. Actually, I believe your edges are due to the fact that you're
+tessellating in the first place, but not at the rate in which you're doing so.<br><br>Further, I'm going to assume that your problem with polygon seams is not related
+to the texture, but rather to gaps between your polygons, as this is a fairly
+common problem.<br><br>So let's take a look at these polygons, shall we?<br><br><center><img src="asmmid-01092002-fig1.gif"></center><br><br>Here we have a separation between two quadtree nodes at different levels of
+detail. Take specific notice of vertices A, B, C and D. Note that vertices A and
+D are shared with the neighboring polygon's vertices E and G. This means that
+these vertices should also share the same height. However, vertices B and C do
+not share the vertex F, and more specifically, probably don't share the same
+height. In reality, it would be impossible for B and C to share the same height
+with F, unless E-F-G define a straight line.<br><br>In order to solve this problem, we need to reconfigure the geometry to allow all
+vertices within the terrain to share vertices, on level-of-detail boundary
+changes. The end result looks something like this:<br><br><center><img src="asmmid-01092002-fig2.gif"></center><br><br>This tessellation doesn't only avoid the problem with varying heights of
+neighboring nodes with differing levels of detail, but it also solves the
+T-junction problem, which can be the cause of "speckled edges" in your rendered
+geometry.<br><br>Before I let you go, I'd like to point out that the examples here are drawn up
+for purposes of the simplest example. If you look closely, the node polygons
+drawn in blue requires 9 triangles, rather than the original 8 triangles. You
+may just as well tessellate the red node, which would actually save you an extra
+triangle rather than add one. It would look like this:<br><br><center><img src="asmmid-01092002-fig3.gif"></center><br><br>Of course, this tessellation adjustment is only required at boundaries between
+two differing levels of detail.  The implementation details will differ in every
+case, so I'm going to leave them as an exercise to the reader.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Ask Midnight</i>, a Question and Answer column with Paul Nettle that's no longer active.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center>
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td width="100%" valign="center"><font face="Verdana" size=2></b><font size=1>Navigate: / <a class="menulink" href="deadend.html">flipcode</a> / <a class="menulink" href="deadend.html">Message Center</a> / <a class="menulink" href="deadend.html?thread_index=19">Question and Answer</a> / <a class="menulink" href="deadend.html?thread_show=23916">N-Patches for Terrain LOD</a><br><br><br></font></td>
+</tr>
+</table>
+</center><center>
+<a name="p193735">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    There is a paper available online that describes a very good equation and algorithm for doing this.  It even has provisions to keep detail in areas of the heightmap that are very "rough" minimizig popping and distortions.  I have fully implemented the algorithm and it works well (it was the terrain engine in my IOTD so long ago......).  Though, I have now abandoned the project for more current technology (i.e. simply blasting all the tris to the card with NVAR).<br><br>Anyway, for those curious, I highly suggest looking at the paper.  It is an elegant algorithm and one can learn a lot from it.<br><br>This paper (among others) can be downloaded here: <a href="http://www.vterrain.org/LOD/Papers/index.html">http://www.vterrain.org/LOD/Papers/index.html</a><br>Its name is: Real-Time Generation of Continuous Levels of Detail for Height Fields<br><br>Josh<br><br>
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=172">Joshua Anderson</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>09 Jan 2002, 3:44PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23916&msg=193735#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23916&msg_quote=193735#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193735">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<br><center>
+<a name="p193736">
+<a name="p193737">
+<a name="p193738">
+
+<table cellspacing=0 cellpadding=2 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center">
+       <font face="Verdana, Tahoma, Verdana" size=2 color="#c0d0f0">&nbsp; &nbsp;<font size=2><b></b> </font></font>
+   </td>
+</tr>
+</table>
+<table width="100%" border=0 cellspacing=1 cellpadding=1 style="table-layout:fixed;">
+  <tr> 
+   <td width="85%" valign="center" bgcolor="#222739">
+
+<table width="98%" border=0 cellspacing=1 cellpadding=12 style="table-layout:fixed;"><tr><td>
+<font face="Verdana, Tahoma, Helvetica" size=2 color="#fadd69">
+    I also used that paper in making my terrain engine. The one problem I found with that paper is that it didn't clearly explain how to propagate the d2 values. It took me several days of trial and error to finally get it right (I guess its right, I don't see holes or speckles anymore).
+</font>
+</td></tr>
+</table>
+
+   </td>
+   <td width="15%" valign="top" bgcolor="#133338">
+   <table width="98%" border=0 cellspacing=1 cellpadding=12><tr><td>
+<font size=2 color="#fadd69">
+<center>
+<b><font face="Tahoma, Verdana" size=2>
+
+<a class="menulink" href="deadend.html?account_info=443">Mastaba</a></font></b>
+<font face="Tahoma" color="#ffffff" size=1>
+<br>
+
+<font face="Helvetica, Arial, Verdana" color="#ffffff" size=1>09 Jan 2002, 8:11PM</font><br>
+</font></td></tr>
+</table>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%" style="table-layout:fixed;">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+  <td width="85%" valign="center">
+  <table cellspacing=3 cellpadding=0>
+<tr><td></td>
+  
+  </tr>
+</table>
+  </td>
+  <td width="15%" valign="center"><center>
+
+<center>
+<table width="90%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td><img src="arrow-left-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23916&msg=193736#postform">reply</a></font></td>
+<td><img src="arrow-up-blue-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?thread_show=23916&msg_quote=193736#postform">quote</a></font></td>
+<td><img src="colorbars-g.gif"></td><td><font face="Tahoma, Helvetica" size=1><a class="menulink" href="deadend.html?alertmsg=193736">alert</a></font></td>
+</tr></table>
+</center>
+</center></td>
+</tr>
+</table>
+
+   </td>
+</tr>
+</table>
+</center>
+<center><table width="100%" bgcolor="#000000" border=0 cellspacing=1 cellpadding=1>
+  <tr> 
+   <td width="100%" valign="center">
+<table width="100%" bgcolor="#000000" border=0 cellspacing=2 cellpadding=1>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp;<img src="comments_ball_blue3.gif"> <b><i>Re: N-Patches for Terrain LOD</i></b> <font size=1>by Mastaba</font></font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>01-09-2002 - 08:11PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23916&msg=193737">Re: N-Patches for Terrain LOD</a> <font size=1>by Andrew Wu</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>01-09-2002 - 11:56PM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font face="Verdana, Helvetica" size=2> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a class="menulink" href="deadend.html?thread_show=23916&msg=193738">Re: N-Patches for Terrain LOD</a> <font size=1>by Joshua Anderson</font> </font></td><td width="15%" bgcolor="#133338"><font color="#fadd69" face="Arial, Helvetica, Verdana" size=1><center>01-10-2002 - 10:34AM</center></font></td></tr>
+<tr><td bgcolor="#222739" width="85%"><font size=1>&nbsp;</font></td><td width="15%" bgcolor="#133338"><font size=1>&nbsp;</font></td></tr>
+</table>
+</font>
+   </td>
+  </tr>
+</table>
+<table cellspacing=0 cellpadding=1 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center" align="right">
+&nbsp;</td>
+</tr>
+</table></center>
+
+<font size=1><br></font>
+<center>
+
+<br>
+<table cellspacing=0 cellpadding=16 border=1 width="98%">
+<tr>
+   <td><font face="Verdana, Helvetica, Arial" size=2 color="#ffffff">
+If you'd like to participate in our forum discussions, you must first create and authorize an account on flipcode.
+The account creation process is completely free of charge
+and entirely painless.  It can be done via the <a href="deadend.html"><b>Account Manager</b></a>.
+Be sure to read our user <A href="deadend.html">guidelines</a> as well.
+   </font></td>
+</tr>
+</table>
+
+
+
+<br> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

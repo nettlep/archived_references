@@ -1,0 +1,243 @@
+<html>
+<head><title>flipcode - Calculating Normals</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Calculating Normals</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++ '' + '' + ''    
++''    
++''    
++''    
++ 'ghengis' + ''    
++''    
++''    
++''    
++''    
++ '@' + 'globalnet' + ''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++''    
++''    
++ 'co.uk\">' + 'Craig Hamilton' + '</a>')</script> (23 July 1999)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+Does anyone know of a practical computer graphics book that explains the
+underlying maths understandably? I'm relatively new to graphics programming
+and the books I have seem to explain everything but what I need. The
+problem that I have is how to calculate the normal of a face given three
+vectors. Sorry if the question seems nieve, but if when you can't find
+somthing out yourself things grin to an abrupt halt.
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+Vector maths are actually pretty simple once you get the hang of them. For
+me, the trick was to be able to visualize them. This extends nicely into
+matrices, since the standard rotational matrix (3x3) is simply three
+vectors (one for the X axis, one for the Y axis and one for the Z axis.)<br><br>As for your immediate problem (calculating the normal of a polygon given
+three vertices) the answer is quite simple.  You perform a cross-product
+of two "edge vectors." Don't run away just yet, I'm about to explain this
+in simpler terms.<br><br>A cross product of two vectors returns another vector. The unique property
+about the cross product, is that it returns the normal of the plane that
+is
+defined by the two input vectors.<br><br><center>
+<img src="fig11.gif">
+</center><br><br>In Figure 1, the vectors A & B define a plane in 3-space. These vectors
+were drawn such that they meet at a center axis, but this really isn't
+necessary, it just makes for prettier artwork (if you can call it that.)<br><br>By performing a cross-product on them, you end up with vector C. Here's
+what a cross-product looks like:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+	C.x = (A.y * B.z) - (A.z * B.y);
+	C.y = (A.z * B.x) - (A.x * B.z);
+	C.z = (A.x * B.y) - (A.y * a.x);
+ </font></pre></td></tr></table></div></center><br><br>A triangle is usually defined by three vertices. These vertices are all
+connected together by edges.  But you can think of each of these edges as
+a vector:<br><br><center>
+<img src="fig21.gif">
+</center><br><br>In the above figure, edge a is defined by the subtraction of vertex B from
+vertex A, therefore the subtraction of any two points results in a vector.
+If you continue the chain around the polygon, you end up with three 'edge
+vectors.' This subtraction is very simple:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+	v.x = point2.x - point1.x;
+	v.y = point2.y - point1.y;
+	v.z = point2.z - point1.z;
+ </font></pre></td></tr></table></div></center><br><br>The order of the subtraction determines the signed direction of the
+vector.<br><br>By now, you've probably already put it all together, but I'll conclude
+anyway. By subtracting vertex B from vertex A to get one vector, then
+subtract vertex C from vertex B to get the second vector, you have the
+information required for a cross product.<br><br>After performing the cross product, you'll have a vector that defines the surface
+normal. You will probably want to normalize this resulting normal vector.
+A vector normalization looks like this:<br><br><center><div style="width:100%; overflow:auto; background-color:#FFFFFF; border:solid 1px #c0c0c0;"><table width="100%" bgcolor="#ffffff" cellspacing=0 cellpadding=12 border=0><tr><td width="100%" bgcolor="#ffffff"><pre><font face="Courier, Courier New" color="#000000">
+	<font color="#0000ff">double</font>	vectorLength = sqrt(v.x * v.x + v.y * v.y + v.z * v.z);
+	v.x /= length;
+	v.y /= length;
+	v.z /= length;
+ </font></pre></td></tr></table></div></center><br><br>The vector length is much like calculating the length of a line. However,
+rather than having two end-points, a vector has only a single point.  You
+can consider that point to be the second end-point, with the first
+end-point at the origin (0,0,0). Given that, you can see that you don't
+need the subtraction of the first point, since subtracting zero is
+useless. By dividing each element in the vector by it's length, you end up
+with a unit vector (a vector whose length is 1.0). Anything divided its
+length is 1.0.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>

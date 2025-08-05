@@ -1,0 +1,234 @@
+<html>
+<head><title>flipcode - Lense Flares</title>
+<style type="text/css">
+
+
+a.menulink:link    {color: #b9ffd0; }
+a.menulink:visited {color: #b9ffd0; }
+a.menulink:active  {color: #b9ffd0; }
+
+a.menulinkempty:link    {color: #b9ffd0; }
+a.menulinkempty:visited {color: #b9ffd0; }
+a.menulinkempty:active  {color: #b9ffd0; }
+a.menulinkempty:link, a.menulinkempty:visited, a.menulinkempty:active {text-decoration: none}
+
+a.orangelink:link    { color:#FFAB04; }
+a.orangelink:visited { color:#FFAB04; }
+a.orangelink:active  { color:#FFAB04; }
+
+a.palegreen:link    {color: #b9ffd0; }
+a.palegreen:visited {color: #b9ffd0; }
+a.palegreen:active  {color: #b9ffd0; }
+
+a.bluelink:link    { color:#03F0FF; }
+a.bluelink:visited { color:#03F0FF; }
+a.bluelink:active  { color:#03F0FF; }
+
+a.softyellow:link     { color:#FFFCA9; }
+a.softyellow:visited  { color:#FFFCA9; }
+a.softyellow:active   { color:#FFFCA9; }
+
+a.nounderline:link        {color: #FFFCA9; }
+a.nounderline:visited     {color: #FFFCA9; }
+a.nounderline:active      {color: #FFFCA9; }
+a.nounderline:link, a.nounderline:visited, a.nounderline:active {text-decoration: none}
+
+<!--
+#code_comment { font-family:Courier,Courier New; font-size:12px; color:#007f00; }
+#code_text    { font-family:Courier,Courier New; font-size:12px; color:#000000; }
+#code_keyword { font-family:Courier,Courier New; font-size:12px; color:#0000FF; }
+-->
+
+</style>
+</head>
+<body bgcolor="#000000" text="#ffffff" link="#FFFCA9" vlink="#FFFCA9" alink="#FFFCA9">
+
+<center>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+<table width="100%" cellspacing=12 cellpadding=0 border=0><tr>
+<td width="49%" bgcolor="#000000" valign="center"><a href="deadend.html"><img border=0 src="fcc.png"></a></td>
+<td width="49%" bgcolor="#000000" valign="center" align="right">
+</td>
+</tr>
+</table>
+
+
+</td></tr></table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+
+
+<table width="100%" cellspacing=0 cellpadding=0 border=0><tr>
+<td width="160" bgcolor="#303030" valign="top">
+
+
+
+<img src="rm-stilt.gif"></td>
+
+
+<td width="100%" bgcolor="#000000" valign="top">
+<font face="Tahoma, Helvetica, Verdana" size=1>
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><br>
+<br>
+<center>
+<table width="94%" cellspacing=0 cellpadding=0 border=0>
+<tr>
+<td>
+<font size=3 face="Verdana, Helvetica" color="#ffffff"><b>Lense Flares</b><br>
+<font size=2>Question submitted by <!--GO AWAY SPAM!!!--><script language="javascript">document.write('<a href=\"mailto:' + ''    
++''    
++''    
++''    
++''    
++ '' + '' + ''    
++ 'Michael.P.Day' + ''    
++''    
++''    
++ '@' + 'corpmail' + ''    
++''    
++''    
++''    
++''    
++''    
++ '.' + ''    
++''    
++''    
++''    
++''    
++''    
++ 'telstra.com.au\">' + 'Michael Day' + '</a>')</script> (06 December 1999)</font><br>
+<font size=1><br><img src="line_grey.png"><br><br></font><br>
+</font>
+
+</td></tr></table>
+</center><center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#ffffcc" size=2>
+
+I have been looking at how lens flare is done in many of the demos
+and games.  For an example check the Image Of The Day 26/11/1999.  I
+notice that what seems to me to be a quick and dirty method is used.  
+Even when the light source is obscured by an object the lens flare is
+still rendered.  I have tried to think of a way to make this more
+realistic and come up with the following:<br><br>The best way would be to use some form of ray to shoot between the
+camera (screen) and the light source.  If the ray intersects anything
+before the light then the lens flare is not drawn.  I have not tried
+this but I guess that the cost of doing ray intersections on all
+objects would be (way) too high.  This led me to the z-buffer.  When
+the image is complete the z-buffer should contain the distance to the
+nearest object along the 'ray'. A quick check between the z-buffer
+value and the calculated z distance to the light source should show
+whether the light is visible and hence determine if lens flare should
+be drawn.  This should be a relatively simple check and I expect that
+this would make the lens flare more believable.<br><br>My question is, has this been tried?  I have seen many articles that
+suggest that it is bad to query the video card/driver for any
+information due to graphics pipelines.  Would the performance hit be
+more trouble than the visual gain is worth?
+</font>
+
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table>
+<br>
+<center>
+
+<center>
+<table width="98%" border=0 cellspacing=0 cellpadding=0>
+<tr>
+<td><img src="bborder_topleft-a.png"></td>
+<td width="100%" background="bborder_topmiddle.png">&nbsp;</td>
+<td><img src="bborder_topright.png"></td>
+</tr>
+<tr>
+<td background="bborder_left.png">&nbsp;</td>
+<td width="100%">
+<font face="Verdana,Helvetica" color="#BFFFE5" size=2>
+In Fly!, we used a set of rays cast in the direction of the sun. The
+percentage of rays occluded would determine the percentage of opacity for
+the flares. I believe we ended up using only nine rays when the product
+was shipped, and the results were fine. We used ray intersections because
+we already had a solid code-base that we could pull from to perform the
+work quickly.<br><br>By using rays, we were also able to trace through cloud layers, get the
+opacity at that point in the cloud, and dim the lense flare by that
+amount. This way, as the sun would pass behind semi-opaque cloud layers,
+the flare would act appropriately. A very subtle effect, but worthwhile.<br><br>Checking the z-buffer for such a small screen-space area would probably
+work very well, provided you didn't need this extra functionality. The
+performance hit of reading back the z-buffer for such a small area should
+be minimal. However, I'm told that some hardware won't allow reading back
+from the z-buffer, since there might not be a bus for such information to
+travel over (in some console units, for example.)<br><br>As a side-note, if you ever watch a [live action] movie, you'll notice
+that the lense flare doesn't stop at the edge of the frame. In the
+real-world (i.e. the useless space that surrounds all computers :) as long
+as the light source can see the lense a flare can be visible, even if the
+light is not "in frame." The flare doesn't actually disappear until the
+housing of the physical camera casts a shadow onto the lense. Something
+you might want to consider if you want that extra bit of realism.<br><br>Also, lense flares are only noticable with lights that are in sharp
+contrast to the rest of the scene. A flashlight in a very dark room would
+cause a lense flare, but that same flashlight in a lit room would not.
+Many people seem to think that, since lense flares "look so cool" that
+they should have a strong impact on the scene. This causes over-use of a
+great realism enhancement (i.e. a bright lense flare from the flame of a
+candle.)<br><br>It is this graphics programmer's opinion that subtlty is paramount to
+realism.
+<br>
+<font size=1><br><img src="line_grey.png"><br><br></font>
+<font color="#ffffff">Response provided by <b>Paul Nettle</b></font>
+</font>
+</td>
+<td background="bborder_right.png">&nbsp;</td>
+</tr>
+<tr>
+<td><img src="bborder_botleft.png"></td>
+<td width="100%" background="bborder_botmiddle.png">&nbsp;</td>
+<td><img src="bborder_botright.png"></td>
+</tr>
+</table><br>This article was originally an entry in flipCode's <i>Fountain of Knowledge</i>, an open Question and Answer column that no longer exists.
+<center>
+
+</td>
+
+
+
+</tr>
+</table>
+
+<table cellspacing=0 cellpadding=0 border=0 width="100%">
+<tr>
+   <td background="comments_bar2.jpg" bgcolor="#333333" width="100%" valign="center"><font size=1>&nbsp;</font></td>
+</tr>
+</table>
+</center>
+
+<br>
+<center><font face="Arial, Helvetica" size=1> </font></center>
+
+<br><br>
+
+
+
+<font face="Verdana,Helvetica" color="#ffffff" size=2><b>Community Feedback:</b><br><br></font><center><font face="Verdana,Helvetica" color="#ffffff" size=2>No comments have been posted yet.</font></center> <center><font face="Helvetica,Tahoma,Verdana" color="#ffffff" size=1>Copyright 1999-2006 (C) FLIPCODE.COM, INC.  All rights reserved.</font> <font face="Helvetica,Tahoma,Verdana" size=1>Please read our <a href="terms.shtml">Terms</a>, <a href="terms.shtml">Conditions</a>, and <a href="terms.shtml">Privacy information</a>.</font></center></body></html><br><br>
